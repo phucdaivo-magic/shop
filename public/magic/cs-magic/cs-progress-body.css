@@ -1,0 +1,16 @@
+.cs-progress-body {
+	width: 100%;
+	height: 4px;
+	background: rgba(0,0,0,0.1);
+	position: fixed;
+	top:0;
+	z-index: 1000;
+}
+
+.cs-progress-body .cs-run-progress {
+	position: absolute;
+	top:0;
+	left: 0;
+	height: 100%;
+	background: #29B6F6;
+}

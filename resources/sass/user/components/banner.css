@@ -1,0 +1,39 @@
+.banner {
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+}
+
+.banner .cs-breadcrumb {
+  position: absolute;
+  list-style-type: none;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  right: 0;
+  left: 0;
+  margin: 0;
+}
+
+.banner .cs-breadcrumb ol {
+  list-style-type: none;
+  margin: 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.banner .cs-breadcrumb ol li {
+  padding: 5px 10px;
+}
+
+.banner .cs-breadcrumb ol li a {
+  white-space: nowrap;
+  color: #fff;
+}
+
+.banner .cs-breadcrumb ol i {
+  color: #fff;
+}
+/*# sourceMappingURL=banner.css.map */

@@ -1,0 +1,40 @@
+.banner {
+    position: relative;
+
+    img {
+        width: 100%;
+    }
+
+    .cs-breadcrumb {
+        position: absolute;
+        list-style-type: none;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        right: 0;
+        left: 0;
+        margin: 0;
+
+        ol {
+            list-style-type: none;
+            margin: 0;
+            flex-wrap: wrap;
+
+            li {
+                padding: 5px 10px;
+
+                &:not(:last-child) {}
+
+                a {
+                    white-space: nowrap;
+                    color: #fff;
+                }
+            }
+
+            i {
+
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,912 @@
+.fxc-monitorchart-graphContainer {
+    fill: transparent
+}
+
+.fxc-monitorchart-graphContainer .fxc-monitorchart-graphContainerRect {
+    visibility: hidden;
+    pointer-events: all
+}
+
+.fxc-monitorchart-graphContainer .fxc-monitorchart-bars {
+    pointer-events: none;
+    transition: opacity .2s ease-in-out;
+    opacity: 1
+}
+
+.fxc-monitorchart-graphContainer .fxc-monitorchart-bars.fxc-monitorchart-translucent {
+    opacity: .3 !important
+}
+
+.fxc-monitorchart-tooltip-root {
+    position: absolute;
+    text-align: center;
+    display: none;
+    opacity: 0;
+    background: #f08080;
+    border-color: #2f4f4f;
+    border-style: solid;
+    border-width: 1px;
+    z-index: 999;
+    float: left;
+    pointer-events: none
+}
+
+.fxc-monitorchart-tooltip-root .fxc-monitorchart-tooltip-padding .fxc-monitorchart-tooltip-chrome {
+    background: 0 0;
+    display: block;
+    padding: 5px;
+    float: left
+}
+
+.fxc-monitorchart-tooltip-root .fxc-monitorchart-tooltip-padding .fxc-monitorchart-tooltip-body {
+    display: block;
+    padding: 10px;
+    float: right;
+    background-color: #fff
+}
+
+.fxc-monitorchart-legend-bar {
+    pointer-events: all;
+    display: inline-block
+}
+
+.fxc-monitorchart-axis {
+    shape-rendering: crispEdges
+}
+
+.fxc-monitorchart-axis .fxc-monitorchart-guideline,
+.fxc-monitorchart-axis .fxc-monitorchart-tick-line,
+.fxc-monitorchart-axis .fxc-monitorchart-tick-path {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1px
+}
+
+.fxc-monitorchart-axis .fxc-monitorchart-tick-text {
+    font-size: 10px;
+    line-height: auto;
+    fill: #575b60
+}
+
+.fxc-monitorchart-axis .fxc-monitorchart-minor .fxc-monitorchart-tick-line,
+.fxc-monitorchart-axis .fxc-monitorchart-minor .fxc-monitorchart-tick-line-nodata {
+    stroke: #ccc;
+    stroke-width: 1px
+}
+
+.fxc-monitorchart-temp-tick {
+    font-size: 10px;
+    line-height: auto;
+    fill: #575b60;
+    text-anchor: middle;
+    pointer-events: none
+}
+
+.fxs-mode-dark .fxc-monitorchart-legendsContainer {
+    fill: #fff
+}
+
+.fxc-monitorchart-legendsContainer {
+    fill: #1f2327
+}
+
+.fxc-monitorchart-legendsContainer .fxc-monitorchart-legend {
+    display: block;
+    width: calc(100% - 10px);
+    height: inherit;
+    opacity: 1;
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s;
+    text-align: left
+}
+
+.fxc-monitorchart-legendsContainer .fxc-monitorchart-legend.notSelected {
+    opacity: .3
+}
+
+.fxc-monitorchart-legendsContainer .fxc-monitorchart-legend .fxc-monitorchart-metric {
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 10px;
+    letter-spacing: -.05em;
+    font-weight: 600;
+    display: block;
+    max-width: 115px;
+    margin: 3px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.fxc-monitorchart-legendsContainer .fxc-monitorchart-legend .fxc-monitorchart-resource {
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 10px;
+    letter-spacing: -.05em;
+    font-family: az_ea_font, 'Segoe UI', az_font, system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    display: block;
+    max-width: 115px;
+    margin: 3px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.fxc-monitorchart-legendsContainer .fxc-monitorchart-legend .fxc-monitorchart-value {
+    font-weight: 600;
+    padding-right: 3px;
+    font-size: 20px;
+    line-height: 12px;
+    letter-spacing: -.025em
+}
+
+.fxc-monitorchart-legendsContainer .fxc-monitorchart-legend .fxc-monitorchart-units {
+    font-weight: 600;
+    font-size: 10px;
+    display: inline-block;
+    text-align: right;
+    vertical-align: bottom;
+    overflow: hidden
+}
+
+.fxc-monitorchart-brush .fxc-monitorchart-extent {
+    stroke: #1f2327;
+    fill: #1f2327;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+    stroke-width: 2px
+}
+
+.fxc-monitorchart-brush .fxc-monitorchart-resize .fxc-monitorchart-resize-path,
+.fxc-monitorchart-brush .fxc-monitorchart-resize .fxc-monitorchart-resize-rect {
+    fill: #666;
+    fill-opacity: .8;
+    stroke: #1f2327;
+    stroke-width: 1.5px
+}
+
+.screenReaderText {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px)
+}
+
+.fxc-monitorchart-bargroup,
+.fxc-monitorchart-lineContainer,
+.scatterGroup {
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+    opacity: 1
+}
+
+.fxc-monitorchart-bargroup.notSelected,
+.fxc-monitorchart-lineContainer.notSelected,
+.scatterGroup.notSelected {
+    opacity: .3
+}
+
+.fxc-monitorchart-lineContainer.Selected .fxc-monitorchart-linePoints,
+.fxc-monitorchart-lineContainer.Selected .fxc-monitorchart-linePoints-missing {
+    -webkit-transition: stroke-width .5s;
+    transition: stroke-width .5s;
+    stroke-width: 3px
+}
+
+.scatterGroup.Selected .fxc-monitorchart-timeSeriesPoints-dot {
+    -webkit-transition: r .5s;
+    transition: r .5s
+}
+
+.fxc-monitorchart-toolbar-item {
+    height: 18px;
+    width: 18px;
+    padding: 5px;
+    float: right;
+    display: block
+}
+
+.fxc-monitorchart-toolbar-item-disabled {
+    pointer-events: none;
+    opacity: .5
+}
+
+.fxc-monitorchart-watermark {
+    background-color: rgba(0, 0, 0, .7);
+    height: 48px;
+    width: 90%;
+    position: relative;
+    top: -25px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.fxc-monitorchart-marker,
+.missing {
+    fill: #fff
+}
+
+.fxc-monitorchart-watermark-container {
+    font-size: 13px;
+    line-height: normal;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    align-items: center
+}
+
+.fxc-monitorchart-static-threshold {
+    stroke: #111;
+    stroke-width: 1;
+    cursor: row-resize;
+    pointer-events: all;
+    stroke-dasharray: 5, 5
+}
+
+.fxc-monitorchart-static-threshold-pointer {
+    fill: #111;
+    cursor: row-resize
+}
+
+.fxc-monitorchart-dynamic-threshold-path {
+    stroke: grey
+}
+
+.fxc-monitorchart-dynamic-threshold-area {
+    fill: #0072c6;
+    opacity: .2
+}
+
+.fxc-monitorchart-dynamic-thresholdSquare {
+    opacity: .2
+}
+
+.fxc-monitorchart-dynamic-thresholdAlertCircle {
+    stroke: #111
+}
+
+.fxc-monitorchart-watermark-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+    padding-left: .8em;
+    padding-right: .8em
+}
+
+.dark .fxc-monitorchart-legend,
+.fxs-theme-dark .fxc-monitorchart-legend {
+    fill: #fff
+}
+
+.dark .fxc-monitorchart-marker,
+.dark .missing,
+.fxs-theme-dark .fxc-monitorchart-marker,
+.fxs-theme-dark .missing {
+    fill: #111
+}
+
+.dark .fxc-monitorchart-watermark,
+.fxs-theme-dark .fxc-monitorchart-watermark {
+    border-width: 1px;
+    border-style: solid
+}
+
+.dark .fxc-monitorchart-static-threshold,
+.fxs-theme-dark .fxc-monitorchart-static-threshold {
+    stroke: #fff
+}
+
+.dark .fxc-monitorchart-static-threshold-pointer,
+.fxs-theme-dark .fxc-monitorchart-static-threshold-pointer {
+    fill: #fff
+}
+
+.dark .fxc-monitorchart-dynamic-threshold-path,
+.fxs-theme-dark .fxc-monitorchart-dynamic-threshold-path {
+    stroke: #fff
+}
+
+.dark .fxc-monitorchart-dynamic-threshold-area,
+.fxs-theme-dark .fxc-monitorchart-dynamic-threshold-area {
+    fill: grey;
+    opacity: .5
+}
+
+.dark .fxc-monitorchart-dynamic-thresholdAlertCircle,
+.fxs-theme-dark .fxc-monitorchart-dynamic-thresholdAlertCircle {
+    stroke: #fff
+}
+
+.dark .fxc-monitorchart-dynamic-thresholdSquare,
+.fxs-theme-dark .fxc-monitorchart-dynamic-thresholdSquare {
+    opacity: .3
+}
+
+.dark .fxc-monitorchart-minor .fxc-monitorchart-tick-line,
+.fxs-theme-dark .fxc-monitorchart-minor .fxc-monitorchart-tick-line {
+    stroke: #525252
+}
+
+.dark .fxc-monitorchart-minor .fxc-monitorchart-tick-line-nodata,
+.fxs-theme-dark .fxc-monitorchart-minor .fxc-monitorchart-tick-line-nodata {
+    stroke: rgba(82, 82, 82, .2)
+}
+
+.dark .fxc-monitorchart-axis .fxc-monitorchart-tick-path,
+.fxs-theme-dark .fxc-monitorchart-axis .fxc-monitorchart-tick-path {
+    stroke: #aeaeae
+}
+
+.dark .fxc-monitorchart-axis .fxc-monitorchart-tick-text,
+.fxs-theme-dark .fxc-monitorchart-axis .fxc-monitorchart-tick-text {
+    fill: #aeaeae
+}
+
+.dark .fxc-monitorchart-temp-tick,
+.fxs-theme-dark .fxc-monitorchart-temp-tick {
+    fill: #aeaeae
+}
+
+@media screen and (-ms-high-contrast:black-on-white) {
+    .fxc-monitorchart-legend {
+        fill: #000
+    }
+
+    .fxc-monitorchart-watermark {
+        background-color: #fff;
+        border: 1px solid #000;
+        opacity: 1
+    }
+
+    .fxc-monitorchart-watermark .fxc-monitorchart-watermark-text {
+        color: #000
+    }
+
+    .fxc-monitorchart-static-threshold {
+        stroke: #000
+    }
+
+    .fxc-monitorchart-static-threshold-pointer {
+        fill: #000
+    }
+
+    .fxc-monitorchart-minor .fxc-monitorchart-tick-line {
+        stroke: #000
+    }
+
+    .fxc-monitorchart-minor .fxc-monitorchart-tick-line-nodata {
+        stroke: #000
+    }
+
+    .fxc-monitorchart-axis .fxc-monitorchart-tick-path {
+        stroke: #000
+    }
+
+    .fxc-monitorchart-axis .fxc-monitorchart-tick-text {
+        fill: #000
+    }
+
+    .fxc-monitorchart-temp-tick {
+        fill: #000
+    }
+}
+
+@media screen and (-ms-high-contrast:white-on-black) {
+    .fxc-monitorchart-legend {
+        fill: #fff
+    }
+
+    .fxc-monitorchart-watermark {
+        background-color: #000;
+        border: 1px solid #fff;
+        opacity: 1
+    }
+
+    .fxc-monitorchart-watermark .fxc-monitorchart-watermark-text {
+        color: #fff
+    }
+
+    .fxc-monitorchart-static-threshold {
+        stroke: #fff
+    }
+
+    .fxc-monitorchart-static-threshold-pointer {
+        fill: #fff
+    }
+
+    .fxc-monitorchart-minor .fxc-monitorchart-tick-line {
+        stroke: #fff
+    }
+
+    .fxc-monitorchart-minor .fxc-monitorchart-tick-line-nodata {
+        stroke: #fff
+    }
+
+    .fxc-monitorchart-axis .fxc-monitorchart-tick-path {
+        stroke: #fff
+    }
+
+    .fxc-monitorchart-axis .fxc-monitorchart-tick-text {
+        fill: #fff
+    }
+
+    .fxc-monitorchart-temp-tick {
+        fill: #fff
+    }
+}
+
+.light.high-contrast .fxc-monitorchart-legend {
+    fill: #000
+}
+
+.light.high-contrast .fxc-monitorchart-watermark {
+    background-color: #fff;
+    border: 1px solid #000;
+    opacity: 1
+}
+
+.light.high-contrast .fxc-monitorchart-watermark .fxc-monitorchart-watermark-text {
+    color: #000
+}
+
+.light.high-contrast .fxc-monitorchart-static-threshold {
+    stroke: #000
+}
+
+.light.high-contrast .fxc-monitorchart-static-threshold-pointer {
+    fill: #000
+}
+
+.light.high-contrast .fxc-monitorchart-minor .fxc-monitorchart-tick-line {
+    stroke: #000
+}
+
+.light.high-contrast .fxc-monitorchart-minor .fxc-monitorchart-tick-line-nodata {
+    stroke: #000
+}
+
+.light.high-contrast .fxc-monitorchart-axis .fxc-monitorchart-tick-path {
+    stroke: #000
+}
+
+.light.high-contrast .fxc-monitorchart-axis .fxc-monitorchart-tick-text {
+    fill: #000
+}
+
+.light.high-contrast .fxc-monitorchart-temp-tick {
+    fill: #000
+}
+
+.dark.high-contrast .fxc-monitorchart-legend {
+    fill: #fff
+}
+
+.dark.high-contrast .fxc-monitorchart-watermark {
+    background-color: #000;
+    border: 1px solid #fff;
+    opacity: 1
+}
+
+.dark.high-contrast .fxc-monitorchart-watermark .fxc-monitorchart-watermark-text {
+    color: #fff
+}
+
+.dark.high-contrast .fxc-monitorchart-static-threshold {
+    stroke: #fff
+}
+
+.dark.high-contrast .fxc-monitorchart-static-threshold-pointer {
+    fill: #fff
+}
+
+.dark.high-contrast .fxc-monitorchart-minor .fxc-monitorchart-tick-line {
+    stroke: #fff
+}
+
+.dark.high-contrast .fxc-monitorchart-minor .fxc-monitorchart-tick-line-nodata {
+    stroke: #fff
+}
+
+.dark.high-contrast .fxc-monitorchart-axis .fxc-monitorchart-tick-path {
+    stroke: #fff
+}
+
+.dark.high-contrast .fxc-monitorchart-axis .fxc-monitorchart-tick-text {
+    fill: #fff
+}
+
+.dark.high-contrast .fxc-monitorchart-temp-tick {
+    fill: #fff
+}
+
+.fxc-monitorchartv2-progress {
+    width: 60px;
+    z-index: 194
+}
+
+.fxs-extension-frame,
+.fxs-manifest-frame {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    display: none
+}
+
+.fxs-portal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    transition: background .25s ease;
+    z-index: 0;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column
+}
+
+.fxs-portal-main {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    height: calc(100% - 40px);
+    position: relative;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 0
+}
+
+.fxs-portal-content {
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    position: relative;
+    overflow: hidden;
+    transition: margin .2s ease;
+    z-index: 1
+}
+
+.fxs-portal-controlloadfailed>svg {
+    vertical-align: bottom;
+    height: 18px
+}
+
+.fxs-portal-tip-content {
+    max-width: 400px
+}
+
+.fxs-portal-tip.azc-balloon .azc-balloon-content {
+    padding: 0
+}
+
+.fxs-portal-tip.azc-balloon .azc-balloon-pointer {
+    border-color: #fff
+}
+
+.fxc-preview {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.fxs-portal-shield {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 6
+}
+
+.fxs-portal-shield-icon>svg {
+    width: 20px;
+    height: 20px
+}
+
+.fxs-portal-shield-icon-warning {
+    background-color: #ff8c00
+}
+
+.fxs-portal-shield-icon-error {
+    background-color: #e81123
+}
+
+.fxs-portal-shield-icon-on-topbar {
+    position: absolute;
+    height: 40px;
+    width: 40px
+}
+
+.fxs-portal-shield-icon-on-topbar>svg {
+    margin: 10px
+}
+
+.fxs-portal-shield-modaldialog {
+    position: fixed;
+    width: 430px
+}
+
+.fxs-portal-shield-modaldialog .fxs-messagebox {
+    background-color: #fff;
+    color: #1f2327
+}
+
+.fxs-portal-shield-modaldialog .fxs-messagebox .fxs-messagebox-title {
+    padding: 22px 27px
+}
+
+.fxs-portal-shield-modaldialog .fxs-messagebox .fxs-messagebox-text {
+    max-height: calc(100vh - 295px - 160px);
+    overflow-y: auto
+}
+
+.fxs-portal-shield-modaldialog .fxs-messagebox .msportalfx-form {
+    background-color: inherit;
+    border-top-width: 0
+}
+
+.fxs-portal-shield-modaldialog .fxs-messagebox .msportalfx-form>div {
+    border-top-width: 0
+}
+
+.fxs-portal-shield-modaldialog .fxs-messagebox a {
+    text-decoration: underline;
+    color: #00bcf2
+}
+
+.fxs-portal-shield-modaldialog-on-jumpbar {
+    left: 85px;
+    top: 295px
+}
+
+.fxs-input {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    outline: 0;
+    height: 24px;
+    text-indent: 10px
+}
+
+.fxs-button {
+    position: relative;
+    box-sizing: border-box;
+    height: 24px;
+    line-height: 22px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid;
+    padding: 0 20px;
+    margin: 0
+}
+
+.fxs-button.fxs-button-disabled {
+    cursor: default
+}
+
+.fxs-inner-dotted-border {
+    position: relative
+}
+
+.fxs-inner-dotted-border:focus::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    display: block;
+    border-width: 1px;
+    border-style: dotted;
+    pointer-events: none
+}
+
+.fxs-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.fxs-full-height {
+    height: 100%
+}
+
+.fxs-full-width {
+    width: 100%
+}
+
+@-webkit-keyframes fxs-progress-animatedEllipses {
+    0% {
+        transform: scale(1);
+        opacity: .3
+    }
+
+    36.1% {
+        transform: scale(1.06);
+        opacity: 1
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 1
+    }
+
+    86.1% {
+        transform: scale(1);
+        opacity: .3
+    }
+}
+
+@keyframes fxs-progress-animatedEllipses {
+    0% {
+        transform: scale(1);
+        opacity: .3
+    }
+
+    36.1% {
+        transform: scale(1.06);
+        opacity: 1
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 1
+    }
+
+    86.1% {
+        transform: scale(1);
+        opacity: .3
+    }
+}
+
+@-webkit-keyframes fxs-progress-animatedEllipsesShadow {
+    0% {
+        opacity: 0
+    }
+
+    36.1% {
+        opacity: .4
+    }
+
+    50% {
+        opacity: .4
+    }
+
+    86.1% {
+        opacity: 0
+    }
+}
+
+@keyframes fxs-progress-animatedEllipsesShadow {
+    0% {
+        opacity: 0
+    }
+
+    36.1% {
+        opacity: .4
+    }
+
+    50% {
+        opacity: .4
+    }
+
+    86.1% {
+        opacity: 0
+    }
+}
+
+fxs-progress {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 194
+}
+
+.fxs-progress-nozindex {
+    z-index: initial
+}
+
+.fxs-progress-dots {
+    position: absolute;
+    top: calc(50% - 10px/2);
+    width: 100%;
+    line-height: 0;
+    text-align: center
+}
+
+.fxs-progress-dots-dot {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    -webkit-animation: fxs-progress-animatedEllipses 1.8s infinite;
+    animation: fxs-progress-animatedEllipses 1.8s infinite;
+    background-color: $main-color;
+    margin: 0 5px;
+    border-radius: 5px;
+    opacity: .3;
+    position: relative
+}
+
+.fxs-progress-dots-dot::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    box-shadow: 0 3px 3px 0 $main-color;
+    -webkit-animation: fxs-progress-animatedEllipsesShadow 1.8s infinite;
+    animation: fxs-progress-animatedEllipsesShadow 1.8s infinite
+}
+
+.fxs-progress-dots-dot:nth-child(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s
+}
+
+.fxs-progress-dots-dot:nth-child(2) {
+    -webkit-animation-delay: 125ms;
+    animation-delay: 125ms
+}
+
+.fxs-progress-dots-dot:nth-child(3) {
+    -webkit-animation-delay: .25s;
+    animation-delay: .25s
+}
+
+.fxs-bladecontent-unlocked .fxs-tile .fxs-progress-dots,
+.fxs-progress-small .fxs-progress-dots,
+.fxs-startboard-layout .fxs-tile .fxs-progress-dots {
+    top: calc(50% - 6px/2)
+}
+
+.fxs-bladecontent-unlocked .fxs-tile .fxs-progress-dots-dot,
+.fxs-progress-small .fxs-progress-dots-dot,
+.fxs-startboard-layout .fxs-tile .fxs-progress-dots-dot {
+    height: 6px;
+    width: 6px;
+    margin: 0 3px;
+    border-radius: 3px
+}
+
+.fxs-bladecontent-unlocked .fxs-tile .fxs-progress-dots-dot::after,
+.fxs-progress-small .fxs-progress-dots-dot::after,
+.fxs-startboard-layout .fxs-tile .fxs-progress-dots-dot::after {
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 $main-color
+}
+/* Magic */
+
+.view-load {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    z-index: 99999;
+    display: none;
+}
+
+.view-load.show {
+    display: block;
+}

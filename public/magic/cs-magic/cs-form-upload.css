@@ -1,0 +1,150 @@
+.cs-form-upload {
+  background: #eee;
+  border: 2px dashed rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  position: relative;
+  min-height: 150px;
+}
+
+.cs-form-upload .cs-chose-file {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.cs-form-upload .cs-box-file {
+  position: relative;
+  margin: 10px;
+  background: #fff;
+  border: 1px solid #e77600;
+  z-index: 5;
+  width: 160px;
+  height: max-content;
+}
+
+.cs-form-upload.one .cs-box-file {
+  position: relative;
+  background: #fff;
+  border: 0;
+  margin: 5px;
+  z-index: 5;
+  width: 100%;
+  height: max-content;
+}
+
+.cs-form-upload .cs-box-file.click {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  margin: 0;
+  z-index: 3;
+  border: 0;
+}
+
+.cs-form-upload .cs-box-file.click .cs-thumb {
+  width: 100%;
+  height: 100%;
+}
+
+.cs-form-upload .cs-box-file:hover .cs-remove-file {
+  display: block;
+}
+
+.cs-form-upload .cs-input-file {
+  display: block;
+  top: 0;
+  right: 0;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cs-form-upload .cs-thumb {
+  display: block;
+  background: #f1f9fc;
+  text-align: center;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 160px;
+}
+
+.cs-form-upload .cs-thumb i {
+  font-size: 90px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.cs-form-upload .cs-remove-file {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  float: right;
+  font-size: 11px;
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  color: #fff;
+  background: red;
+  cursor: pointer;
+  opacity: 0.56;
+  display: none;
+}
+
+.cs-form-upload .cs-remove-file:hover {
+  color: #fff;
+  background: red;
+  cursor: pointer;
+  opacity: 0.87;
+}
+
+.cs-form-upload .cs-label-file {
+  width: 100%;
+  overflow: hidden;
+  font-size: 13px;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cs-form-upload .cs-memory-file {
+  width: 100%;
+  overflow: hidden;
+  font-size: 13px;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.cs-form-upload .action-top-file {
+  background: #fafafa;
+  /* border-bottom: 1px solid rgba(0,0,0,0.05); */
+}
+
+.cs-form-upload .action-bot-file {
+  padding: 2px 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}

@@ -1,0 +1,312 @@
+@import '../../node_modules/sweetalert2/src/sweetalert2.scss';
+@import '../../node_modules/select2/dist/css/select2.css';
+@import '../../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.css';
+@import './select2';
+@import './datepicker';
+
+.card {
+
+    &.cs-search {
+        margin-bottom: 0;
+        border-bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+
+        .select2-selection__rendered {
+            min-width: 170px !important;
+        }
+    }
+
+    &.cs-form {
+
+        .cs-label {
+            text-align: right;
+            line-height: 34px;
+        }
+    }
+
+    .table {
+        margin: 0;
+    }
+
+    td,
+    th {
+        border-color: #fff !important;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 0;
+        border-top: 1px solid #ddd;
+    }
+}
+
+.cs-required,
+.error {
+    color: #f86c6b;
+}
+
+$color-blue: #007bff;
+
+// custom pagination
+.cs-pagination {
+    background: none;
+
+    .one-page {
+        background: none;
+        color: #23282c;
+        min-width: 28px;
+        height: 28px;
+        border: 0 !important;
+        border-radius: 3px;
+
+        &.selected {
+            background: $color-blue;
+        }
+    }
+}
+
+.cs-show-image {
+    z-index: 1100;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.nav-item {
+    .nav-item {
+        .nav-link {
+            padding-left: 25px;
+        }
+    }
+}
+
+.cs-image-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    background-size: cover;
+    background-position: center;
+}
+
+.app-header .navbar-nav .dropdown-menu-right {
+    box-shadow: 0px 2px 3px 0px rgba(34, 36, 38, 0.15);
+}
+
+.sidebar .nav-link.active .nav-icon {
+    color: #ff9800;
+}
+
+img.cs-image {
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .2s;
+
+    &:hover {
+        -webkit-box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px, rgba(9, 30, 66, 0.31) 0 0 1px 0;
+        box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25), 0 0 1px 0 rgba(9, 30, 66, 0.31);
+    }
+
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    // border: 1px solid #007bff;
+}
+
+div.cs-image {
+    // border: 1px solid #007bff;
+    border-radius: 6px;
+    margin: 3px;
+    cursor: pointer;
+    transition: .2s;
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+    float: right;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        -webkit-box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px, rgba(9, 30, 66, 0.31) 0 0 1px 0;
+        box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25), 0 0 1px 0 rgba(9, 30, 66, 0.31);
+    }
+}
+
+.select2.select2-container.select2-container--default {
+    // width: 100% !important;
+}
+
+.input-group .select2-container--default .select2-selection--single {
+    border-radius: 0 4px 4px 0 !important;
+}
+
+.input-group {
+    flex-wrap: nowrap;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background: #f5f5f5;
+    pointer-events: none;
+    user-select: none;
+}
+
+// tabs
+.tab-content {
+    // box-shadow: 0 2px 4px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 0.25rem;
+}
+
+.nav-tabs {
+    border: none;
+
+    .nav-item:first-child {
+        margin-left: 10px;
+    }
+
+    .nav-link {
+        font-weight: 500;
+        color: #000;
+    }
+
+    .nav-link.active {
+        box-shadow: 0 2px 4px 3px rgba(0, 0, 0, 0.05);
+        position: relative;
+        border-top-color: #4dbd74 !important;
+        border-top-width: 2px;
+
+        &::after {
+            content: '';
+            display: block;
+            width: calc(100% + 10px);
+            height: 10px;
+            bottom: -11px;
+            background: #fff;
+            position: absolute;
+            left: -5px;
+        }
+    }
+}
+
+b {
+    color: #007bff !important;
+    font-weight: normal;
+}
+
+
+// input, select, textarea,
+// .select2-container--default .select2-selection,
+// .ck.ck-editor__editable_inline ,
+// .ck.ck-toolbar {
+//     border-width: 2px !important;
+// }
+
+// .ck.ck-editor__editable_inline {
+//     border-top-width: 0 !important;
+// }
+.cs-card {
+    background: #fff;
+
+    .card-body {
+        margin: 10px;
+        padding: 5px;
+        overflow: hidden;
+
+        table {
+            margin: 0;
+
+            tr th {
+                border: none;
+                font-size: 14px;
+                font-weight: normal;
+                color: #0088ce;
+                padding: 1rem 0.75rem 0.5rem 0.75rem;
+                white-space: nowrap;
+                font-weight: bold;
+            }
+        }
+
+        .table {
+            tr td {
+                padding: 0.3rem 0.75rem !important;
+            }
+        }
+    }
+
+    .pagination {
+        margin: 0;
+    }
+}
+
+
+.input-group-text {
+    padding: 0;
+    width: 36px;
+    justify-content: center;
+}
+
+.help-block {
+    color: #f86c6b;
+}
+
+.control-image {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background: #f1f3f5;
+    height: 180px;
+    max-width: 100%;
+    width: fit-content;
+
+    img {
+        height: 100%;
+        max-width: 100%;
+    }
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+}
+
+.ck.ck-toolbar,
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border: 1px solid #edeef1 !important;
+}
+
+.ck.ck-toolbar__separator {
+    background: #edeef1 !important;
+}
+
+.form-control {
+    font-weight: 600;
+}
+
+tr {
+    &:last-child {
+        .btn-sort {
+            &:first-child {
+                pointer-events: none;
+                opacity: 0.3;
+            }
+        }
+    }
+
+    &:first-child {
+        .btn-sort {
+            &:last-child {
+                pointer-events: none;
+                opacity: 0.3;
+            }
+        }
+    }
+
+    figure.image img {
+        width: 350px;
+    }
+
+    .btn-danger[href=""] {
+        opacity: 0.6;
+        pointer-events: none;
+        cursor: default;
+    }
+}

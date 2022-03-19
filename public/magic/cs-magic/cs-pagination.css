@@ -1,0 +1,65 @@
+ 
+/*Pagination*/
+.cs-pagination {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+}
+
+.cs-pagination .one-page {
+  min-width: 36px;
+  height: 36px;
+  box-sizing: border-box;
+  display: block;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-right: 0;
+  text-align: center;
+  line-height: 34px;
+  padding: 0 10px;
+  display: flex;    
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+.cs-pagination .one-page.focus{
+  background: #E3F2FD;
+}
+.cs-pagination .one-page.selected {
+  background-color: #2185d0;
+  color: #fff;
+}
+
+.cs-pagination .list-child {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cs-pagination .one-page i {
+  font-size: 16px;
+}
+
+.cs-pagination .one-page:not(.selected):hover {
+  cursor: pointer;;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.cs-pagination .one-page:not(.selected):active {
+  background: rgba(0, 0, 0, 0.1);
+}
+.cs-pagination .one-page.first {
+  border-radius: 3px 0 0 3px;
+}
+.cs-pagination .one-page.last {
+  border-right: 1px solid #ddd;
+  border-radius: 0 3px 3px 0;
+}
+ 
+
+
+/*.cs-pagination .one-page:last-child,
+.cs-pagination .one-page.prev{
+  border-right: 1px solid #ddd;
+})*/

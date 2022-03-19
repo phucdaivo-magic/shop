@@ -1,0 +1,24 @@
+
+// Customer datepicker
+.datepicker.dropdown-menu {
+	border: 1px solid #96c8da !important;
+	padding: 10px 15px 15px;
+	z-index: 1000;
+
+}
+
+.datepicker table tr td span.active.active,
+.datepicker table tr td.active {
+	background: #007be8 !important;
+}
+
+.datepicker table tr td.today {
+	background: #4dbd74 !important;
+	color: #fff !important;
+}
+
+.datepicker table .dow {
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #007be8;
+}

@@ -1,0 +1,118 @@
+/*toggle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.cs-container-toggle {
+   position: relative;
+   width: max-content;
+   height: max-content;
+   display: inline-table;
+}
+.cs-button-toggle {
+   width: 35px;
+   height: 20px;
+   border:1px solid #a5a5a7;
+   border-radius: 30px;
+   cursor: pointer;
+   position: relative;
+   transition: 0.3s;
+   box-sizing: border-box;
+   display: block;
+}
+
+.cs-button-toggle input {
+   display: none;
+}
+
+.cs-button-toggle span {
+   transition: 0.3s;
+   width: 14px;
+   height: 14px;
+   display: block;
+   position: absolute;
+   margin: 2px;
+   background: #a5a5a7;
+   border-radius: 30px;
+}
+
+.cs-button-toggle.checked {
+   background: #16ab39;
+   border-color:#16ab39;
+}
+
+.cs-button-toggle.checked span {
+   background: #fff;
+   margin-left: calc(100% -  16px);
+}
+
+/*Checkbox ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.cs-button-checkbox {
+   background: #fff;
+   display: block;
+   width: 20px;
+   height: 20px;
+   box-sizing: border-box;
+   border: 1px solid #a5a5a7;
+   border-radius: 3px;
+   cursor: pointer;
+}
+
+.cs-button-checkbox input {
+   display: none;
+}
+.cs-button-checkbox:active {
+  box-shadow:inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+.cs-button-checkbox.checked {
+  background: #16ab39;
+  border-color: #16ab39;
+}
+
+.cs-button-checkbox.checked span {
+  border:0;
+  width:7px;
+  height: 8px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  position: absolute;
+  transform: rotate(45deg);
+  margin: 4px 5px;
+}
+
+/*Radio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.cs-button-radio .cs-box-radio {
+   background: #fff;
+   display: block;
+   width: 20px;
+   height: 20px;
+   box-sizing: border-box;
+   border: 1px solid #a5a5a7;
+   border-radius: 100px;
+   overflow: hidden;
+   padding: 4px;
+   cursor: pointer;
+}
+
+.cs-button-radio .cs-box-radio:active {
+  box-shadow:inset 0 0 6px rgba(0,0,0,0.2);
+}
+
+.cs-button-radio input {
+   display: none;
+}
+
+.cs-button-radio input:checked + span.cs-box-radio {
+  border-color: #16ab39 !important;
+  background: #fff;
+}
+
+
+ 
+.cs-button-radio input:checked + span.cs-box-radio + span.cs-toggle-radio  {
+   width: calc(100% - 10px);
+   height: calc(100% - 10px);
+   display: block;
+   position: absolute;
+   background: #a5a5a7;
+   top:0;
+   margin: 5px;
+   border-radius: 100px;
+}

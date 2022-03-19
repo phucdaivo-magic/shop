@@ -1,0 +1,150 @@
+
+.cs-show-image {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
+
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	-o-flex-direction: column;
+	-ms-flex-direction: column;
+	-moz-flex-direction: column;
+
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: -moz-flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.cs-show-image .wapper-img {
+	position: relative;
+	padding: 5px;
+	max-width: 100%;
+	max-height: 100%;
+	box-sizing: border-box;
+
+	-webkit-flex: 1; 
+    -ms-flex: 1;
+    -moz-flex:1;
+    -o-flex:1;
+    flex: 1;
+}
+
+.cs-show-image .wapper-img img {
+	max-width: calc(100% - 20px);
+	max-height: 100%;
+	position: relative;
+	display: block;
+	box-shadow: 0 0 16px 0 rgba(0,0,0,.4);
+}
+
+.cs-show-image .mouse-move {
+	cursor: move;
+}
+
+.cs-show-image .cs-view-images {
+	background: #000;
+	width: 100%;
+	padding: 5px 50px;
+	box-sizing: border-box;
+	position: relative;
+	z-index: 1;
+}
+
+.cs-show-image .cs-view-images .cs-view-images-content {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.cs-show-image .cs-view-images:after {
+	 
+	 
+}
+ 
+.cs-show-image .cs-view-images:active .cs-view-images-content:after {
+	content: '';
+    display: block;
+    position: fixed;
+    width: calc(100% - 100px);
+    height: 120px;
+    z-index: 1;
+    background: transparent;
+}
+
+
+.cs-show-image .cs-view-images .cs-view-images-content .cs-box-image {
+	min-width: 140px;
+	height: 100px;
+	margin: 5px;
+	background: rgba(255,255,255,0.1);
+	border: none; 
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+.cs-show-image .cs-view-images .cs-view-images-content .cs-box-image img {
+ 	max-width: 130px;
+	max-height: 90px;
+	z-index: -1;
+}
+.cs-show-image .cs-view-images .cs-view-images-content .cs-box-image:focus{
+	border: 1px solid #e77600;
+	outline: 0;
+
+} 
+.cs-show-image .cs-image-center {
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: -moz-flex;
+	justify-content: center;
+	align-items: center;
+
+	align-items: center;
+	-webkit-align-items: center;
+	-o-align-items: center;
+	-ms-align-items: center;
+	-moz-align-items: center;
+
+	justify-content: center;
+	-webkit-justify-content: center;
+	-o-justify-content: center;
+	-ms-justify-content: center;
+	-moz-justify-content: center;
+}
+
+.cs-image-close {
+	 position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: block;
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    font-size: 17px;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    cursor: pointer;
+}

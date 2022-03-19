@@ -1,0 +1,38 @@
+
+
+.cs-drag-size {
+  position: relative;
+}
+
+.cs-drag-size .cs-thumb-drag {
+  width: 2px;
+  height: 100%;
+  top:0;
+  right: 0;
+  position: absolute;
+  background: rgba(0,0,0,0.05);
+  cursor: e-resize;
+  align-items: center;
+  display: flex;
+}
+.cs-drag-size .cs-thumb-drag:before {
+  content: '...';
+  display: block;
+  overflow: hidden;
+  word-wrap: break-word;
+  line-height: 5px;
+  height: 25px;
+  font-size: 12px;
+  text-align: center;
+  color:rgba(0,0,0,0.4);
+
+}
+.cs-drag-size .cs-thumb-drag:after{
+  position: absolute;
+  content: '';
+  top: 0;
+  left: -4px;
+  width: 10px;
+  height: 100%;
+}
+ 

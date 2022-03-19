@@ -1,0 +1,110 @@
+.cs-flex {
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: -moz-flex;
+}
+
+.cs-flex .flex {
+	-webkit-flex: 1; 
+    -ms-flex: 1;
+    -moz-flex:1;
+    -o-flex:1;
+    flex: 1;
+}
+ 
+.cs-flex.flex-column {
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-o-flex-direction: column;
+	-ms-flex-direction: column;
+}
+
+.cs-flex.flex-row {
+	flex-direction: row;
+	-webkit-flex-direction: row;
+	-o-flex-direction: row;
+	-ms-flex-direction: row;
+	-moz-flex-direction: row;
+}
+
+.cs-flex.flex-center {
+	align-items: center;
+	-webkit-align-items: center;
+	-o-align-items: center;
+	-ms-align-items: center;
+	-moz-align-items: center;
+}
+
+.cs-flex.flex-align-center {
+	align-items: center;
+	-webkit-align-items: center;
+	-o-align-items: center;
+	-ms-align-items: center;
+	-moz-align-items: center;
+}
+
+.cs-flex.flex-align-start {
+	align-items: flex-start;
+	-webkit-align-items: flex-start;
+	-o-align-items: flex-start;
+	-ms-align-items: flex-start;
+	-moz-align-items: flex-start;
+}
+
+.cs-flex.flex-align-end {
+	align-items: flex-end;
+	-webkit-align-items: flex-end;
+	-o-align-items: flex-end;
+	-ms-align-items: flex-end;
+	-moz-align-items: flex-end;
+}
+
+.cs-flex.flex-mid{
+	justify-content: space-around;
+	-webkit-justify-content: space-around;
+	-o-justify-content: space-around;
+	-ms-justify-content: space-around;
+	-moz-justify-content: space-around;
+}
+
+.cs-flex.flex-content-center {
+	justify-content: center;
+	-webkit-justify-content: center;
+	-o-justify-content: center;
+	-ms-justify-content: center;
+	-moz-justify-content: center;
+}
+
+.cs-flex.flex-content-end {
+	justify-content: flex-end;
+	-webkit-justify-content: flex-end;
+	-o-justify-content: flex-end;
+	-ms-justify-content: flex-end;
+	-moz-justify-content: flex-end;
+}
+
+.cs-flex.flex-content-start {
+	justify-content: flex-start;
+	-webkit-justify-content: flex-start;
+	-o-justify-content: flex-start;
+	-ms-justify-content: flex-start;
+	-moz-justify-content: flex-start;
+}
+
+.cs-flex.flex-content-between {
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	-o-justify-content: space-between;
+	-ms-justify-content: space-between;
+	-moz-justify-content: space-between;
+}
+ 
+.cs-wrap{
+	flex-wrap: wrap;
+}
+.d-none {
+	display: none;
+}

@@ -1,0 +1,25 @@
+.cs-context-menu {
+  width: 160px;
+  position: fixed;
+  background: #eee;
+  margin: 0;
+  padding: 5px 0;
+  box-sizing: border-box;;
+  background-color: #fff;
+    -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 2px 3px rgba(0,0,0,.3);
+    box-shadow: 0 2px 3px rgba(0,0,0,.3);
+    border: 1px solid #818c94;
+    border: 1px solid rgba(0,0,0,.4);
+}
+.cs-context-menu li {
+  list-style-type: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.cs-context-menu li:hover {
+  background: rgba(0,0,0,0.05);
+}
+.cs-context-menu li:active {
+  background: rgba(0,0,0,0.1);
+}
