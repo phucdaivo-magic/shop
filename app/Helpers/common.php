@@ -54,11 +54,11 @@ function slidebar()
                 [
                     'icon' => 'icon-list',
                     'name' => 'Danh sách',
-                    'url' => 'App\Http\Controllers\Admin\TrademarkController@index'
+                    'url' => 'App\Http\Controllers\Admin\TradeMarkController@index'
                 ], [
                     'icon' => 'icon-note',
                     'name' => 'Thêm mới',
-                    'url' => 'App\Http\Controllers\Admin\TrademarkController@initForm'
+                    'url' => 'App\Http\Controllers\Admin\TradeMarkController@initForm'
                 ]
             ]
         ],
