@@ -47,6 +47,21 @@ function slidebar()
                 ]
             ]
         ],
+        [
+            'name' => 'Thương hiệu/Chất liệu',
+            'icon' => 'icon-drop',
+            'childrens' => [
+                [
+                    'icon' => 'icon-list',
+                    'name' => 'Danh sách',
+                    'url' => 'App\Http\Controllers\Admin\TrademarkController@index'
+                ], [
+                    'icon' => 'icon-note',
+                    'name' => 'Thêm mới',
+                    'url' => 'App\Http\Controllers\Admin\TrademarkController@initForm'
+                ]
+            ]
+        ],
     ];
 
     return $menu;
