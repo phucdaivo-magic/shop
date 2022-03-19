@@ -49,14 +49,5 @@ function slidebar()
         ],
     ];
 
-    if (Input::user()->id == 1) {
-
-        $menu[] =  [
-            'icon' => 'cui-user',
-            'name' => 'Quản trị viên',
-            'url' => 'Admin\UserController@index'
-        ];
-    }
-
     return $menu;
 }
