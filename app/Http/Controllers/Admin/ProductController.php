@@ -36,7 +36,7 @@ class ProductController extends AdminController
                     ],
                     [
                         'key' => 'trademark_id',
-                        'title' => 'Thương hiệu',
+                        'title' => 'Thương hiệu/Chất liệu',
                         'edit' => [
                             'type' => 'select',
                             'map' => ['id', 'name'],
