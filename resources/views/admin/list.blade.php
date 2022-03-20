@@ -25,6 +25,7 @@
                 <div class="card-header">
                     <i class="icons cui-magnifying-glass"></i>
                     Danh sách
+                    <span class="badge badge-pill badge-danger float-right">{{ $data['tableData']->total() }}</span>
                 </div>
                 <form class="card-body" action="">
                     <div class="form-group row">
@@ -108,11 +109,13 @@
             </div>
         @endif
         <div class="card cs-card card-accent-primary card-result">
+            @if(!$hasSearch)
             <div class="card-header">
                 <i class="icon-list"></i> Danh sách
                 <span class="badge badge-pill badge-danger float-right">{{ $data['tableData']->total() }}</span>
                 {{-- @include('admin.components.pagination') --}}
             </div>
+            @endif
             <div class="card-body">
                 <div style="overflow: auto">
                     <table class="table table-responsive-sm table-striped">
