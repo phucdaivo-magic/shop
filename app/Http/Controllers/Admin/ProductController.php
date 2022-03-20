@@ -31,7 +31,10 @@ class ProductController extends AdminController
                             'map' => ['id', 'name'],
                             'dataSource' => function ($data) {
                                 return Category::get();
-                            }
+                            },
+                            'attrs' => [
+                                'data-init-plugin'=>'select2'
+                            ]
                         ],
                     ],
                     [
