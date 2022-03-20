@@ -126,7 +126,16 @@ class ProductController extends AdminController
                             'attrs' => ['style' => 'width: 1px; font-weight: bold'],
                             'actions' => [
                                 [
-                                    'html' => '<i class="cui-chevron-bottom"></i>',
+                                    'html' => '<i class="fa fa-angle-double-down"></i>',
+                                    'action' => function ($data) {
+                                        return url()->action(__CLASS__ . '@actionSort', ['last', $data['id']]);
+                                    },
+                                    'attrs' => [
+                                        'class' => 'btn bg-gray-200 btn-sm btn-sort'
+                                    ],
+                                ],
+                                [
+                                    'html' => '<i class="fa fa-angle-down"></i>',
                                     'action' => function ($data) {
                                         return url()->action(__CLASS__ . '@actionSort', ['down', $data['id']]);
                                     },
@@ -135,9 +144,18 @@ class ProductController extends AdminController
                                     ],
                                 ],
                                 [
-                                    'html' => '<i class="cui-chevron-top"></i>',
+                                    'html' => '<i class="fa fa-angle-up"></i>',
                                     'action' => function ($data) {
                                         return url()->action(__CLASS__ . '@actionSort', ['up', $data['id']]);
+                                    },
+                                    'attrs' => [
+                                        'class' => 'btn bg-gray-200 btn-sm btn-sort'
+                                    ],
+                                ],
+                                [
+                                    'html' => '<i class="fa fa-angle-double-up"></i>',
+                                    'action' => function ($data) {
+                                        return url()->action(__CLASS__ . '@actionSort', ['first', $data['id']]);
                                     },
                                     'attrs' => [
                                         'class' => 'btn bg-gray-200 btn-sm btn-sort'

@@ -163,9 +163,12 @@ class AdminController extends Controller
 
             if ($type == 'down') {
                 $next = $data->where('sort', '>', $sort)->orderBy('sort', 'ASC');
-
             } else if ($type == 'up') {
                 $next = $data->where('sort', '<', $sort)->orderBy('sort', 'DESC');
+            } else if ($type == 'first') {
+                $next = $data->where('sort', '<', $sort)->orderBy('sort', 'ASC');
+            } else  if ($type == 'last') {
+                $next = $data->where('sort', '>', $sort)->orderBy('sort', 'DESC');
             }
 
             if(isset($cb)) {

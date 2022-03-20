@@ -2879,12 +2879,14 @@ body {
   font-weight: 600;
 }
 
-tr:last-child .btn-sort:first-child {
+tr:last-child .btn-sort:first-child,
+tr:last-child .btn-sort:nth-child(2) {
   pointer-events: none;
   opacity: 0.3;
 }
 
-tr:first-child .btn-sort:last-child {
+tr:first-child .btn-sort:last-child,
+tr:first-child .btn-sort:nth-child(3) {
   pointer-events: none;
   opacity: 0.3;
 }

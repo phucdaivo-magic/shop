@@ -284,16 +284,19 @@ body {
 tr {
     &:last-child {
         .btn-sort {
-            &:first-child {
+            &:first-child,
+            &:nth-child(2) {
                 pointer-events: none;
                 opacity: 0.3;
             }
+
         }
     }
 
     &:first-child {
         .btn-sort {
-            &:last-child {
+            &:last-child,
+            &:nth-child(3)  {
                 pointer-events: none;
                 opacity: 0.3;
             }
