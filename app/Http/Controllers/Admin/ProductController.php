@@ -29,6 +29,12 @@ class ProductController extends AdminController
                         ]
                     ],
                     [
+                        'key' => 'name',
+                        'view' => [],
+                        'title' => 'Tên sản phẩm',
+                        'search'=>[]
+                    ],
+                    [
                         'view'=> function ($product) {
                             return $product->category->name ?? '';
                         },
@@ -80,7 +86,7 @@ class ProductController extends AdminController
                     ],
                     [
                         'key' => 'name',
-                        'view' => [],
+                        // 'view' => [],
                         'title' => 'Tên sản phẩm',
                         'edit' => [
                             'placeholder' => 'Tên sản phẩm',
