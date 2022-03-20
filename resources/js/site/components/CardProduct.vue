@@ -1,6 +1,6 @@
 <template>
   <a :href="link" class="card-product">
-    <div class="image" :style="{ backgroundImage: `url(${avatar})` }">
+    <div class="image" :style="{ backgroundImage: `url('${avatar}')` }">
       <div class="image-list">
         <template v-if="product.images.length > 1">
           <div
