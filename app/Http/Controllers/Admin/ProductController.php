@@ -66,7 +66,7 @@ class ProductController extends AdminController
                             'dataSource' => Trademark::get()
                         ],
                         'key' => 'trademark_id',
-                        'title' => 'Thương hiệu/Chất liệu',
+                        'title' => 'Thương hiệu / Chất liệu',
                         'edit' => [
                             'type' => 'select',
                             'map' => ['id', 'name'],
