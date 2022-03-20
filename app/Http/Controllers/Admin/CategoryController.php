@@ -142,7 +142,7 @@ class CategoryController extends AdminController
                 ],
                 'tableData' => Obj::orderBy('category_id', 'ASC')
                     ->orderBy('sort', 'ASC')
-                    ->paginate(10),
+                    ->paginate(50),
                 // 'tableData' => Obj::paginate(10),
             ]
         );
