@@ -29,7 +29,17 @@ class ProductController extends AdminController
                         ]
                     ],
                     [
-                        // 'search'=>[],
+                        'view'=> function ($product) {
+                            return $product->category->name ?? '';
+                        },
+                        'search'=>[
+                            'attrs' => [
+                                'data-init-plugin'=>'select2'
+                            ],
+                            'type' => 'select',
+                            'map' => ['id', 'name'],
+                            'dataSource' => Category::get()
+                        ],
                         'key' => 'category_id',
                         'title' => 'Danh mục',
                         'edit' => [
@@ -44,7 +54,17 @@ class ProductController extends AdminController
                         ],
                     ],
                     [
-                        // 'search' => [],
+                        'view'=> function ($product) {
+                            return $product->trademark->name ?? '';
+                        },
+                        'search'=>[
+                            'attrs' => [
+                                'data-init-plugin'=>'select2'
+                            ],
+                            'type' => 'select',
+                            'map' => ['id', 'name'],
+                            'dataSource' => Trademark::get()
+                        ],
                         'key' => 'trademark_id',
                         'title' => 'Thương hiệu/Chất liệu',
                         'edit' => [
