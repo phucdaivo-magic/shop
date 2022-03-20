@@ -7,21 +7,24 @@
 @endsection
 
 @section('content')
-    <div>
+    @php
+    $indexSearch = collect($data['header'])->search(function ($option) {
+        return isset($option['search']);
+    });
+    $hasSearch = $indexSearch === 0 || $indexSearch > 0;
+    @endphp
+
+    <div @if($hasSearch)
+        class="has-search"
+    @endif>
         <a class="btn btn-sms btn-success mb-2" href="{{ Request::url() }}/form" type="submit"><i
                 class="fa fa-plus"></i> Thêm mới</a>
-        @php
-            $indexSearch = collect($data['header'])->search(function ($option) {
-                return isset($option['search']);
-            });
-            $hasSearch = $indexSearch === 0 || $indexSearch > 0;
-        @endphp
 
         @if ($hasSearch)
-            <div class="card">
+            <div class="card card-search">
                 <div class="card-header">
                     <i class="icons cui-magnifying-glass"></i>
-                    Tìm kiếm
+                    Danh sách
                 </div>
                 <form class="card-body" action="">
                     <div class="form-group row">
@@ -77,7 +80,7 @@
                                                 {{-- Input --}}
                                                 <input value="{{ request($searchName) }}" type="text" name="{{ $searchName }}"
                                                     class="form-control" placeholder="{{ $option['title'] }}">
-                                                @break
+                                            @break
 
                                             @default
                                                 @php
@@ -104,7 +107,7 @@
                 </form>
             </div>
         @endif
-        <div class="card cs-card card-accent-primary">
+        <div class="card cs-card card-accent-primary card-result">
             <div class="card-header">
                 <i class="icon-list"></i> Danh sách
                 <span class="badge badge-pill badge-danger float-right">{{ $data['tableData']->total() }}</span>
