@@ -23,24 +23,26 @@ class ProductController extends AdminController
                         ],
                         'key' => 'id',
                         'title' => '#',
-                        'search'=>[
+                        'search' => [
                             'title' => 'ID',
                             'type' => 'eq'
                         ]
                     ],
                     [
                         'key' => 'name',
-                        'view' => [],
+                        'view' => function ($product) {
+                            return '<a href="' . route('site.product.detail', [$product->id, $product->slug]) . '">' . $product->name . '</a>';
+                        },
                         'title' => 'Tên sản phẩm',
-                        'search'=>[]
+                        'search' => []
                     ],
                     [
-                        'view'=> function ($product) {
+                        'view' => function ($product) {
                             return $product->category->name ?? '';
                         },
-                        'search'=>[
+                        'search' => [
                             'attrs' => [
-                                'data-init-plugin'=>'select2'
+                                'data-init-plugin' => 'select2'
                             ],
                             'type' => 'select',
                             'map' => ['id', 'name'],
@@ -55,17 +57,17 @@ class ProductController extends AdminController
                                 return Category::get();
                             },
                             'attrs' => [
-                                'data-init-plugin'=>'select2'
+                                'data-init-plugin' => 'select2'
                             ]
                         ],
                     ],
                     [
-                        'view'=> function ($product) {
+                        'view' => function ($product) {
                             return $product->trademark->name ?? '';
                         },
-                        'search'=>[
+                        'search' => [
                             'attrs' => [
-                                'data-init-plugin'=>'select2'
+                                'data-init-plugin' => 'select2'
                             ],
                             'type' => 'select',
                             'map' => ['id', 'name'],
@@ -80,7 +82,7 @@ class ProductController extends AdminController
                                 ['id' => '', 'name' => 'Không chọn']
                             ], collect(Trademark::get())->toArray()),
                             'attrs' => [
-                                'data-init-plugin'=>'select2'
+                                'data-init-plugin' => 'select2'
                             ]
                         ],
                     ],
@@ -172,8 +174,8 @@ class ProductController extends AdminController
 
         $this->data['controller'] = __CLASS__;
 
-        $this->data['redirect'] =  function($data) {
-            return redirect(route('admin.product', ['id_eq'=> $data->id]));
+        $this->data['redirect'] =  function ($data) {
+            return redirect(route('admin.product', ['id_eq' => $data->id]));
         };
 
         $this->data['breadcrumbs'] = [
@@ -217,7 +219,7 @@ class ProductController extends AdminController
                 'url' => route('admin.product')
             ],
             [
-                'name' => $object->name ? 'Cập nhật sản phẩm: <a href='.route('admin.product', ['id_eq'=> $object->id]).'>'.$object->name.'</a>' : ($object->id ? 'Cập nhật #'.$object->id : 'Tạo mới'),
+                'name' => $object->name ? 'Cập nhật sản phẩm: <a href=' . route('admin.product', ['id_eq' => $object->id]) . '>' . $object->name . '</a>' : ($object->id ? 'Cập nhật #' . $object->id : 'Tạo mới'),
             ],
         ];
 
