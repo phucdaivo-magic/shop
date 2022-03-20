@@ -25,6 +25,10 @@ class ProductImageController extends AdminController
                         ],
                         'key' => 'id',
                         'title' => '#',
+                        'search' => [
+                            'title' => 'ID',
+                            'type' => 'eq'
+                        ]
                     ],
                     [
                         'view' => function ($object) {
@@ -115,11 +119,22 @@ class ProductImageController extends AdminController
                 'name' => $product->name,
                 'url' => route('admin.product', ['id_eq' => $product->id])
             ],
+            [
+                'name' => 'Danh sách hình ảnh',
+                'url' => route('admin.product.image', $product->id)
+            ],
         ];
 
         $this->data['tableData'] = Obj::orderBy('sort', 'ASC')
             ->where('product_id', $product->id)
             ->paginate(30);
+
+
+        $model = Obj::orderBy('sort', 'ASC')
+            ->where('product_id', $product->id);
+        $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate(30);
+
+
 
         $this->data['header'][count($this->data['header']) - 1] =  [
             'view' => [
@@ -168,10 +183,10 @@ class ProductImageController extends AdminController
             ],
             [
                 'name' => 'Danh sách hình ảnh',
-                'url' => route('admin.product.image',$product->id )
+                'url' => route('admin.product.image', $product->id)
             ],
             [
-                'name' => 'Hình ảnh #'.$object->id ,
+                'name' => $object->id ? 'Hình ảnh <strong><a href="' . route('admin.product.image', [$product->id, 'id_eq' => $object->id]) . '">#' . $object->id . '</a></strong>' : 'Thêm mới',
             ],
         ];
 
