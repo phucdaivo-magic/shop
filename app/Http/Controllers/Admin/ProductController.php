@@ -174,7 +174,7 @@ class ProductController extends AdminController
         $this->data['controller'] = __CLASS__;
 
         $this->data['redirect'] =  function($data) {
-            return redirect(route('admin.product', ['id_cont'=> $data->id]));
+            return redirect(route('admin.product', ['id_eq'=> $data->id]));
         };
 
         $this->data['breadcrumbs'] = [
