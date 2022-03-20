@@ -61,7 +61,7 @@ $categoryList = App\Models\Category::where('home', true)
                                 </a>
                                 <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdown">
                                     @foreach ($item->categories as $itemChild)
-                                    <a class="dropdown-item font-weight-bold"  href="{{ ($itemChild->url) ? $itemChild->url : route('site.category.parent',  [$item->slug, $itemChild->slug]) }}">
+                                    <a class="dropdown-item"  href="{{ ($itemChild->url) ? $itemChild->url : route('site.category.parent',  [$item->slug, $itemChild->slug]) }}">
                                         {{ $itemChild->name }}
                                     </a>
                                     @endforeach
