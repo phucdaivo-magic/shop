@@ -111,7 +111,7 @@
                   />
                   <div
                     class="prop-image"
-                    :style="{ background: `url('${product_property_detail.image}')` }"
+                    :style="{ backgroundImage: `url('${product_property_detail.image}')` }"
                   >
                     {{ product_property_detail.name }}
                   </div>
@@ -236,6 +236,8 @@ export default {
     width: 100%;
     cursor: pointer;
     border: 2px solid rgba(0, 0, 0, 0.05);
+    background-size: cover;
+    background-position: center;
   }
 }
 
