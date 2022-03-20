@@ -222,4 +222,53 @@ class AdminController extends Controller
             return $acc;
         }, []);
     }
+
+    protected function getSortTemplate($__CLASS__) {
+        return [
+            'view' => [
+                'type' => 'action',
+                'attrs' => ['style' => 'width: 1px; font-weight: bold'],
+                'actions' => [
+                    [
+                        'html' => '<i class="fa fa-angle-double-down"></i>',
+                        'action' => function ($data) use($__CLASS__) {
+                            return url()->action($__CLASS__ . '@actionSort', ['last', $data['id']]);
+                        },
+                        'attrs' => [
+                            'class' => 'btn bg-gray-200 btn-sm btn-sort'
+                        ],
+                    ],
+                    [
+                        'html' => '<i class="fa fa-angle-down"></i>',
+                        'action' => function ($data) use($__CLASS__) {
+                            return url()->action($__CLASS__ . '@actionSort', ['down', $data['id']]);
+                        },
+                        'attrs' => [
+                            'class' => 'btn bg-gray-200 btn-sm btn-sort'
+                        ],
+                    ],
+                    [
+                        'html' => '<i class="fa fa-angle-up"></i>',
+                        'action' => function ($data) use($__CLASS__) {
+                            return url()->action($__CLASS__ . '@actionSort', ['up', $data['id']]);
+                        },
+                        'attrs' => [
+                            'class' => 'btn bg-gray-200 btn-sm btn-sort'
+                        ],
+                    ],
+                    [
+                        'html' => '<i class="fa fa-angle-double-up"></i>',
+                        'action' => function ($data) use($__CLASS__) {
+                            return url()->action($__CLASS__ . '@actionSort', ['first', $data['id']]);
+                        },
+                        'attrs' => [
+                            'class' => 'btn bg-gray-200 btn-sm btn-sort'
+                        ],
+                    ],
+                ],
+            ],
+            'key' => 'sort',
+            'title' => 'Sắp xếp',
+        ];
+    }
 }

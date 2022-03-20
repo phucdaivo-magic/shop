@@ -85,34 +85,7 @@ class CategoryController extends AdminController
                             'type' => 'checkbox',
                         ],
                     ],
-                    [
-                        'view' => [
-                            'type' => 'action',
-                            'attrs' => ['style' => 'width: 1px; font-weight: bold'],
-                            'actions' => [
-                                [
-                                    'html' => '<i class="cui-chevron-bottom"></i>',
-                                    'action' => function ($data) {
-                                        return url()->action(__CLASS__ . '@actionSort', ['down', $data['id']]);
-                                    },
-                                    'attrs' => [
-                                        'class' => 'btn bg-gray-200 btn-sm btn-sort'
-                                    ],
-                                ],
-                                [
-                                    'html' => '<i class="cui-chevron-top"></i>',
-                                    'action' => function ($data) {
-                                        return url()->action(__CLASS__ . '@actionSort', ['up', $data['id']]);
-                                    },
-                                    'attrs' => [
-                                        'class' => 'btn bg-gray-200 btn-sm btn-sort'
-                                    ],
-                                ],
-                            ],
-                        ],
-                        'key' => 'sort',
-                        'title' => 'Sắp xếp',
-                    ],
+                    $this->getSortTemplate(__CLASS__),
                     [
                         'view' => [
                             'type' => 'action',
