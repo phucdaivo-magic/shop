@@ -23478,7 +23478,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/buy/resources/js/admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/shop/resources/js/admin.js */"./resources/js/admin.js");
 
 
 /***/ })

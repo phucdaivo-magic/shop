@@ -662,10 +662,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/buy/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/buy/resources/sass/user.scss */"./resources/sass/user.scss");
-__webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/buy/resources/sass/site.scss */"./resources/sass/site.scss");
-module.exports = __webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/buy/resources/sass/admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/shop/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/shop/resources/sass/user.scss */"./resources/sass/user.scss");
+__webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/shop/resources/sass/site.scss */"./resources/sass/site.scss");
+module.exports = __webpack_require__(/*! /Users/vodaiphuc/Documents/03.Git/shop/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

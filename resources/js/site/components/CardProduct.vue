@@ -6,7 +6,7 @@
           <div
             v-for="image in product.images.slice(0, 3)"
             :key="image.id"
-            :style="{ backgroundImage: `url(${image.avatar})` }"
+            :style="{ backgroundImage: `url('${image.avatar}')` }"
             :class="{ active: avatar == image.avatar }"
             class="image-list-item"
             @click.stop="updateAvatar(image)"
