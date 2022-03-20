@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Concerns\Paginatable;
+use App\Http\Controllers\Concerns\Search;
 use App\Models\Category;
 use App\Models\Product as Obj;
 use App\Models\Trademark;
@@ -10,6 +12,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends AdminController
 {
+    use Paginatable, Search;
+
     public function __construct()
     {
         parent::__construct();
@@ -22,8 +26,12 @@ class ProductController extends AdminController
                         ],
                         'key' => 'id',
                         'title' => '#',
+                        'search'=>[
+                            'title' => 'ID'
+                        ]
                     ],
                     [
+                        // 'search'=>[],
                         'key' => 'category_id',
                         'title' => 'Danh mục',
                         'edit' => [
@@ -38,6 +46,7 @@ class ProductController extends AdminController
                         ],
                     ],
                     [
+                        // 'search' => [],
                         'key' => 'trademark_id',
                         'title' => 'Thương hiệu/Chất liệu',
                         'edit' => [
@@ -174,6 +183,20 @@ class ProductController extends AdminController
                 'name' => 'DS Seo',
             ],
         ];
+    }
+
+    public function onBeforeIndex(Request $request)
+    {
+        $model = Obj::orderBy('sort', 'ASC')->orderBy('created_at', 'DESC');
+
+        $searchList = collect($this->data['header'])->reduce(function ($acc, $cur) {
+            if (isset($cur['search'])) {
+                $acc[] = $cur['search']['name'] ?? $cur['key'];
+            }
+            return $acc;
+        }, []);
+
+        $this->data['tableData'] = $this->search($model, $request, $searchList)->paginate($this->getPerPage());
     }
 
     private function renderTreeTrademark($trademark, $tree = '')

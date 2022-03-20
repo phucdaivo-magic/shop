@@ -66,3 +66,14 @@ function slidebar()
 
     return $menu;
 }
+
+function getQuery() {
+    $query = '';
+    foreach (request()->query() as $key => $value) {
+
+        if($key !== 'page') {
+            $query = $query.'&'.$key.'='.$value;
+        }
+    }
+    return $query;
+}

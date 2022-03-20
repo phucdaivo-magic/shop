@@ -29,6 +29,8 @@ class AdminController extends Controller
 
     protected function index(Request $request)
     {
+        method_exists($this, 'onBeforeIndex') && $this->onBeforeIndex($request);
+
         return view('admin.list')->with('data', $this->data);
     }
 
