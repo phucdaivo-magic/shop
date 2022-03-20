@@ -61,6 +61,10 @@ class ProductPropertyDetailController extends AdminController
                         ],
                         'key' => 'id',
                         'title' => '#',
+                        'search' => [
+                            'title' => 'ID',
+                            'type' => 'eq'
+                        ]
                     ],
                     [
                         'key' => 'product_id',
@@ -184,9 +188,26 @@ class ProductPropertyDetailController extends AdminController
     public function main(Request $request, Product $product, ProductPropertyType $productPropertyType)
     {
 
-        $this->data['breadcrumbss'] = [
+        $this->data['breadcrumbs'] = [
             [
-                'name' => 'DS Seo',
+                'name' => 'Danh sách sản phẩm',
+                'url' => route('admin.product')
+            ],
+            [
+                'name' => $product->name,
+                'url' => route('admin.product', ['id_eq' => $product->id])
+            ],
+            [
+                'name' => 'Danh sách thuộc tính',
+                'url' => route('admin.product.property-type', $product->id)
+            ],
+            [
+                'name' => $productPropertyType->name,
+                'url' => route('admin.product.property-type', [$product->id, 'id_eq' => $productPropertyType->id])
+            ],
+            [
+                'name' => 'Danh sách giá trị thuộc tính',
+                'url' => route('admin.product.property-detail', [$product->id, $productPropertyType->id])
             ],
         ];
 
@@ -222,6 +243,12 @@ class ProductPropertyDetailController extends AdminController
             ->where('product_id', $product->id)
             ->where('product_property_type_id', $productPropertyType->id)
             ->paginate(10);
+
+        $model = Obj::orderBy('sort', 'ASC')
+            ->where('product_id', $product->id)
+            ->where('product_property_type_id', $productPropertyType->id);
+        $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate($this->getPerPage());
+
 
         return parent::index($request);
     }
@@ -291,11 +318,28 @@ class ProductPropertyDetailController extends AdminController
 
         $this->data['breadcrumbs'] = [
             [
-                'name' => 'DS Seo',
-                'url' => route('admin.trademark')
+                'name' => 'Danh sách sản phẩm',
+                'url' => route('admin.product')
             ],
             [
-                'name' => $object->page ?? $object->title ?? 'Tạo mới',
+                'name' => $product->name,
+                'url' => route('admin.product', ['id_eq' => $product->id])
+            ],
+            [
+                'name' => 'Danh sách thuộc tính',
+                'url' => route('admin.product.property-type', $product->id)
+            ],
+            [
+                'name' => $productPropertyType->name,
+                'url' => route('admin.product.property-type',  [$product->id, 'id_eq' => $productPropertyType->id])
+            ],
+            [
+                'name' => 'Danh sách giá trị thuộc tính',
+                'url' => route('admin.product.property-detail', [$product->id, $productPropertyType->id])
+            ],
+            [
+                'name' => $object->name ? 'Cập nhật <strong><a href="' . route('admin.product.property-detail', [$product->id, $productPropertyType->id, 'id_eq' => $object->id]) . '">' . $object->name . '</strong></a>' : ($object->id ? 'Cập nhật <strong><a href="' . route('admin.product.property-detail', [$product->id, $productPropertyType->id, 'id_eq' => $object->id]) . '">#' . $object->id . '</strong></a>' : 'Thêm mới'),
+                'url' => route('admin.product.property-detail', [$product->id, $productPropertyType->id, 'id_eq' => $object->id])
             ],
         ];
 
@@ -307,6 +351,7 @@ class ProductPropertyDetailController extends AdminController
      */
     public function actionForm(Request $request, Obj $object)
     {
+
         $productPropertyType = ProductPropertyType::find($request->product_property_type_id);
 
         if ($productPropertyType->type == ProductPropertyTypeController::TYPE_PROPERTY_IMAGE) {

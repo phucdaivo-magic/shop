@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\Concerns\Paginatable;
+use App\Http\Controllers\Concerns\Search;
 use Log;
 use App\Models\Project;
 
 class AdminController extends Controller
 {
+    use Paginatable, Search;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -205,5 +209,14 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
         }
+    }
+
+    protected function getListSearch() {
+        return collect($this->data['header'])->reduce(function ($acc, $cur) {
+            if (isset($cur['search'])) {
+                $acc[] = $cur['search']['name'] ?? $cur['key'];
+            }
+            return $acc;
+        }, []);
     }
 }

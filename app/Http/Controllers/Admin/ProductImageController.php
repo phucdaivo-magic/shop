@@ -106,6 +106,17 @@ class ProductImageController extends AdminController
 
     function main(Request $request, Product $product)
     {
+        $this->data['breadcrumbs'] = [
+            [
+                'name' => 'Danh sách sản phẩm',
+                'url' => route('admin.product')
+            ],
+            [
+                'name' => $product->name,
+                'url' => route('admin.product', ['id_eq' => $product->id])
+            ],
+        ];
+
         $this->data['tableData'] = Obj::orderBy('sort', 'ASC')
             ->where('product_id', $product->id)
             ->paginate(30);
@@ -137,9 +148,6 @@ class ProductImageController extends AdminController
             'title' => '',
         ];
 
-
-        $this->data['breadcrumbs'] = [];
-
         return parent::index($request);
     }
 
@@ -148,6 +156,25 @@ class ProductImageController extends AdminController
      */
     public function initForm(Request $request, Product $product, Obj $object)
     {
+
+        $this->data['breadcrumbs'] = [
+            [
+                'name' => 'Danh sách sản phẩm',
+                'url' => route('admin.product')
+            ],
+            [
+                'name' => $product->name,
+                'url' => route('admin.product', ['id_eq' => $product->id])
+            ],
+            [
+                'name' => 'Danh sách hình ảnh',
+                'url' => route('admin.product.image',$product->id )
+            ],
+            [
+                'name' => 'Hình ảnh #'.$object->id ,
+            ],
+        ];
+
         !$object && $object = new Obj();
         $object->product_id = $product->id;
 
@@ -166,24 +193,6 @@ class ProductImageController extends AdminController
                 ],
             ];
         }
-
-        $this->data['breadcrumbs'] = [
-            // [
-            //     'name' => 'DS dự án',
-            //     'url' => route('admin.project')
-            // ],
-            // [
-            //     'name' => $project->name,
-            //     'url' => route('admin.project.form', $project->id)
-            // ],
-            // [
-            //     'name' => 'DS hình ảnh',
-            //     'url' => route('admin.image')
-            // ],
-            // [
-            //     'name' => $object->id ? '#' . $object->id : 'Thêm mới',
-            // ],
-        ];
 
         return parent::generateForm($request, $object);
     }

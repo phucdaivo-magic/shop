@@ -174,9 +174,9 @@
                     @foreach ($data['breadcrumbs'] as $breadcrumb)
                         <li class="breadcrumb-item">
                             @isset($breadcrumb['url'])
-                            <a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['name'] }}</a>
+                            <a href="{{ $breadcrumb['url'] }}">{!! $breadcrumb['name'] !!}</a>
                             @else
-                            <span>{{ $breadcrumb['name'] }}</span>
+                            <span>{!! $breadcrumb['name'] !!}</span>
                             @endif
                         </li>
                     @endforeach

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Concerns\Paginatable;
-use App\Http\Controllers\Concerns\Search;
 use App\Models\Category;
 use App\Models\Product as Obj;
 use App\Models\Trademark;
@@ -12,7 +10,6 @@ use Illuminate\Http\Request;
 
 class ProductController extends AdminController
 {
-    use Paginatable, Search;
 
     public function __construct()
     {
@@ -27,7 +24,8 @@ class ProductController extends AdminController
                         'key' => 'id',
                         'title' => '#',
                         'search'=>[
-                            'title' => 'ID'
+                            'title' => 'ID',
+                            'type' => 'eq'
                         ]
                     ],
                     [
@@ -169,19 +167,21 @@ class ProductController extends AdminController
                         'title' => '',
                     ],
                 ],
-                'tableData' => Obj::orderBy('sort', 'ASC')
-                    ->paginate(10),
-                // 'tableData' => Obj::paginate(10),
+                'tableData' => []
             ]
         );
 
         $this->data['controller'] = __CLASS__;
 
+        $this->data['redirect'] =  function($data) {
+            return redirect(route('admin.product', ['id_cont'=> $data->id]));
+        };
 
         $this->data['breadcrumbs'] = [
             [
-                'name' => 'DS Seo',
-            ],
+                'name' => 'Danh sách sản phẩm',
+                'url' => route('admin.product')
+            ]
         ];
     }
 
@@ -189,14 +189,7 @@ class ProductController extends AdminController
     {
         $model = Obj::orderBy('sort', 'ASC')->orderBy('created_at', 'DESC');
 
-        $searchList = collect($this->data['header'])->reduce(function ($acc, $cur) {
-            if (isset($cur['search'])) {
-                $acc[] = $cur['search']['name'] ?? $cur['key'];
-            }
-            return $acc;
-        }, []);
-
-        $this->data['tableData'] = $this->search($model, $request, $searchList)->paginate($this->getPerPage());
+        $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate($this->getPerPage());
     }
 
     private function renderTreeTrademark($trademark, $tree = '')
@@ -221,13 +214,14 @@ class ProductController extends AdminController
     {
         $this->data['breadcrumbs'] = [
             [
-                'name' => 'DS Seo',
-                'url' => route('admin.trademark')
+                'name' => 'Danh sách sản phẩm',
+                'url' => route('admin.product')
             ],
             [
-                'name' => $object->page ?? $object->title ?? 'Tạo mới',
+                'name' => 'Cập nhật sản phẩm: <a href='.route('admin.product', ['id_eq'=> $object->id]).'>'.$object->name.'</a>' ?? 'Cập nhật #'.$object->id ?? 'Tạo mới',
             ],
         ];
+
         return parent::generateForm($request, $object);
     }
 

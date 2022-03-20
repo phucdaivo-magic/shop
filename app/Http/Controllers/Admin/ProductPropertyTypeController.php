@@ -65,6 +65,10 @@ class ProductPropertyTypeController extends AdminController
                         ],
                         'key' => 'id',
                         'title' => '#',
+                        'search' => [
+                            'title' => 'ID',
+                            'type' => 'eq'
+                        ]
                     ],
                     [
                         'key' => 'product_id',
@@ -192,18 +196,41 @@ class ProductPropertyTypeController extends AdminController
         ];
     }
 
+
+    public function onBeforeIndex(Request $request)
+    {
+        $model = Obj::orderBy('sort', 'ASC')->orderBy('created_at', 'DESC');
+
+        $searchList = collect($this->data['header'])->reduce(function ($acc, $cur) {
+            if (isset($cur['search'])) {
+                $acc[] = $cur['search']['name'] ?? $cur['key'];
+            }
+            return $acc;
+        }, []);
+
+        $this->data['tableData'] = $this->search($model, $request, $searchList)->paginate($this->getPerPage());
+    }
+
     public function main(Request $request, Product $product)
     {
 
-        $this->data['breadcrumbss'] = [
+        $this->data['breadcrumbs'] = [
             [
-                'name' => 'DS Seo',
+                'name' => 'Danh sách sản phẩm',
+                'url' => route('admin.product')
+            ],
+            [
+                'name' => $product->name,
+                'url' => route('admin.product', ['id_eq' => $product->id ])
+            ],
+            [
+                'name' => 'Danh sách thuộc tính',
+                'url' => route('admin.product.property-type', $product->id)
             ],
         ];
 
-        $this->data['tableData'] = Obj::where('product_id', $product->id)
-            ->orderBy('sort', 'ASC')
-            ->paginate(10);
+        $model = Obj::orderBy('sort', 'ASC');
+        $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate($this->getPerPage());
 
         return parent::index($request);
     }
@@ -228,13 +255,23 @@ class ProductPropertyTypeController extends AdminController
 
         $this->data['breadcrumbs'] = [
             [
-                'name' => 'DS Seo',
-                'url' => route('admin.trademark')
+                'name' => 'Danh sách sản phẩm',
+                'url' => route('admin.product')
             ],
             [
-                'name' => $object->page ?? $object->title ?? 'Tạo mới',
+                'name' => $product->name,
+                'url' => route('admin.product', ['id_eq' => $product->id ])
+            ],
+            [
+                'name' => 'Danh sách thuộc tính',
+                'url' => route('admin.product.property-type', $product->id)
+            ],
+            [
+                'name' => $object->name ? 'Cập nhật thuộc tính <strong>'.$object->name.'</strong>' : ($object->id ? 'Cập nhât thuộc tính <strong>#'.$object->id.'</strong>' : 'Thêm mới'),
+                'url' => route('admin.product.property-type', $product->id, ['id_eq' => $object->id])
             ],
         ];
+
 
         return parent::generateForm($request, $object);
     }

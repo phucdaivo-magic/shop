@@ -69,6 +69,7 @@
                                                 </select>
                                             @break
 
+                                            {{-- EQ --}}
                                             @case('eq')
                                                 @php
                                                     $searchName = $searchName . '_eq';

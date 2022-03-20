@@ -13,7 +13,7 @@
     {{ Form::model( $data['form'],['url' => url()->action($data['controller'].'@actionForm', $data['form']['id']  ), 'method' => 'POST', 'enctype'=>'multipart/form-data' ]) }}
       <div class="card card card-accent-success">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> {{ $data['breadcrumbs'][count($data['breadcrumbs'])-1]['name'] ?? 'Biểu mẫu' }}</div>
+          <i class="fa fa-align-justify"></i> {!! $data['breadcrumbs'][count($data['breadcrumbs'])-1]['name'] ?? 'Biểu mẫu' !!}</div>
           <div class="card-body" style="padding: 20px">
             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
               @foreach ($data['header'] as $option)
