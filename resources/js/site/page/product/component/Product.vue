@@ -111,7 +111,7 @@
                   />
                   <div
                     class="prop-image"
-                    :style="{ background: '`url('${product_property_detail.image}')` }"
+                    :style="{ background: `url('${product_property_detail.image}')` }"
                   >
                     {{ product_property_detail.name }}
                   </div>
