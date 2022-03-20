@@ -119,6 +119,12 @@ class CategoryController extends AdminController
                             'attrs' => ['style' => 'width: 1px; font-weight: bold'],
                             'actions' => [
                                 [
+                                    'html' => '<i class="icon-list"></i>',
+                                    'action' => function ($data) {
+                                        return route('admin.product', ['category_id_eq' => $data->id]);
+                                    },
+                                ],
+                                [
                                     'html' => '<i class="icon-pencil"></i>',
                                     'action' => function ($data) {
                                         return url()->action(__CLASS__ . '@initForm', $data['id']);
