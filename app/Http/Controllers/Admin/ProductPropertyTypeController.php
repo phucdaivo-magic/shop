@@ -169,21 +169,6 @@ class ProductPropertyTypeController extends AdminController
         ];
     }
 
-
-    public function onBeforeIndex(Request $request)
-    {
-        $model = Obj::orderBy('sort', 'ASC')->orderBy('created_at', 'DESC');
-
-        $searchList = collect($this->data['header'])->reduce(function ($acc, $cur) {
-            if (isset($cur['search'])) {
-                $acc[] = $cur['search']['name'] ?? $cur['key'];
-            }
-            return $acc;
-        }, []);
-
-        $this->data['tableData'] = $this->search($model, $request, $searchList)->paginate($this->getPerPage());
-    }
-
     public function main(Request $request, Product $product)
     {
 
@@ -202,7 +187,8 @@ class ProductPropertyTypeController extends AdminController
             ],
         ];
 
-        $model = Obj::orderBy('sort', 'ASC');
+        $model = Obj::orderBy('sort', 'ASC')
+            ->where('product_id', $product->id);
         $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate($this->getPerPage());
 
         return parent::index($request);
