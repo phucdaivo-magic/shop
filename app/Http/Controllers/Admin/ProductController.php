@@ -218,7 +218,7 @@ class ProductController extends AdminController
                 'url' => route('admin.product')
             ],
             [
-                'name' => 'Cập nhật sản phẩm: <a href='.route('admin.product', ['id_eq'=> $object->id]).'>'.$object->name.'</a>' ?? 'Cập nhật #'.$object->id ?? 'Tạo mới',
+                'name' => $object->name ? 'Cập nhật sản phẩm: <a href='.route('admin.product', ['id_eq'=> $object->id]).'>'.$object->name.'</a>' : ($object->id ? 'Cập nhật #'.$object->id : 'Tạo mới'),
             ],
         ];
 
