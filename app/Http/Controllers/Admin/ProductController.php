@@ -99,7 +99,7 @@ class ProductController extends AdminController
                     ],
                     [
                         'key' => 'description',
-                        'view' => [],
+                        // 'view' => [],
                         'title' => 'Giới thiệu sản phẩm',
                         'edit' => [
                             'type' => 'textarea',
