@@ -45,7 +45,10 @@ class ProductController extends AdminController
                             'map' => ['id', 'name'],
                             'dataSource' => array_merge([
                                 ['id' => '', 'name' => 'Không chọn']
-                            ], collect(Trademark::get())->toArray())
+                            ], collect(Trademark::get())->toArray()),
+                            'attrs' => [
+                                'data-init-plugin'=>'select2'
+                            ]
                         ],
                     ],
                     [
