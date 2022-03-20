@@ -51,17 +51,17 @@ $categoryList = App\Models\Category::where('home', true)
                             @foreach ($categoryList as $item)
                             @if($item->url)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ $item->url }}">{{ $item->name }}</a>
+                                <a class="nav-link font-weight-bold" href="{{ $item->url }}">{{ $item->name }}</a>
                             </li>
                             @elseif($item->categories->count())
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ $item->name }}
                                     <div class="pe-7s-angle-down icon-angle"></div>
                                 </a>
                                 <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdown">
                                     @foreach ($item->categories as $itemChild)
-                                    <a class="dropdown-item" href="{{ ($itemChild->url) ? $itemChild->url : route('site.category.parent',  [$item->slug, $itemChild->slug]) }}">
+                                    <a class="dropdown-item font-weight-bold"  href="{{ ($itemChild->url) ? $itemChild->url : route('site.category.parent',  [$item->slug, $itemChild->slug]) }}">
                                         {{ $itemChild->name }}
                                     </a>
                                     @endforeach
@@ -69,7 +69,7 @@ $categoryList = App\Models\Category::where('home', true)
                             </li>
                             @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('site.category',  $item->slug) }}">{{ $item->name }}</a>
+                                <a class="nav-link font-weight-bold" href="{{ route('site.category',  $item->slug) }}">{{ $item->name }}</a>
                             </li>
                             @endif
                             @endforeach
