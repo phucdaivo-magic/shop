@@ -174,9 +174,20 @@ class AdminController extends Controller
             if (isset($cb)) {
                 $next = call_user_func($cb, $next);
             }
+
             $next = $next->first();
-            $data->sort = $next->sort;
-            $next->sort = $sort;
+
+            if ($type == 'first') {
+                $data->sort = $next->sort - 1;
+            } else if ($type == 'last') {
+                $data->sort = $next->sort + 1;
+            } else {
+
+                $data->sort = $next->sort;
+                $next->sort = $sort;
+            }
+
+
 
             $data->save();
             $next->save();
