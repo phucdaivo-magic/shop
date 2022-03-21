@@ -105,14 +105,14 @@
                         @endforeach
                     </div>
                     <div class="d-flex ">
-                        <button type="button" class="btn btn-secondary btn-sm ml-auto d-block"
+                        <button type="button" class="btn btn-danger btn-sm ml-auto d-block"
                             @if (request()->has('per_page'))
                             onClick="window.location.href='{{ url()->current() }}?per_page={{ request('per_page') }}'">
                             @else
                             onClick="window.location.href='{{ url()->current() }}'">
                             @endif
-                            <i class="fa fa-rotate-left  mr-1"></i>Reset</button>
-                        <button class="btn btn-success btn-sm ml-1   d-block">
+                            <i class="fa fa-rotate-left mr-1"></i>Reset</button>
+                        <button class="btn btn-success btn-sm ml-1 d-block">
                             <i class="icons cui-magnifying-glass mr-1"></i>Tìm kiếm</button>
                     </div>
 
