@@ -245,3 +245,34 @@ Route::get('/product-image/active/{object}', 'Admin\ProductImageController@activ
 Route::get('/product-image/sort/{type}/{object}', 'Admin\ProductImageController@actionSort');
 
 Route::get('/product-image/put/{key}/{object}', 'Admin\ProductImageController@put');
+
+
+// Bill
+Route::get('bill', 'Admin\BillController@index')->name('admin.bill');
+
+Route::get('/bill/form/{object?}', 'Admin\BillController@initForm')->name('admin.bill.form');
+
+Route::post('/bill/form/{object?}', 'Admin\BillController@actionForm');
+
+Route::get('/bill/delete/{object}', 'Admin\BillController@delete');
+
+Route::get('/bill/active/{object}', 'Admin\BillController@active');
+
+Route::get('/bill/sort/{type}/{object}', 'Admin\BillController@actionSort');
+
+Route::get('/bill/put/{key}/{object}', 'Admin\BillController@put');
+
+// Bill product
+Route::get('bill/{bill}/product', 'Admin\BillProductController@main')->name('admin.bill.product');
+
+Route::get('/bill/{bill}/form/{object?}', 'Admin\BillProductController@initForm')->name('admin.bill.product.form');
+
+Route::post('/bill-product/form/{object?}', 'Admin\BillProductController@actionForm');
+
+Route::get('/bill-product/delete/{object}', 'Admin\BillProductController@delete');
+
+Route::get('/bill-product/active/{object}', 'Admin\BillProductController@active');
+
+Route::get('/bill-product/sort/{type}/{object}', 'Admin\BillProductController@actionSort');
+
+Route::get('/bill-product/put/{key}/{object}', 'Admin\BillProductController@put');

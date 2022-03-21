@@ -166,6 +166,10 @@
                                                             </div>
                                                         @break
 
+                                                        @case('include')
+                                                            @include($option['view']['path'])
+                                                        @break
+
                                                         @default
                                                             @case('xss')
                                                                 {{ $item[$option['key']] }}

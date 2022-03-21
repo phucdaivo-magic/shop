@@ -62,6 +62,21 @@ function slidebar()
                 ]
             ]
         ],
+        [
+            'name' => 'Đơn hàng',
+            'icon' => 'icon-drop',
+            'childrens' => [
+                [
+                    'icon' => 'icon-list',
+                    'name' => 'Danh sách',
+                    'url' => 'App\Http\Controllers\Admin\BillController@index'
+                ], [
+                    'icon' => 'icon-note',
+                    'name' => 'Thêm mới',
+                    'url' => 'App\Http\Controllers\Admin\BillController@initForm'
+                ]
+            ]
+        ],
     ];
 
     return $menu;
@@ -76,4 +91,8 @@ function getQuery() {
         }
     }
     return $query;
+}
+
+function getMoney($num) {
+    return number_format($num). ' VND';
 }

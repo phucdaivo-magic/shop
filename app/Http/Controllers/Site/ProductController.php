@@ -191,6 +191,7 @@ class ProductController extends Controller
         // Update Bill
         $bill->payment_method   = $address['payment_method'];
         $bill->shipping_method  = 1; // TODO
+        $bill->status           = 1;
         $bill->shipping_price   = 35000; // TODO
         $bill->total_price      = $totalPrice + $bill->shipping_price;
         $bill->save();
