@@ -29,6 +29,13 @@ class ProductController extends AdminController
                         ]
                     ],
                     [
+                        'key' => 'avatar',
+                        'view' => [
+                            'type'=>'image'
+                        ],
+                        'title' => 'Hình ảnh',
+                    ],
+                    [
                         'key' => 'name',
                         'view' => function ($product) {
                             return '<a href="' . route('site.product.detail', [$product->id, $product->slug]) . '">' . $product->name . '</a>';
