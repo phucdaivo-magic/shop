@@ -120,7 +120,6 @@ class CategoryController extends AdminController
                     ],
                 ],
                 'tableData' => []
-                // 'tableData' => Obj::paginate(10),
             ]
         );
 
@@ -146,14 +145,14 @@ class CategoryController extends AdminController
 
         $check = 0;
         $cate = $category;
-        $tree .= '<strong class="d-block text-primary" style="min-width: 300px">' . $category->name . '</strong>';
+        $tree .= '<strong class="text-primary">' . $category->name . '</strong>';
         while ($cate->category && $check < 10) {
             $check++;
             $cate = $cate->category;
             $tree = $cate->name . ' / ' . $tree;
         }
 
-        return $tree;
+        return '<div style="min-width: 300px">'.$tree.'</div>';
     }
 
     /**
