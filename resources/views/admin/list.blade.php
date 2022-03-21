@@ -178,7 +178,12 @@
                                                     </td>
                                                 @else
                                                     <td {!! isset($option['view']['attrs']) ? generateAtribute($option['view']['attrs']) : '' !!}>
+                                                        @if($option['key'] == 'id')
+                                                            <a href="{{ url()->current().'?id_eq='.$item[$option['key']] }}">{!! $item[$option['key']] !!}</a>
+                                                        @else
                                                         {!! $item[$option['key']] !!}
+                                                        @endif
+
                                                     </td>
                                                 @endif
                                             @endif
