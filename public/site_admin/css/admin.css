@@ -2655,6 +2655,10 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
   margin: 0;
 }
 
+.card thead {
+  background: #fafafa;
+}
+
 .card td,
 .card th {
   border-color: #fff !important;
