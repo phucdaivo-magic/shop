@@ -21,26 +21,30 @@ class ProductController extends Controller
 
     public function detail(Request $request, Product $product)
     {
-        $product = Product::with(
-            [
-                'productPropertyTypes' => function ($query) {
-                    return $query->where('active', true)->with([
-                        'productPropertyDetails' => function ($query) {
-                            return  $query->where('active', true)
-                            ->with(['productImage']);
-                        }
-                    ]);
-                },
-                'images' => function ($query) {
-                    return $query->where('active', true)->take(6);
-                }
-            ]
-        )->find($product->id);
+        if ($product->active) {
+            $product = Product::with(
+                [
+                    'productPropertyTypes' => function ($query) {
+                        return $query->where('active', true)->with([
+                            'productPropertyDetails' => function ($query) {
+                                return  $query->where('active', true)
+                                    ->with(['productImage']);
+                            }
+                        ]);
+                    },
+                    'images' => function ($query) {
+                        return $query->where('active', true)->take(6);
+                    }
+                ]
+            )->find($product->id);
 
-        return  view(
-            'site.pages.product.detail',
-            compact('product')
-        );
+            return  view(
+                'site.pages.product.detail',
+                compact('product')
+            );
+        } else {
+            abort(404);
+        }
     }
 
     public function index(Request $request)
