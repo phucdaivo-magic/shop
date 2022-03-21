@@ -40,7 +40,7 @@ $imageList = collect($product->images->where('active', true))->values();
         </template>
         <template  v-slot:about>
             <h1 style="font-size: 20px">{{ $product->name }}</h1>
-            <h3>{{ number_format($product->price) }} VND</h3>
+            <h3 class="text-danger">{{ number_format($product->price) }} VND</h3>
 
         </template>
         <template  v-slot:bottom>
