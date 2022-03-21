@@ -70,7 +70,7 @@ class ProductController extends AdminController
                     ],
                     [
                         'view' => function ($product) {
-                            return '<div style="max-width: 80px">'.$product->trademark->name ?? ''.'<div>';
+                            return '<div style="max-width: 80px">'.($product->trademark->name ?? '').'<div>';
                         },
                         'search' => [
                             'attrs' => [
