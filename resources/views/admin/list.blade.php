@@ -111,7 +111,7 @@
                             @else
                             onClick="window.location.href='{{ url()->current() }}'">
                             @endif
-                            <i class="icons cui-magnifying-glass mr-1"></i>Reset</button>
+                            <i class="fa fa-rotate-left  mr-1"></i>Reset</button>
                         <button class="btn btn-success btn-sm ml-1   d-block">
                             <i class="icons cui-magnifying-glass mr-1"></i>Tìm kiếm</button>
                     </div>
