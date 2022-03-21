@@ -152,7 +152,7 @@ class CategoryController extends AdminController
             $tree = $cate->name . ' / ' . $tree;
         }
 
-        return '<div style="min-width: 300px">'.$tree.'</div>';
+        return '<div style="min-width: 220px">'.$tree.'</div>';
     }
 
     /**
