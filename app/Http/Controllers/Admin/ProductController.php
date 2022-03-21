@@ -135,6 +135,7 @@ class ProductController extends AdminController
                             'type' => 'checkbox',
                         ],
                     ],
+                    $this->getSelectPerpage(),
                     $this->getSortTemplate(__CLASS__),
                     [
                         'view' => [

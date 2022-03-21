@@ -171,8 +171,8 @@ class AdminController extends Controller
                 $next = $data->where('sort', '>', $sort)->orderBy('sort', 'DESC');
             }
 
-            if(isset($cb)) {
-                $next = call_user_func($cb, $next );
+            if (isset($cb)) {
+                $next = call_user_func($cb, $next);
             }
             $next = $next->first();
             $data->sort = $next->sort;
@@ -187,7 +187,6 @@ class AdminController extends Controller
                 'Click để tiếp tục',
                 'success'
             )");
-
         } catch (\Exception $e) {
             $request->session()->flash('status', "Swal.fire(
                 'Không thành công!',
@@ -214,16 +213,18 @@ class AdminController extends Controller
         }
     }
 
-    protected function getListSearch() {
+    protected function getListSearch()
+    {
         return collect($this->data['header'])->reduce(function ($acc, $cur) {
-            if (isset($cur['search'])) {
+            if (isset($cur['search']) && !$cur['key'] === 'per_page') {
                 $acc[] = $cur['search']['name'] ?? $cur['key'];
             }
             return $acc;
         }, []);
     }
 
-    protected function getSortTemplate($__CLASS__) {
+    protected function getSortTemplate($__CLASS__)
+    {
         return [
             'view' => [
                 'type' => 'action',
@@ -231,7 +232,7 @@ class AdminController extends Controller
                 'actions' => [
                     [
                         'html' => '<i class="fa fa-angle-double-down"></i>',
-                        'action' => function ($data) use($__CLASS__) {
+                        'action' => function ($data) use ($__CLASS__) {
                             return url()->action($__CLASS__ . '@actionSort', ['last', $data['id']]);
                         },
                         'attrs' => [
@@ -240,7 +241,7 @@ class AdminController extends Controller
                     ],
                     [
                         'html' => '<i class="fa fa-angle-down"></i>',
-                        'action' => function ($data) use($__CLASS__) {
+                        'action' => function ($data) use ($__CLASS__) {
                             return url()->action($__CLASS__ . '@actionSort', ['down', $data['id']]);
                         },
                         'attrs' => [
@@ -249,7 +250,7 @@ class AdminController extends Controller
                     ],
                     [
                         'html' => '<i class="fa fa-angle-up"></i>',
-                        'action' => function ($data) use($__CLASS__) {
+                        'action' => function ($data) use ($__CLASS__) {
                             return url()->action($__CLASS__ . '@actionSort', ['up', $data['id']]);
                         },
                         'attrs' => [
@@ -258,7 +259,7 @@ class AdminController extends Controller
                     ],
                     [
                         'html' => '<i class="fa fa-angle-double-up"></i>',
-                        'action' => function ($data) use($__CLASS__) {
+                        'action' => function ($data) use ($__CLASS__) {
                             return url()->action($__CLASS__ . '@actionSort', ['first', $data['id']]);
                         },
                         'attrs' => [
@@ -269,6 +270,43 @@ class AdminController extends Controller
             ],
             'key' => 'sort',
             'title' => 'Sắp xếp',
+        ];
+    }
+
+    protected function getSelectPerpage()
+    {
+        return [
+            'search' => [
+                'attrs' => [
+                    'data-init-plugin' => 'select2'
+                ],
+                'type' => 'select',
+                'map' => ['id', 'name'],
+                'dataSource' => [
+                    [
+                        'id' => 1,
+                        'name' => 1,
+                    ],
+                    [
+                        'id' => 5,
+                        'name' => 10,
+                    ],
+                    [
+                        'id' => 10,
+                        'name' => 10,
+                    ],
+                    [
+                        'id' => 50,
+                        'name' => 50,
+                    ],
+                    [
+                        'id' => 100,
+                        'name' => 100,
+                    ]
+                ]
+            ],
+            'key' => 'per_page',
+            'title' => 'Số lượng dòng',
         ];
     }
 }

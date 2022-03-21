@@ -112,14 +112,14 @@ class BillController extends AdminController
                         ],
 
                     ],
+                    $this->getSelectPerpage(),
                     [
                         'key' => 'note',
                         'view' => [],
                         'title' => 'Ghi chú',
                         'edit' => [
                             'type' => 'textarea'
-                        ],
-                        'search' => []
+                        ]
                     ],
                     //     [
                     //         'view' => function ($product) {

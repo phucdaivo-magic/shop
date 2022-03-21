@@ -82,17 +82,19 @@ function slidebar()
     return $menu;
 }
 
-function getQuery() {
+function getQuery()
+{
     $query = '';
     foreach (request()->query() as $key => $value) {
 
-        if($key !== 'page') {
-            $query = $query.'&'.$key.'='.$value;
+        if ($key !== 'page') {
+            $query = $query . '&' . $key . '=' . $value;
         }
     }
     return $query;
 }
 
-function getMoney($num) {
-    return number_format($num). ' VND';
+function getMoney($num)
+{
+    return number_format($num) . ' VND';
 }

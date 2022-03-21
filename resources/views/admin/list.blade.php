@@ -59,7 +59,7 @@
                                             {{-- SELECT --}}
                                             @case('select')
                                                 @php
-                                                    $searchName = $searchName . '_eq';
+                                                    $searchName = $searchName == 'per_page' ? $searchName : $searchName . '_eq';
                                                 @endphp
                                                 <select id="{{ $searchName }}" value="{{ request($searchName) }}"
                                                     {!! isset($option['search']['attrs']) ? generateAtribute($option['search']['attrs']) : '' !!} class="form-control" name="{{ $searchName }}">
