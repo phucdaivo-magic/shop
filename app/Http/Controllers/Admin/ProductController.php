@@ -104,7 +104,7 @@ class ProductController extends AdminController
                     [
                         'key' => 'price',
                         'view' => function ($product) {
-                            return getMoney($product->price);
+                            return '<div style="min-width: 130px; text-align: right;">'.getMoney($product->price).'<div>';
                         },
                         'title' => 'Giá',
                         'edit' => [
