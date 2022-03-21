@@ -13,15 +13,15 @@ $tradeMarkList = App\Models\Trademark::where('active', true)->get();
             <a href="{{ route('site.category', [$menu->slug]) }}" class="d-block">
                 {{-- <i class="fa fa-filter mr-2" aria-hidden="true"></i> --}}
                 + {{ $menu->name }}
-                @if (!!$menu->products->count())
-                    <span class="badge badge-light badge-pill">{{ $menu->products->count() }}</span>
-                @endif
             </a>
         </li>
         <ul>
             @foreach ($menu->categories as $item)
                 <li class="">
-                    <a href="{{ route('site.category.parent', [$menu->slug, $item->slug]) }}">+ {{ $item->name }}</a>
+                    <a href="{{ route('site.category.parent', [$menu->slug, $item->slug]) }}">+ {{ $item->name }}
+                        @if (!!$item->products->count())
+                        <span class="badge badge-light badge-pill">{{ $item->products->count() }}</span>
+                    @endif</a>
                 </li>
             @endforeach
         </ul>
