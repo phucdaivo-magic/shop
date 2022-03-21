@@ -6,7 +6,16 @@
         <img class="mr-2" style="width: 70px" src="{{$billProduct->product->avatar }}" alt="">
         <strong class="mx-1" style="min-width: 40px">{{ $billProduct->mount }} x </strong> {{ $billProduct->product->name }}
       </span>
-      <span class="badge badge-success badge-pill">14</span>
+      @switch($billProduct->status)
+          @case(0)
+          <span class="badge badge-danger badge-pill">Chưa đóng gói</span>
+              @break
+          @case(1)
+          <span class="badge badge-success badge-pill">Đã đóng gói</span>
+              @break
+          @default
+
+      @endswitch
     </div>
     <div class="my-2" style="width: 100%; height: 1px; background: #eee"></div>
     <div class=" bg-light rounded p-2 mb-1">

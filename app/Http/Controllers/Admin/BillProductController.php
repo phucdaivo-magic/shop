@@ -24,14 +24,15 @@ class BillProductController extends AdminController
                         'title' => '#',
                     ],
                     [
-                        'view' => function ($object) {
-                            return $object->product->name;
-                        },
+                        'view' => [
+                           'type' => 'include',
+                           'path' => 'admin.custom.field-bill-product-detail'
+                        ],
                         'key' => 'id',
-                        'title' => 'Tên sản phẩm',
+                        'title' => 'Thông tin sản phẩm',
                     ],
                     [
-                        'view' => [],
+                        // 'view' => [],
                         'key' => 'mount',
                         'title' => 'Số lượng',
                         'edit' => [
@@ -39,13 +40,24 @@ class BillProductController extends AdminController
                         ],
                     ],
                     [
-                        'view' => function ($object) {
-                            return getMoney($object->current_price);
-                        },
+                        // 'view' => function ($object) {
+                        //     return getMoney($object->current_price);
+                        // },
                         'key' => 'current_price',
                         'title' => 'Đơn giá',
                         'edit' => [
                             'type' => 'number'
+                        ],
+                    ],
+                    [
+                        'view' => [
+                            'type' => 'checkbox',
+                            'attrs' => ['style' => 'width: 1px; font-weight: bold'],
+                        ],
+                        'key' => 'status',
+                        'title' => 'Gói hàng xong',
+                        'edit' => [
+                            'type' => 'checkbox',
                         ],
                     ],
                     [

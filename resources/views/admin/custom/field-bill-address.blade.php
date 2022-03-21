@@ -1,6 +1,6 @@
 @foreach ($item->billAddress as $billAddress)
 <ul class="list-group" style="min-width: 400px">
-    <li class="list-group-item ">
+    <li class="list-group-item">
         <div class="bg-light rounded p-2">
             Tên: <strong>{{ $billAddress->name }}</strong>
         </div>

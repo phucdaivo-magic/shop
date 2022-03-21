@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Concerns\Paginatable;
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
@@ -170,7 +171,7 @@ class ProductController extends Controller
                 'product_id'    =>  $product['id'],
                 'current_price' =>  $product['price'],
                 'mount'         =>  $product['mount'],
-                'status'        =>  1,
+                'status'        =>  0, // 0: Chưa đóng gói, 1 Đã đóng gói
             ]);
 
             foreach ($product['propertyDetail'] as $propertyDetail) {
@@ -191,7 +192,7 @@ class ProductController extends Controller
         // Update Bill
         $bill->payment_method   = $address['payment_method'];
         $bill->shipping_method  = 1; // TODO
-        $bill->status           = 1;
+        $bill->status           = BillController::STATUS_BILL[0]['id'];
         $bill->shipping_price   = 35000; // TODO
         $bill->total_price      = $totalPrice + $bill->shipping_price;
         $bill->save();
