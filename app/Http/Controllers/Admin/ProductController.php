@@ -70,7 +70,7 @@ class ProductController extends AdminController
                     ],
                     [
                         'view' => function ($product) {
-                            return '<div style="max-width: 80px">'.($product->trademark->name ?? '').'<div>';
+                            return $product->trademark->name ?? '';
                         },
                         'search' => [
                             'attrs' => [
@@ -104,7 +104,7 @@ class ProductController extends AdminController
                     [
                         'key' => 'price',
                         'view' => function ($product) {
-                            return '<div style="min-width: 110px; text-align: right;">'.getMoney($product->price).'<div>';
+                            return '<div style="min-width: 80px; text-align: right;">'.getMoney($product->price).'<div>';
                         },
                         'title' => 'Giá',
                         'edit' => [
