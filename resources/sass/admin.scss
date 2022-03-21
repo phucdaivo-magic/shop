@@ -54,7 +54,11 @@ $color-blue: #007bff;
 
 // custom pagination
 .cs-pagination {
+    margin-right: 5px;
     background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .one-page {
         background: none;
@@ -69,6 +73,7 @@ $color-blue: #007bff;
         }
     }
 }
+
 
 .cs-show-image {
     z-index: 1100;

@@ -216,7 +216,7 @@ class AdminController extends Controller
     protected function getListSearch()
     {
         return collect($this->data['header'])->reduce(function ($acc, $cur) {
-            if (isset($cur['search']) && !$cur['key'] === 'per_page') {
+            if (isset($cur['search'])) {
                 $acc[] = $cur['search']['name'] ?? $cur['key'];
             }
             return $acc;
@@ -273,40 +273,4 @@ class AdminController extends Controller
         ];
     }
 
-    protected function getSelectPerpage()
-    {
-        return [
-            'search' => [
-                'attrs' => [
-                    'data-init-plugin' => 'select2'
-                ],
-                'type' => 'select',
-                'map' => ['id', 'name'],
-                'dataSource' => [
-                    [
-                        'id' => 1,
-                        'name' => 1,
-                    ],
-                    [
-                        'id' => 5,
-                        'name' => 5 ,
-                    ],
-                    [
-                        'id' => 10,
-                        'name' => 10,
-                    ],
-                    [
-                        'id' => 50,
-                        'name' => 50,
-                    ],
-                    [
-                        'id' => 100,
-                        'name' => 100,
-                    ]
-                ]
-            ],
-            'key' => 'per_page',
-            'title' => 'Số lượng dòng',
-        ];
-    }
 }

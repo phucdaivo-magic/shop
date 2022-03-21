@@ -127,7 +127,6 @@ class ProductPropertyDetailController extends AdminController
                             'path' => 'admin.custom.form-connect-field'
                         ]
                     ],
-                    $this->getSelectPerpage(),
                     $this->getSortTemplate(__CLASS__),
                     [
                         'view' => [

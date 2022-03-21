@@ -28,6 +28,9 @@
                     <span class="badge badge-pill badge-danger float-right">{{ $data['tableData']->total() }}</span>
                 </div>
                 <form class="card-body" action="">
+                    @if(request()->has('per_page'))
+                        <input type="num" name="per_page" value="{{ request('per_page') }}" hidden>
+                    @endif
                     <div class="form-group row">
                         @foreach ($data['header'] as $option)
                             @php
@@ -194,8 +197,15 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer d-flex">
                     @include('admin.components.pagination')
+                    <select value="5" class="form-control" style="width: 75px" data-init-plugin="select2" onChange="window.location.href='{{ url()->current() }}?per_page='+this.value">
+                        <option value="1" @if(request('per_page') == 1) selected @endif>1</option>
+                        <option value="5" @if(request('per_page') == 5) selected @endif>5</option>
+                        <option value="10" @if(request('per_page') == 10) selected @endif>10</option>
+                        <option value="50" @if(request('per_page') == 50) selected @endif>50</option>
+                        <option value="100" @if(request('per_page') == 100) selected @endif>100</option>
+                    </select>
                 </div>
             </div>
         </div>

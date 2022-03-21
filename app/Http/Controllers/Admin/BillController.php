@@ -112,7 +112,6 @@ class BillController extends AdminController
                         ],
 
                     ],
-                    $this->getSelectPerpage(),
                     [
                         'key' => 'note',
                         'view' => [],

@@ -2676,7 +2676,11 @@ body.swal2-toast-column .swal2-toast .swal2-validation-message {
 }
 
 .cs-pagination {
+  margin-right: 5px;
   background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cs-pagination .one-page {
