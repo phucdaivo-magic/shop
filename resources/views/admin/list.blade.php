@@ -14,9 +14,7 @@
     $hasSearch = $indexSearch === 0 || $indexSearch > 0;
     @endphp
 
-    <div @if($hasSearch)
-        class="has-search"
-    @endif>
+    <div @if ($hasSearch) class="has-search" @endif>
         <a class="btn btn-sms btn-success mb-2" href="{{ Request::url() }}/form" type="submit"><i
                 class="fa fa-plus"></i> Thêm mới</a>
 
@@ -28,7 +26,7 @@
                     <span class="badge badge-pill badge-danger float-right">{{ $data['tableData']->total() }}</span>
                 </div>
                 <form class="card-body" action="">
-                    @if(request()->has('per_page'))
+                    @if (request()->has('per_page'))
                         <input type="num" name="per_page" value="{{ request('per_page') }}" hidden>
                     @endif
                     <div class="form-group row">
@@ -106,18 +104,28 @@
                             @endif
                         @endforeach
                     </div>
-                    <button class="btn btn-success btn-sm ml-auto d-block"> <i
-                            class="icons cui-magnifying-glass mr-"></i>Tìm kiếm</button>
+                    <div class="d-flex ">
+                        <button type="button" class="btn btn-secondary btn-sm ml-auto d-block"
+                            @if (request()->has('per_page'))
+                            onClick="window.location.href='{{ url()->current() }}?per_page={{ request('per_page') }}'">
+                            @else
+                            onClick="window.location.href='{{ url()->current() }}'">
+                            @endif
+                            <i class="icons cui-magnifying-glass mr-1"></i>Reset</button>
+                        <button class="btn btn-success btn-sm ml-1   d-block">
+                            <i class="icons cui-magnifying-glass mr-1"></i>Tìm kiếm</button>
+                    </div>
+
                 </form>
             </div>
         @endif
         <div class="card cs-card card-accent-primary card-result">
-            @if(!$hasSearch)
-            <div class="card-header">
-                <i class="icon-list"></i> Danh sách
-                <span class="badge badge-pill badge-danger float-right">{{ $data['tableData']->total() }}</span>
-                {{-- @include('admin.components.pagination') --}}
-            </div>
+            @if (!$hasSearch)
+                <div class="card-header">
+                    <i class="icon-list"></i> Danh sách
+                    <span class="badge badge-pill badge-danger float-right">{{ $data['tableData']->total() }}</span>
+                    {{-- @include('admin.components.pagination') --}}
+                </div>
             @endif
             <div class="card-body">
                 <div style="overflow: auto">
@@ -181,10 +189,11 @@
                                                     </td>
                                                 @else
                                                     <td {!! isset($option['view']['attrs']) ? generateAtribute($option['view']['attrs']) : '' !!}>
-                                                        @if($option['key'] == 'id')
-                                                            <a href="{{ url()->current().'?id_eq='.$item[$option['key']] }}">{!! $item[$option['key']] !!}</a>
+                                                        @if ($option['key'] == 'id')
+                                                            <a
+                                                                href="{{ url()->current() . '?id_eq=' . $item[$option['key']] }}">{!! $item[$option['key']] !!}</a>
                                                         @else
-                                                        {!! $item[$option['key']] !!}
+                                                            {!! $item[$option['key']] !!}
                                                         @endif
 
                                                     </td>
@@ -199,12 +208,13 @@
                 </div>
                 <div class="card-footer d-flex">
                     @include('admin.components.pagination')
-                    <select value="5" class="form-control" style="width: 75px" data-init-plugin="select2" onChange="window.location.href='{{ url()->current() }}?per_page='+this.value">
-                        <option value="1" @if(request('per_page') == 1) selected @endif>1</option>
-                        <option value="5" @if(request('per_page') == 5) selected @endif>5</option>
-                        <option value="10" @if(request('per_page') == 10) selected @endif>10</option>
-                        <option value="50" @if(request('per_page') == 50) selected @endif>50</option>
-                        <option value="100" @if(request('per_page') == 100) selected @endif>100</option>
+                    <select value="5" class="form-control" style="width: 75px" data-init-plugin="select2"
+                        onChange="window.location.href='{{ url()->current() }}?per_page='+this.value">
+                        <option value="1" @if (request('per_page') == 1) selected @endif>1</option>
+                        <option value="5" @if (request('per_page') == 5) selected @endif>5</option>
+                        <option value="10" @if (request('per_page') == 10) selected @endif>10</option>
+                        <option value="50" @if (request('per_page') == 50) selected @endif>50</option>
+                        <option value="100" @if (request('per_page') == 100) selected @endif>100</option>
                     </select>
                 </div>
             </div>
