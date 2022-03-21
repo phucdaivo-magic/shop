@@ -322,25 +322,25 @@ function csInitPagination(one) {
   next.addEventListener('click', function () {
     focus++;
     focus = updatePagination(listChild, cur, num, total, request, focus, record, query);
-    csReload( request + `?page=${focus}&${query}`);
+    // csReload( request + `?page=${focus}&${query}`);
   });
 
   prev.addEventListener('click', function () {
     focus--;
     focus = updatePagination(listChild, cur, num, total, request, focus, record, query);
-    csReload( request + `?page=${focus}&${query}`);
+    // csReload( request + `?page=${focus}&${query}`);
   });
 
   first.addEventListener('click', function () {
     focus = 1;
     focus = updatePagination(listChild, cur, num, total, request, focus, record, query);
-    csReload( request + `?page=${focus}&${query}`);
+    // csReload( request + `?page=${focus}&${query}`);
   });
 
   last.addEventListener('click', function () {
     focus = total;
     focus = updatePagination(listChild, cur, num, total, request, focus, record, query);
-    csReload( request + `?page=${focus}&${query}`);
+    // csReload( request + `?page=${focus}&${query}`);
   });
 }
 
