@@ -16,7 +16,7 @@ class ProductPropertyTypeController extends AdminController
 
     const TYPE_PROPERTY = [
         [
-            'name' => 'Màu sắc',
+            'name' => 'Màu sắc (Nên dùng hiển thị ô chọn)',
             'id' => ProductPropertyTypeController::TYPE_PROPERTY_COLOR
         ],
         [
@@ -24,22 +24,18 @@ class ProductPropertyTypeController extends AdminController
             'id' => ProductPropertyTypeController::TYPE_PROPERTY_TEXT
         ],
         [
-            'name' => 'Hình ảnh',
+            'name' => 'Hình ảnh (Nên dùng hiển thị ô chọn)',
             'id' => ProductPropertyTypeController::TYPE_PROPERTY_IMAGE
         ]
     ];
 
     const TYPE_PROPERTY_HTML = [
         [
-            'name' => 'Radio',
+            'name' => 'Ô chọn (Dùng cho loại màu sắc và hình ảnh)',
             'id' => 'radio'
         ],
         [
-            'name' => 'Checkbox',
-            'id' => 'checkbox'
-        ],
-        [
-            'name' => 'Selectbox',
+            'name' => 'Danh sách thả xuống (Nên dùng cho loại chữ)',
             'id' => 'selecbox'
         ]
     ];

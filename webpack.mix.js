@@ -16,4 +16,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/site.js', 'public/js')
     .sass('resources/sass/user.scss', 'public/site_user/css')
     .sass('resources/sass/site.scss', 'public/site/css')
-    .sass('resources/sass/admin.scss', 'public/site_admin/css');
+    .sass('resources/sass/admin.scss', 'public/site_admin/css')
+    .version();

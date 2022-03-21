@@ -18,7 +18,7 @@ $categoryList = App\Models\Category::where('home', true)
     <link href="{{ asset('site_admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}">
     <link rel="stylesheet" href="{{ asset('pe-icon-7-stroke/css/helper.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/site.css') }}">
+    <link rel="stylesheet" href="{{ mix('site/css/site.css') }}">
 </head>
 
 <body>
@@ -110,7 +110,7 @@ $categoryList = App\Models\Category::where('home', true)
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('js/site.js')}}"></script>
+    <script src="{{ mix('js/site.js')}}"></script>
 </body>
 
 </html>

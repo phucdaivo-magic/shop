@@ -98,6 +98,58 @@
               </select>
             </template>
 
+            <!-- LIST RADIO -->
+            <template
+              v-else-if="
+                product_property_type.type_element == 'radio' &&
+                product_property_type.type == 'text_property'
+              "
+            >
+              <!-- <select
+                v-model="property[product_property_type.id]"
+                class="form-control rounded-0"
+                @change="
+                  onChangeDetailSelecbox(
+                    product_property_type,
+                    property[product_property_type.id]
+                  )
+                "
+              >
+                <option
+                  v-for="(
+                    product_property_detail, key
+                  ) in product_property_type.product_property_details"
+                  :key="key"
+                  :value="product_property_detail.id"
+                >
+                  {{ product_property_detail.name }}
+                </option>
+              </select> -->
+              <fieldset class="form-group">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <label
+                      class="form-check"
+                      v-for="(
+                        product_property_detail, key
+                      ) in product_property_type.product_property_details"
+                      :key="key"
+                      :title="product_property_detail.name"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        v-model="property[product_property_type.id]"
+                        :name="product_property_detail.id + 'd'"
+                        :value="product_property_detail.id"
+                      />
+                      <span class="form-check-label">{{ product_property_detail.name }}</span>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </template>
+
             <!-- IMAGE -->
             <template v-else-if="product_property_type.type == 'image_property'">
               <div class="row">
@@ -263,9 +315,12 @@ export default {
     height: 70px;
     width: 100%;
     cursor: pointer;
-    border: 2px solid rgba(0, 0, 0, 0.05);
+    border: 2px solid #eee;
     background-size: cover;
     background-position: center;
+    text-shadow: 0 0 3px rgb(0 0 0);
+    font-weight: bold;
+    color: #fff;
   }
 }
 

@@ -3268,6 +3268,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3438,7 +3490,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".prop-radio .radio-color[data-v-01a93157] {\n  opacity: 0.6;\n  border: 1px solid rgba(0, 0, 0, 0.1);\n  width: 30px;\n  height: 30px;\n  transition: 0.3s;\n  cursor: pointer;\n}\n.prop-radio .radio-color[data-v-01a93157]:hover {\n  opacity: 0.9;\n}\n.prop-radio .radio:checked + .radio-color[data-v-01a93157] {\n  opacity: 1 !important;\n  border: 2px solid #000 !important;\n}\n.prop-image-box .radio:checked + .prop-image[data-v-01a93157] {\n  border-color: #000 !important;\n}\n.prop-image-box .prop-image[data-v-01a93157] {\n  padding: 10px;\n  height: 70px;\n  width: 100%;\n  cursor: pointer;\n  border: 2px solid rgba(0, 0, 0, 0.05);\n  background-size: cover;\n  background-position: center;\n}\n.slide-image[data-v-01a93157] {\n  padding-top: 120%;\n  background-position: top;\n  background-size: cover;\n  position: relative;\n}\n.VueCarousel-navigation-button.VueCarousel-navigation-next[data-v-01a93157] {\n  background: #eee;\n}\n.cs-carousel[data-v-01a93157] {\n  display: flex;\n}\n.cs-carousel .cs-carousel-main[data-v-01a93157] {\n  width: calc(100% - 60px);\n}\n.cs-carousel .cs-carousel-images[data-v-01a93157] {\n  width: 60px;\n}\n.cs-carousel .cs-carousel-images .image-item[data-v-01a93157] {\n  height: 50px;\n  width: 50px;\n  margin: 0 5px 5px;\n  cursor: pointer;\n  background-position: top;\n  background-size: cover;\n  position: relative;\n  transition: 0.1s;\n  border: 2px solid #fff;\n}\n.cs-carousel .cs-carousel-images .image-item[data-v-01a93157]:hover, .cs-carousel .cs-carousel-images .image-item.active[data-v-01a93157] {\n  border: 2px solid #03a9f4;\n}", ""]);
+exports.push([module.i, ".prop-radio .radio-color[data-v-01a93157] {\n  opacity: 0.6;\n  border: 1px solid rgba(0, 0, 0, 0.1);\n  width: 30px;\n  height: 30px;\n  transition: 0.3s;\n  cursor: pointer;\n}\n.prop-radio .radio-color[data-v-01a93157]:hover {\n  opacity: 0.9;\n}\n.prop-radio .radio:checked + .radio-color[data-v-01a93157] {\n  opacity: 1 !important;\n  border: 2px solid #000 !important;\n}\n.prop-image-box .radio:checked + .prop-image[data-v-01a93157] {\n  border-color: #000 !important;\n}\n.prop-image-box .prop-image[data-v-01a93157] {\n  padding: 10px;\n  height: 70px;\n  width: 100%;\n  cursor: pointer;\n  border: 2px solid #eee;\n  background-size: cover;\n  background-position: center;\n  text-shadow: 0 0 3px black;\n  font-weight: bold;\n  color: #fff;\n}\n.slide-image[data-v-01a93157] {\n  padding-top: 120%;\n  background-position: top;\n  background-size: cover;\n  position: relative;\n}\n.VueCarousel-navigation-button.VueCarousel-navigation-next[data-v-01a93157] {\n  background: #eee;\n}\n.cs-carousel[data-v-01a93157] {\n  display: flex;\n}\n.cs-carousel .cs-carousel-main[data-v-01a93157] {\n  width: calc(100% - 60px);\n}\n.cs-carousel .cs-carousel-images[data-v-01a93157] {\n  width: 60px;\n}\n.cs-carousel .cs-carousel-images .image-item[data-v-01a93157] {\n  height: 50px;\n  width: 50px;\n  margin: 0 5px 5px;\n  cursor: pointer;\n  background-position: top;\n  background-size: cover;\n  position: relative;\n  transition: 0.1s;\n  border: 2px solid #fff;\n}\n.cs-carousel .cs-carousel-images .image-item[data-v-01a93157]:hover, .cs-carousel .cs-carousel-images .image-item.active[data-v-01a93157] {\n  border: 2px solid #03a9f4;\n}", ""]);
 
 // exports
 
@@ -16982,7 +17034,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
             )?[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.property[product_property_type.id]),expression:"property[product_property_type.id]"}],staticClass:"form-control rounded-0",on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.property, product_property_type.id, $event.target.multiple ? $$selectedVal : $$selectedVal[0])},function($event){return _vm.onChangeDetailSelecbox(
                   product_property_type,
                   _vm.property[product_property_type.id]
-                )}]}},_vm._l((product_property_type.product_property_details),function(product_property_detail,key){return _c('option',{key:key,domProps:{"value":product_property_detail.id}},[_vm._v("\n                "+_vm._s(product_property_detail.name)+"\n              ")])}),0)]:(product_property_type.type == 'image_property')?[_c('div',{staticClass:"row"},_vm._l((product_property_type.product_property_details),function(product_property_detail,key){return _c('label',{key:key,staticClass:"col-6 prop-image-box",on:{"click":function($event){return _vm.onChangeDetail(product_property_detail)}}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.property[product_property_type.id]),expression:"property[product_property_type.id]"}],staticClass:"radio",attrs:{"name":product_property_detail.id + 'd',"type":"radio","hidden":""},domProps:{"value":product_property_detail.id,"checked":_vm._q(_vm.property[product_property_type.id],product_property_detail.id)},on:{"change":function($event){return _vm.$set(_vm.property, product_property_type.id, product_property_detail.id)}}}),_vm._v(" "),_c('div',{staticClass:"prop-image",style:({
+                )}]}},_vm._l((product_property_type.product_property_details),function(product_property_detail,key){return _c('option',{key:key,domProps:{"value":product_property_detail.id}},[_vm._v("\n                "+_vm._s(product_property_detail.name)+"\n              ")])}),0)]:(
+              product_property_type.type_element == 'radio' &&
+              product_property_type.type == 'text_property'
+            )?[_c('fieldset',{staticClass:"form-group"},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col-sm-10"},_vm._l((product_property_type.product_property_details),function(product_property_detail,key){return _c('label',{key:key,staticClass:"form-check",attrs:{"title":product_property_detail.name}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.property[product_property_type.id]),expression:"property[product_property_type.id]"}],staticClass:"form-check-input",attrs:{"type":"radio","name":product_property_detail.id + 'd'},domProps:{"value":product_property_detail.id,"checked":_vm._q(_vm.property[product_property_type.id],product_property_detail.id)},on:{"change":function($event){return _vm.$set(_vm.property, product_property_type.id, product_property_detail.id)}}}),_vm._v(" "),_c('span',{staticClass:"form-check-label"},[_vm._v(_vm._s(product_property_detail.name))])])}),0)])])]:(product_property_type.type == 'image_property')?[_c('div',{staticClass:"row"},_vm._l((product_property_type.product_property_details),function(product_property_detail,key){return _c('label',{key:key,staticClass:"col-6 prop-image-box",on:{"click":function($event){return _vm.onChangeDetail(product_property_detail)}}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.property[product_property_type.id]),expression:"property[product_property_type.id]"}],staticClass:"radio",attrs:{"name":product_property_detail.id + 'd',"type":"radio","hidden":""},domProps:{"value":product_property_detail.id,"checked":_vm._q(_vm.property[product_property_type.id],product_property_detail.id)},on:{"change":function($event){return _vm.$set(_vm.property, product_property_type.id, product_property_detail.id)}}}),_vm._v(" "),_c('div',{staticClass:"prop-image",style:({
                     backgroundImage: ("url('" + (product_property_detail.image) + "')"),
                   })},[_vm._v("\n                  "+_vm._s(product_property_detail.name)+"\n                ")])])}),0)]:_vm._e(),_vm._v(" "),_c('small',{staticClass:"form-text text-muted",attrs:{"id":"emailHelp","hidden":""}},[_vm._v("We'll never share your email with anyone else.")])],2)]}),_vm._v(" "),_c('div',{staticClass:"d-flex"},[_c('InputNumber',{model:{value:(_vm.mount),callback:function ($$v) {_vm.mount=$$v},expression:"mount"}}),_vm._v(" "),_c('button',{staticClass:"ml-3 btn btn-danger d-block rounded-0",on:{"click":_vm.addToCart}},[_c('i',{staticClass:"pe-7s-cart mr-2",attrs:{"aria-hidden":"true"}}),_vm._v("Thêm vào giỏ hàng\n        ")])],1),_vm._v(" "),_c('div',[_vm._t("bottom")],2)],2)]),_vm._v(" "),(_vm.showCart)?_c('Modal',{staticClass:"modal-body",model:{value:(_vm.showCart),callback:function ($$v) {_vm.showCart=$$v},expression:"showCart"}},[_c('cart',{scopedSlots:_vm._u([{key:"default",fn:function(slotProps){return _c('div',{},[_c('button',{staticClass:"rounded-0 btn btn-primary font-weight-bold mr-2 text-white",attrs:{"data-dismiss":"modal"}},[_vm._v("\n          Tiếp tục mua hàng\n        ")]),_vm._v(" "),(slotProps.mount)?_c('a',{staticClass:"rounded-0 btn btn-danger font-weight-bold text-white",attrs:{"href":"/thanh-toan"}},[_vm._v("\n          Tiến Hành thanh toán")]):_vm._e()])}}],null,false,3471598265)})],1):_vm._e()],1)}
 var staticRenderFns = []
