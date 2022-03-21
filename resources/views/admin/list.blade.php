@@ -212,7 +212,7 @@
                         onChange="window.location.href='{{ url()->current() }}?per_page='+this.value">
                         <option value="1" @if (request('per_page') == 1) selected @endif>1</option>
                         <option value="5" @if (request('per_page') == 5) selected @endif>5</option>
-                        <option value="10" @if (request('per_page') == 10) selected @endif>10</option>
+                        <option value="10" @if (request('per_page', 10) == 10) selected @endif>10</option>
                         <option value="50" @if (request('per_page') == 50) selected @endif>50</option>
                         <option value="100" @if (request('per_page') == 100) selected @endif>100</option>
                     </select>
