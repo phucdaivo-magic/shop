@@ -146,7 +146,7 @@ class CategoryController extends AdminController
 
         $check = 0;
         $cate = $category;
-        $tree .= '<strong class="text-primary">' . $category->name . '</strong>';
+        $tree .= '<strong class="d-block text-primary" style="min-width: 300px">' . $category->name . '</strong>';
         while ($cate->category && $check < 10) {
             $check++;
             $cate = $cate->category;

@@ -38,7 +38,7 @@ class ProductController extends AdminController
                     [
                         'key' => 'name',
                         'view' => function ($product) {
-                            return '<a href="' . route('site.product.detail', [$product->id, $product->slug]) . '">' . $product->name . '</a>';
+                            return '<a class="d-block" style="min-width: 140px" href="' . route('site.product.detail', [$product->id, $product->slug]) . '">' . $product->name . '</a>';
                         },
                         'title' => 'Tên sản phẩm',
                         'search' => []
