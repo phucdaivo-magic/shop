@@ -127,6 +127,7 @@ class ProductPropertyDetailController extends AdminController
                             'path' => 'admin.custom.form-connect-field'
                         ]
                     ],
+                    $this->getSelectPerpage(),
                     $this->getSortTemplate(__CLASS__),
                     [
                         'view' => [
@@ -225,11 +226,6 @@ class ProductPropertyDetailController extends AdminController
                 ],
             ];
         }
-
-        $this->data['tableData'] = Obj::orderBy('sort', 'ASC')
-            ->where('product_id', $product->id)
-            ->where('product_property_type_id', $productPropertyType->id)
-            ->paginate(10);
 
         $model = Obj::orderBy('sort', 'ASC')
             ->where('product_id', $product->id)

@@ -119,9 +119,7 @@ class CategoryController extends AdminController
                         'title' => '',
                     ],
                 ],
-                'tableData' => Obj::orderBy('category_id', 'ASC')
-                    ->orderBy('sort', 'ASC')
-                    ->paginate(50),
+                'tableData' => []
                 // 'tableData' => Obj::paginate(10),
             ]
         );
@@ -134,6 +132,13 @@ class CategoryController extends AdminController
                 'name' => 'DS Seo',
             ],
         ];
+    }
+
+    public function onBeforeIndex()
+    {
+        $this->data['tableData'] = Obj::orderBy('category_id', 'ASC')
+            ->orderBy('sort', 'ASC')
+            ->paginate(50);
     }
 
     private function renderTreeCategory($category, $tree = '')

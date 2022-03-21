@@ -59,6 +59,7 @@ class TradeMarkController extends AdminController
                             'type' => 'checkbox',
                         ],
                     ],
+                    $this->getSelectPerpage(),
                     $this->getSortTemplate(__CLASS__),
                     [
                         'view' => [
@@ -93,9 +94,7 @@ class TradeMarkController extends AdminController
                         'title' => '',
                     ],
                 ],
-                'tableData' => Obj::orderBy('trademark_id', 'ASC')
-                    ->orderBy('sort', 'ASC')
-                    ->paginate(10),
+                'tableData' => [],
             ]
         );
 
@@ -107,6 +106,13 @@ class TradeMarkController extends AdminController
                 'name' => 'DS Seo',
             ],
         ];
+    }
+
+    public function onBeforeIndex()
+    {
+        $this->data['tableData'] = Obj::orderBy('trademark_id', 'ASC')
+            ->orderBy('sort', 'ASC')
+            ->paginate($this->getPerPage());
     }
 
     private function renderTreeTrademark($trademark, $tree = '')

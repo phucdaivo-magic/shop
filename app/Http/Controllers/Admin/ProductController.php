@@ -201,21 +201,6 @@ class ProductController extends AdminController
         $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate($this->getPerPage());
     }
 
-    private function renderTreeTrademark($trademark, $tree = '')
-    {
-
-        $check = 0;
-        $trade = $trademark;
-        $tree .= '<strong class="text-primary">' . $trademark->name . '</strong>';
-        while ($trade->trademark && $check < 10) {
-            $check++;
-            $trade = $trade->trademark;
-            $tree = $trade->name . ' / ' . $tree;
-        }
-
-        return $tree;
-    }
-
     /**
      * Init Form.
      */

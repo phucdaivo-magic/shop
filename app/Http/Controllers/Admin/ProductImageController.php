@@ -68,6 +68,7 @@ class ProductImageController extends AdminController
                             'type' => 'checkbox',
                         ],
                     ],
+                    $this->getSelectPerpage(),
                     $this->getSortTemplate(__CLASS__),
                     [],
                 ],
@@ -98,14 +99,10 @@ class ProductImageController extends AdminController
             ],
         ];
 
-        $this->data['tableData'] = Obj::orderBy('sort', 'ASC')
-            ->where('product_id', $product->id)
-            ->paginate(30);
-
 
         $model = Obj::orderBy('sort', 'ASC')
             ->where('product_id', $product->id);
-        $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate(30);
+        $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate($this->getPerPage());
 
 
 
