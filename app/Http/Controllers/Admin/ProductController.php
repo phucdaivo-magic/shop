@@ -104,7 +104,7 @@ class ProductController extends AdminController
                     [
                         'key' => 'price',
                         'view' => function ($product) {
-                            return number_format($product->price);
+                            return getMoney($product->price);
                         },
                         'title' => 'Giá',
                         'edit' => [
