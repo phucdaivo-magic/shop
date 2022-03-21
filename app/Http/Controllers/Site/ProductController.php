@@ -25,7 +25,8 @@ class ProductController extends Controller
                 'productPropertyTypes' => function ($query) {
                     return $query->where('active', true)->with([
                         'productPropertyDetails' => function ($query) {
-                            return  $query->where('active', true);
+                            return  $query->where('active', true)
+                            ->with(['productImage']);
                         }
                     ]);
                 },

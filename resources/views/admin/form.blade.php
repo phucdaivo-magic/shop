@@ -15,14 +15,14 @@
         <div class="card-header">
           <i class="fa fa-align-justify"></i> {!! $data['breadcrumbs'][count($data['breadcrumbs'])-1]['name'] ?? 'Biểu mẫu' !!}</div>
           <div class="card-body" style="padding: 20px">
-            <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+
               @foreach ($data['header'] as $option)
                 @if(isset($option['edit']))
                 <div class="form-group row">
 
                   {{-- Label --}}
                   {{-- NOT HIDDEN --}}
-                  @if(!(isset($option['edit']['type']) && $option['edit']['type'] == 'hidden'))
+                  @if(!(!is_callable($option['edit']) && isset($option['edit']['type']) && $option['edit']['type'] == 'hidden'))
                     <label class="col-md-3 col-form-label text-right" for="{{ $option['key'] }}">
                     {{ $option['title'] }}
                     </label>
@@ -30,7 +30,7 @@
 
                   {{-- End Lable --}}
                   @if(is_callable($option['edit']))
-                    {!! call_user_func($option['edit'], $data['form']) !!}
+                      {!! call_user_func($option['edit'], $data['form']) !!}
                   {{-- type --}}
                   @elseif(isset($option['edit']['type']))
                     @switch($option['edit']['type'])
@@ -51,6 +51,9 @@
                           @break
                       @case('editer')
                           @include('admin.form.editer')
+                          @break
+                      @case('include')
+                          @include($option['edit']['path'])
                           @break
                       {{-- @case('number')
                           @include('admin.form.inputNumber')
@@ -297,7 +300,7 @@
             <button class="btn btn-sms btn-danger" type="reset">
               <i class="fa fa-ban"></i> Phục hồi</button>
           </div>
-      {{ Form::close() }}
+
     </div>
 {{ Form::close() }}
 </div>

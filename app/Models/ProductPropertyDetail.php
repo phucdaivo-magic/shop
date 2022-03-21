@@ -23,8 +23,12 @@ class ProductPropertyDetail extends SlugSortModel
         return $this->belongsTo(ProductPropertyType::class, 'product_property_type_id');
     }
 
-
     public function getImageAttribute() {
         return asset($this->value);
+    }
+
+    public function productImage()
+    {
+        return $this->belongsTo(ProductImage::class, 'product_image_id');
     }
 }

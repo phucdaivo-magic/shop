@@ -52,6 +52,7 @@
                 :key="key"
                 :title="product_property_detail.name"
                 class="prop-radio"
+                @click="onChangeDetail(product_property_detail)"
               >
                 <input
                   v-model="property[product_property_type.id]"
@@ -78,6 +79,12 @@
               <select
                 v-model="property[product_property_type.id]"
                 class="form-control rounded-0"
+                @change="
+                  onChangeDetailSelecbox(
+                    product_property_type,
+                    property[product_property_type.id]
+                  )
+                "
               >
                 <option
                   v-for="(
@@ -99,6 +106,7 @@
                     product_property_detail, key
                   ) in product_property_type.product_property_details"
                   class="col-6 prop-image-box"
+                  @click="onChangeDetail(product_property_detail)"
                   :key="key"
                 >
                   <input
@@ -111,7 +119,9 @@
                   />
                   <div
                     class="prop-image"
-                    :style="{ backgroundImage: `url('${product_property_detail.image}')` }"
+                    :style="{
+                      backgroundImage: `url('${product_property_detail.image}')`,
+                    }"
                   >
                     {{ product_property_detail.name }}
                   </div>
@@ -201,6 +211,24 @@ export default {
 
     pageChange(navigateTo) {
       this.navigateTo = navigateTo;
+    },
+
+    onChangeDetail(detail) {
+      // console.log(detail);
+      this.chageImage(detail);
+    },
+
+    onChangeDetailSelecbox(type, detailId) {
+      const detail = type.product_property_details.find((item) => detailId == item.id);
+      // console.log(detail);
+      this.chageImage(detail);
+    },
+
+    chageImage(detail) {
+      const productIndex = this.product.images.findIndex(
+        (p) => detail.product_image && p.id == detail.product_image.id
+      );
+      if (productIndex > -1) this.navigateTo = productIndex;
     },
   },
 };

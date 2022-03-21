@@ -113,6 +113,20 @@ class ProductPropertyDetailController extends AdminController
                             'type' => 'checkbox',
                         ],
                     ],
+                    [
+                        'view' => function ($propertyDetail) {
+
+                            return $propertyDetail->productImage ?
+                                '<img data-fancybox="gallery-a" data-src="' . $propertyDetail->productImage->avatar . '" style="width: 100px" src="' . $propertyDetail->productImage->avatar . '"></img>' :
+                                'Không chọn';;
+                        },
+                        'key' => 'product_image_id',
+                        'title' => 'Sử dụng hình ảnh',
+                        'edit' => [
+                            'type' => 'include',
+                            'path' => 'admin.custom.form-connect-field'
+                        ]
+                    ],
                     $this->getSortTemplate(__CLASS__),
                     [
                         'view' => [
@@ -315,6 +329,8 @@ class ProductPropertyDetailController extends AdminController
                 'url' => route('admin.product.property-detail', [$product->id, $productPropertyType->id, 'id_eq' => $object->id])
             ],
         ];
+
+        $object->product_id = $product->id;
 
         return parent::generateForm($request, $object);
     }
