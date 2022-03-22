@@ -532,6 +532,8 @@
     <script src="{{ asset('magic') }}/js/magic.js"></script>
     <script src="{{ asset('js') }}/admin.js"></script>
     <script src="{{ asset('site_user/fancybox/fancybox.umd.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
         @if (session('status'))
             {!! session('status') !!}

@@ -276,3 +276,5 @@ Route::get('/bill-product/active/{object}', 'Admin\BillProductController@active'
 Route::get('/bill-product/sort/{type}/{object}', 'Admin\BillProductController@actionSort');
 
 Route::get('/bill-product/put/{key}/{object}', 'Admin\BillProductController@put');
+
+Route::get('', 'Admin\IndexController@index');
