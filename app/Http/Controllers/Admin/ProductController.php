@@ -53,7 +53,7 @@ class ProductController extends AdminController
                             ],
                             'type' => 'select',
                             'map' => ['id', 'name'],
-                            'dataSource' => Category::get()
+                            'dataSource' => Category::whereNotNull('category_id')->get()
                         ],
                         'key' => 'category_id',
                         'title' => 'Danh mục',
