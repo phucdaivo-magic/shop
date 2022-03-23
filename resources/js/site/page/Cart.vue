@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-2">
     <table class="table table-bordered" v-show="show">
       <thead>
         <tr>

@@ -4,12 +4,12 @@
       <div v-if="complete">
         <BillAbout :about="about" />
       </div>
-      <div class="row" v-else>
-        <div class="col-6">
+      <div class="row flex-wrap-reverse" v-else>
+        <div class="col-md-6 mb-4">
           <h4>Thông tin giao hàng</h4>
           <Address v-model="address" @onSubmit="onSubmit" />
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
           <h4>Đơn đặt hàng của bạn</h4>
           <ListProduct @onPayment="onPayment" />
         </div>

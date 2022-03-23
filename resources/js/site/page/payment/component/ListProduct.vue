@@ -23,11 +23,12 @@
         </tr>
         <tr>
           <td colspan="4" class="text-right">
-            <div class="d-flex align-items-center justify-content-end">
-              <span class="mr-2">
-               Tổng cộng:
-              </span>
-              <h4 class="m-0">{{ price | currency("", 0) }} VND</h4>
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="/gio-hang" class="btn rounded-0 btn-light font-weight-bold">Cập nhật giỏ hàng</a>
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="mr-2"> Tổng cộng: </span>
+                <h4 class="m-0">{{ price | currency("", 0) }} VND</h4>
+              </div>
             </div>
           </td>
         </tr>

@@ -228,7 +228,7 @@
               href="/thanh-toan"
               class="rounded-0 btn btn-danger font-weight-bold text-white mt-1"
             >
-              Tiến Hành thanh toán</a
+              Tiến hành thanh toán</a
             >
           </div>
         </div>
@@ -275,7 +275,7 @@ export default {
         return {
           ...acc,
           ...cur.product_property_details.reduce((acc, cur) => {
-            acc[cur.id] = { price: Number(cur.price), name: cur.name };
+            acc[cur.id] = { price: Number(cur.price), name: cur.name || '' };
             return acc;
           }, {}),
         };
