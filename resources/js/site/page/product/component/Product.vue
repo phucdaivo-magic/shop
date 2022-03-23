@@ -40,9 +40,12 @@
 
       <div class="col-md-6">
         <slot name="about"></slot>
+        <h3 class="text-danger">{{ getPrice | currency("", 0) }} VND</h3>
         <template v-for="product_property_type in product.product_property_types">
           <div class="form-group" :key="product_property_type.id">
-            <label class="d-block">{{ product_property_type.name }}</label>
+            <label class="d-block">
+              {{ product_property_type.name }} (<span class="font-weight-bold">{{ getPriceDetail()[property[product_property_type.id]].name}}</span>)<span v-if="getPriceDetail()[property[product_property_type.id]].price">, giá chênh lệch <span class="text-danger font-weight-bold">{{ getPriceDetail()[property[product_property_type.id]].price | currency("", 0) }} VND</span></span>
+            </label>
             <!-- RADIO -->
             <template v-if="product_property_type.type == 'color_property'">
               <label
@@ -143,7 +146,9 @@
                         :name="product_property_detail.id + 'd'"
                         :value="product_property_detail.id"
                       />
-                      <span class="form-check-label">{{ product_property_detail.name }}</span>
+                      <span class="form-check-label">{{
+                        product_property_detail.name
+                      }}</span>
                     </label>
                   </div>
                 </div>
@@ -234,6 +239,7 @@ export default {
       mount: 1,
       showCart: false,
       navigateTo: 0,
+      price: 0,
     };
   },
   props: ["product"],
@@ -241,7 +247,24 @@ export default {
     console.log(this.product);
     this.initProperty();
   },
+  computed: {
+    getPrice() {
+      const priceDetail = this.getPriceDetail();
+      return Object.keys(this.property).reduce((acc, cur) => {
+        return Number(acc) + Number(priceDetail[this.property[cur]].price || 0);
+      }, this.product.price);
+    },
+  },
   methods: {
+    getPriceDetail() {
+      return this.product.product_property_types.reduce((acc, cur) => {
+        return {...acc, ...cur.product_property_details.reduce((acc, cur) => {
+          acc[cur.id] = { price: Number(cur.price),  name: cur.name };
+          return acc;
+        }, {})};
+      }, {});
+    },
+
     initProperty() {
       this.property = this.product.product_property_types.reduce((acc, cur) => {
         acc[cur.id] = cur.product_property_details[0].id;
@@ -258,6 +281,8 @@ export default {
       cart.pushCart(key, this.mount);
       this.showCart = true;
 
+      // console.log(this.property);
+
       // this.$refs.cart.loadData()
     },
 
@@ -268,19 +293,29 @@ export default {
     onChangeDetail(detail) {
       // console.log(detail);
       this.chageImage(detail);
+      // this.changePrice(detail);
     },
 
     onChangeDetailSelecbox(type, detailId) {
       const detail = type.product_property_details.find((item) => detailId == item.id);
       // console.log(detail);
       this.chageImage(detail);
+      // this.changePrice(detail);
     },
 
     chageImage(detail) {
-      const productIndex = this.product.images.findIndex(
+      const productImageIndex = this.product.images.findIndex(
         (p) => detail.product_image && p.id == detail.product_image.id
       );
-      if (productIndex > -1) this.navigateTo = productIndex;
+      if (productImageIndex > -1) this.navigateTo = productImageIndex;
+    },
+
+    changePrice(detail) {
+      // if (detail.price) {
+      //   this.price = detail.price;
+      // } else {
+      //   this.price = this.product.price;
+      // }
     },
   },
 };

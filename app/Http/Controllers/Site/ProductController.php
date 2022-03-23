@@ -113,7 +113,6 @@ class ProductController extends Controller
             if ($product) {
                 $_product = [
                     'id'    => $product['id'],
-                    'price' => $product['price'],
                     'name'  => $product['name'],
                     'slug'  => $product['slug'],
                     'mount' => $value,
@@ -127,6 +126,11 @@ class ProductController extends Controller
                     $detailId                       = $propArray[$i];
                     $_product['propertyDetail'][]   = $this->getCartDetail($product, $propId, $detailId);
                 }
+
+                $_product['price'] = collect($_product['propertyDetail'])->reduce(function ($acc, $cur) {
+                    return $acc + $cur['propertyDetailPrice'];
+                }, $product['price']);
+
                 $products[$key] = $_product;
             }
         }
@@ -144,6 +148,7 @@ class ProductController extends Controller
             'propertyTypeName'      => $property['name'],
             'propertyDetailId'      => $detail['id'],
             'propertyDetailName'    => $detail['name'],
+            'propertyDetailPrice'   => $detail['price'],
         ];
     }
 

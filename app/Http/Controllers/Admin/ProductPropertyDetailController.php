@@ -114,6 +114,16 @@ class ProductPropertyDetailController extends AdminController
                         ],
                     ],
                     [
+                        'view' => function($object) {
+                            return $object->price ? '<strong>'.getMoney($object->price).'</strong>' : 'Giá mặc định : <strong>'.getMoney($object->product->price).'</strong>';
+                        },
+                        'key' => 'price',
+                        'title' => 'Giá',
+                        'edit' => [
+                            'type' => 'number',
+                        ],
+                    ],
+                    [
                         'view' => function ($propertyDetail) {
 
                             return $propertyDetail->productImage ?
