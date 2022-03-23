@@ -14,9 +14,17 @@
       <tbody>
         <tr v-for="(product, index) in products" :key="index" v-show="product.show">
           <td width="100">
-            <a :href="`${BASE_URL}/san-pham/${product.id}-${product.slug}.html`">
-              <img :src="product.image" alt="" width="100" />
-            </a>
+            <div class="d-flex justify-content-between">
+              <a :href="`${BASE_URL}/san-pham/${product.id}-${product.slug}.html`">
+                <img :src="product.image" alt="" width="100" />
+              </a>
+              <button
+                class="btn text-danger btn-remove btn-light d-none"
+                @click="onRemove(index)"
+              >
+                <i class="pe-7s-close icon-remove"></i>
+              </button>
+            </div>
           </td>
           <td>
             {{ product.name }}
@@ -139,6 +147,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 40px;
+
   .icon-remove {
     font-size: 23px;
   }

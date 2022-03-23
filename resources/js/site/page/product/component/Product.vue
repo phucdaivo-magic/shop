@@ -44,7 +44,19 @@
         <template v-for="product_property_type in product.product_property_types">
           <div class="form-group" :key="product_property_type.id">
             <label class="d-block">
-              {{ product_property_type.name }} (<span class="font-weight-bold">{{ getPriceDetail()[property[product_property_type.id]].name}}</span>)<span v-if="getPriceDetail()[property[product_property_type.id]].price">, giá chênh lệch <span class="text-danger font-weight-bold">{{ getPriceDetail()[property[product_property_type.id]].price | currency("", 0) }} VND</span></span>
+              {{ product_property_type.name }} (<span class="font-weight-bold">{{
+                getPriceDetail()[property[product_property_type.id]]. || ''
+              }}</span
+              >)<span v-if="getPriceDetail()[property[product_property_type.id]].price"
+                >, giá chênh lệch
+                <span class="text-danger font-weight-bold"
+                  >{{
+                    getPriceDetail()[property[product_property_type.id]].price
+                      | currency("", 0)
+                  }}
+                  VND</span
+                ></span
+              >
             </label>
             <!-- RADIO -->
             <template v-if="product_property_type.type == 'color_property'">
@@ -204,19 +216,21 @@
     <Modal class="modal-body" v-if="showCart" v-model="showCart">
       <cart>
         <div slot-scope="slotProps">
-          <button
-            class="rounded-0 btn btn-primary font-weight-bold mr-2 text-white"
-            data-dismiss="modal"
-          >
-            Tiếp tục mua hàng
-          </button>
-          <a
-            v-if="slotProps.mount"
-            href="/thanh-toan"
-            class="rounded-0 btn btn-danger font-weight-bold text-white"
-          >
-            Tiến Hành thanh toán</a
-          >
+          <div class="btn-group-bot">
+            <button
+              class="rounded-0 btn btn-primary font-weight-bold mr-2 text-white mt-1"
+              data-dismiss="modal"
+            >
+              Tiếp tục mua hàng
+            </button>
+            <a
+              v-if="slotProps.mount"
+              href="/thanh-toan"
+              class="rounded-0 btn btn-danger font-weight-bold text-white mt-1"
+            >
+              Tiến Hành thanh toán</a
+            >
+          </div>
         </div>
       </cart>
     </Modal>
@@ -258,10 +272,13 @@ export default {
   methods: {
     getPriceDetail() {
       return this.product.product_property_types.reduce((acc, cur) => {
-        return {...acc, ...cur.product_property_details.reduce((acc, cur) => {
-          acc[cur.id] = { price: Number(cur.price),  name: cur.name };
-          return acc;
-        }, {})};
+        return {
+          ...acc,
+          ...cur.product_property_details.reduce((acc, cur) => {
+            acc[cur.id] = { price: Number(cur.price), name: cur.name };
+            return acc;
+          }, {}),
+        };
       }, {});
     },
 
@@ -321,7 +338,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scopped>
 .prop-radio {
   .radio-color {
     opacity: 0.6;
@@ -393,6 +410,44 @@ export default {
       &.active {
         border: 2px solid #03a9f4;
       }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  thead {
+    display: none !important;
+  }
+  td {
+    display: block;
+    border: none !important;
+    width: 100%;
+  }
+  tr {
+    margin-top: 10px;
+    border: 1px solid #eee;
+    &:nth-of-type(odd) {
+      background: #fafafa;
+    }
+  }
+
+  .btn-remove {
+    display: block !important;
+  }
+
+  .btn-group-bot {
+    display: flex;
+
+    .btn {
+      flex: 1;
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+
+  .text-center {
+    .btn-remove {
+      display: none !important;
     }
   }
 }

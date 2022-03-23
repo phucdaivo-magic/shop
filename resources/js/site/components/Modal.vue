@@ -8,10 +8,12 @@
       role="dialog"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-cart" role="document">
         <div class="modal-content rounded-0">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"><i class="pe-7s-cart mr-2" aria-hidden="true"></i>Đơn đặt hàng của bạn</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              <i class="pe-7s-cart mr-2" aria-hidden="true"></i>Đơn đặt hàng của bạn
+            </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -49,3 +51,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@media (min-width: 576px) {
+  .modal-cart {
+    max-width: 800px;
+  }
+}
+</style>
