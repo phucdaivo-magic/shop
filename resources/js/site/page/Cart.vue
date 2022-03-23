@@ -37,7 +37,7 @@
           <td class="text-right text-muted">
             {{ (product.price * product.mount) | currency("", 0) }} VND
           </td>
-          <td class="text-center">
+          <td class="text-center td-remove">
             <button class="btn text-danger btn-remove btn-light" @click="onRemove(index)">
               <i class="pe-7s-close icon-remove"></i>
             </button>

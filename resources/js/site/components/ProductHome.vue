@@ -21,11 +21,17 @@
         :adjustableHeight="false"
         :autoplay="false"
         :mouseDrag="false"
+        :perPageCustom="[
+          [320, 2],
+          [576, 3],
+          [768, 4],
+          [1199, 4],
+        ]"
       >
         <slide v-for="product in products" :key="product.id">
-        <div class="p-2">
-          <card-product :product="product"></card-product>
-        </div>
+          <div class="p-2">
+            <card-product :product="product"></card-product>
+          </div>
         </slide>
       </carousel>
     </div>

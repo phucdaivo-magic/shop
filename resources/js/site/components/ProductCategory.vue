@@ -30,7 +30,7 @@
       <div
         v-for="product in products"
         :key="product.id"
-        class="col-sm-6 col-md-6 col-lg-4"
+        class="col-6 col-sm-6 col-md-6 col-lg-4"
       >
         <card-product :product="product"></card-product>
       </div>

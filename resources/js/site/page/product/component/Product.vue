@@ -332,7 +332,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scopped>
+<style lang="scss">
 .prop-radio {
   .radio-color {
     opacity: 0.6;
@@ -422,6 +422,7 @@ export default {
   tr {
     margin-top: 10px;
     border: 1px solid #eee;
+    padding: 10px 5px;
     &:nth-of-type(odd) {
       background: #fafafa;
     }
@@ -441,10 +442,10 @@ export default {
     }
   }
 
-  .text-center {
-    .btn-remove {
-      display: none !important;
-    }
+
+
+  .text-center.td-remove {
+    display: none !important;
   }
 }
 </style>
