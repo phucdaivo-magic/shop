@@ -36,7 +36,7 @@
       </div>
     </div>
     <div>
-      <vue-infinite-loading @infinite="loadCategoryProduct">
+      <vue-infinite-loading @infinite="loadCategoryProduct" ref="infinite">
         <!-- <div slot="spinner">Đang lấy thêm sản phẩm</div> -->
         <div slot="no-more">
           <div class="alert alert-warning mt-4" role="alert">Đã hết sản phẩm.</div>
@@ -71,7 +71,7 @@ export default {
   },
 
   mounted() {
-    console.log(this.next);
+  //  this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
   },
 
   methods: {
@@ -100,6 +100,7 @@ export default {
       this.sort = sort;
       this.next_page_url = this.page_url;
       this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
+      this.$refs.infinite.stateChanger.reset();
     },
   },
 };

@@ -2133,8 +2133,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  mounted: function mounted() {
-    console.log(this.next);
+  mounted: function mounted() {//  this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
   },
   methods: {
     loadCategoryProduct: function loadCategoryProduct(_ref, page) {
@@ -2193,6 +2192,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         loaded: function loaded() {},
         complete: function complete() {}
       }, 1);
+      this.$refs.infinite.stateChanger.reset();
     }
   }
 });
@@ -16850,7 +16850,7 @@ VeeValidate$1.withValidation = withValidation;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{staticClass:"card-product",attrs:{"href":_vm.link}},[_c('div',{staticClass:"image",style:({ backgroundImage: ("url('" + _vm.avatar + "')") })},[_c('div',{staticClass:"image-list"},[(_vm.product.images.length > 1)?_vm._l((_vm.product.images.slice(0, 3)),function(image){return _c('div',{key:image.id,staticClass:"image-list-item",class:{ active: _vm.avatar == image.avatar },style:({ backgroundImage: ("url('" + (image.avatar) + "')") }),on:{"click":function($event){$event.stopPropagation();return _vm.updateAvatar(image)},"mouseenter":function($event){return _vm.updateAvatar(image)}}})}):_vm._e()],2)]),_vm._v(" "),_c('div',[_c('div',{staticClass:"name text-danger text-muted"},[_vm._v(_vm._s(_vm.product.name))]),_vm._v(" "),_c('div',{staticClass:"price text-danger"},[_vm._v(_vm._s(_vm._f("currency")(_vm.product.price || 0,"", 0))+" VND")])])])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{staticClass:"card-product",attrs:{"href":_vm.link}},[_c('div',{staticClass:"image",style:({ backgroundImage: ("url('" + _vm.avatar + "')") })},[_c('div',{staticClass:"image-list"},[(_vm.product.images.length > 1)?_vm._l((_vm.product.images.slice(0, 3)),function(image){return _c('div',{key:image.id,staticClass:"image-list-item",class:{ active: _vm.avatar == image.avatar },style:({ backgroundImage: ("url('" + (image.avatar) + "')") }),on:{"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.updateAvatar(image)},"mouseenter":function($event){return _vm.updateAvatar(image)}}})}):_vm._e()],2)]),_vm._v(" "),_c('div',[_c('div',{staticClass:"name text-danger text-muted"},[_vm._v(_vm._s(_vm.product.name))]),_vm._v(" "),_c('div',{staticClass:"price text-danger"},[_vm._v(_vm._s(_vm._f("currency")(_vm.product.price || 0,"", 0))+" VND")])])])}
 var staticRenderFns = []
 render._withStripped = true
 
@@ -16922,7 +16922,7 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"row"},[_vm._t("default"),_vm._v(" "),_c('div',{staticClass:"col-12"},[(_vm.products.length)?_c('div',{staticClass:"btn-groups"},[_c('button',{staticClass:"btn btn-ligth ml-auto d-block mb-3 btn-sort px-4",attrs:{"type":"button","data-toggle":"dropdown","aria-haspopup":"true","aria-expanded":"false"}},[_vm._v("\n          "+_vm._s(_vm.sorts[_vm.sort])+"\n          "),_c('span',{staticClass:"pe-7s-filter"})]),_vm._v(" "),_c('div',{staticClass:"dropdown-menu dropdown-menu-right"},_vm._l((_vm.sorts),function(sort,key){return _c('button',{key:key,staticClass:"dropdown-item",attrs:{"type":"button"},on:{"click":function($event){return _vm.onSort(key)}}},[_vm._v("\n            "+_vm._s(sort)+"\n          ")])}),0)]):_vm._e()]),_vm._v(" "),_vm._l((_vm.products),function(product){return _c('div',{key:product.id,staticClass:"col-sm-6 col-md-6 col-lg-4"},[_c('card-product',{attrs:{"product":product}})],1)})],2),_vm._v(" "),_c('div',[_c('vue-infinite-loading',{on:{"infinite":_vm.loadCategoryProduct}},[_c('div',{attrs:{"slot":"no-more"},slot:"no-more"},[_c('div',{staticClass:"alert alert-warning mt-4",attrs:{"role":"alert"}},[_vm._v("Đã hết sản phẩm.")])]),_vm._v(" "),_c('div',{attrs:{"slot":"no-results"},slot:"no-results"},[_c('div',{staticClass:"alert alert-warning mt-4",attrs:{"role":"alert"}},[_vm._v("\n          Hiện tại máy chủ đang bận, vui lòng tải lại trang.\n        ")])])])],1)])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"row"},[_vm._t("default"),_vm._v(" "),_c('div',{staticClass:"col-12"},[(_vm.products.length)?_c('div',{staticClass:"btn-groups"},[_c('button',{staticClass:"btn btn-ligth ml-auto d-block mb-3 btn-sort px-4",attrs:{"type":"button","data-toggle":"dropdown","aria-haspopup":"true","aria-expanded":"false"}},[_vm._v("\n          "+_vm._s(_vm.sorts[_vm.sort])+"\n          "),_c('span',{staticClass:"pe-7s-filter"})]),_vm._v(" "),_c('div',{staticClass:"dropdown-menu dropdown-menu-right"},_vm._l((_vm.sorts),function(sort,key){return _c('button',{key:key,staticClass:"dropdown-item",attrs:{"type":"button"},on:{"click":function($event){return _vm.onSort(key)}}},[_vm._v("\n            "+_vm._s(sort)+"\n          ")])}),0)]):_vm._e()]),_vm._v(" "),_vm._l((_vm.products),function(product){return _c('div',{key:product.id,staticClass:"col-sm-6 col-md-6 col-lg-4"},[_c('card-product',{attrs:{"product":product}})],1)})],2),_vm._v(" "),_c('div',[_c('vue-infinite-loading',{ref:"infinite",on:{"infinite":_vm.loadCategoryProduct}},[_c('div',{attrs:{"slot":"no-more"},slot:"no-more"},[_c('div',{staticClass:"alert alert-warning mt-4",attrs:{"role":"alert"}},[_vm._v("Đã hết sản phẩm.")])]),_vm._v(" "),_c('div',{attrs:{"slot":"no-results"},slot:"no-results"},[_c('div',{staticClass:"alert alert-warning mt-4",attrs:{"role":"alert"}},[_vm._v("\n          Hiện tại máy chủ đang bận, vui lòng tải lại trang.\n        ")])])])],1)])}
 var staticRenderFns = []
 render._withStripped = true
 

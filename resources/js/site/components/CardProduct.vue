@@ -9,7 +9,7 @@
             :style="{ backgroundImage: `url('${image.avatar}')` }"
             :class="{ active: avatar == image.avatar }"
             class="image-list-item"
-            @click.stop="updateAvatar(image)"
+            @click.stop.prevent="updateAvatar(image)"
             @mouseenter="updateAvatar(image)"
           ></div>
         </template>
