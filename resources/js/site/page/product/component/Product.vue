@@ -45,7 +45,7 @@
           <div class="form-group" :key="product_property_type.id">
             <label class="d-block">
               {{ product_property_type.name }} (<span class="font-weight-bold">{{
-                getPriceDetail()[property[product_property_type.id]]. || ''
+                getPriceDetail()[property[product_property_type.id]].name || ''
               }}</span
               >)<span v-if="getPriceDetail()[property[product_property_type.id]].price"
                 >, giá chênh lệch
