@@ -44,19 +44,22 @@
         <template v-for="product_property_type in product.product_property_types">
           <div class="form-group" :key="product_property_type.id">
             <label class="d-block">
-              {{ product_property_type.name }} (<span class="font-weight-bold">{{
-                getPriceDetail()[property[product_property_type.id]].name || ''
-              }}</span
-              >)<span v-if="getPriceDetail()[property[product_property_type.id]].price"
-                >, giá chênh lệch
-                <span class="text-danger font-weight-bold"
-                  >{{
-                    getPriceDetail()[property[product_property_type.id]].price
-                      | currency("", 0)
-                  }}
-                  VND</span
-                ></span
-              >
+              {{ product_property_type.name }}:
+              <template>
+                <span class="font-weight-bold">{{
+                  getPriceDetail[property[product_property_type.id]].name
+                }}</span>
+                <span v-if="getPriceDetail[property[product_property_type.id]].price"
+                  >, giá chênh lệch
+                  <span class="text-danger font-weight-bold"
+                    >{{
+                      getPriceDetail[property[product_property_type.id]].price
+                        | currency("", 0)
+                    }}
+                    VND</span
+                  ></span
+                >
+              </template>
             </label>
             <!-- RADIO -->
             <template v-if="product_property_type.type == 'color_property'">
@@ -257,31 +260,31 @@ export default {
     };
   },
   props: ["product"],
-  mounted() {
+  created() {
     console.log(this.product);
     this.initProperty();
   },
   computed: {
     getPrice() {
-      const priceDetail = this.getPriceDetail();
+      const priceDetail = this.getPriceDetail;
       return Object.keys(this.property).reduce((acc, cur) => {
         return Number(acc) + Number(priceDetail[this.property[cur]].price || 0);
       }, this.product.price);
     },
-  },
-  methods: {
+
     getPriceDetail() {
       return this.product.product_property_types.reduce((acc, cur) => {
         return {
           ...acc,
           ...cur.product_property_details.reduce((acc, cur) => {
-            acc[cur.id] = { price: Number(cur.price), name: cur.name || '' };
+            acc[cur.id] = { price: Number(cur.price), name: cur.name || "" };
             return acc;
           }, {}),
         };
       }, {});
     },
-
+  },
+  methods: {
     initProperty() {
       this.property = this.product.product_property_types.reduce((acc, cur) => {
         acc[cur.id] = cur.product_property_details[0].id;
@@ -310,14 +313,12 @@ export default {
     onChangeDetail(detail) {
       // console.log(detail);
       this.chageImage(detail);
-      // this.changePrice(detail);
     },
 
     onChangeDetailSelecbox(type, detailId) {
       const detail = type.product_property_details.find((item) => detailId == item.id);
       // console.log(detail);
       this.chageImage(detail);
-      // this.changePrice(detail);
     },
 
     chageImage(detail) {
@@ -327,13 +328,6 @@ export default {
       if (productImageIndex > -1) this.navigateTo = productImageIndex;
     },
 
-    changePrice(detail) {
-      // if (detail.price) {
-      //   this.price = detail.price;
-      // } else {
-      //   this.price = this.product.price;
-      // }
-    },
   },
 };
 </script>
@@ -342,11 +336,13 @@ export default {
 .prop-radio {
   .radio-color {
     opacity: 0.6;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    //border: 1px solid rgba(0, 0, 0, 0.1);
     width: 30px;
     height: 30px;
     transition: 0.3s;
     cursor: pointer;
+    border-radius: 100px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.4);
   }
 
   .radio-color:hover {
@@ -355,7 +351,7 @@ export default {
 
   .radio:checked + .radio-color {
     opacity: 1 !important;
-    border: 2px solid #000 !important;
+    border: 1px solid #000 !important;
   }
 }
 .prop-image-box {

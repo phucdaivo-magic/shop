@@ -78,7 +78,7 @@ export default {
       submitting: false
     };
   },
-  mounted() {
+  created() {
     this.address = this.value;
   },
   watch: {

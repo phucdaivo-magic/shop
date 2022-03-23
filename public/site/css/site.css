@@ -81,6 +81,34 @@ body {
 .left-menu li a {
   text-decoration: none;
   color: #333;
+  padding-left: 20px;
+  position: relative;
+}
+
+.left-menu li a:before {
+  content: "";
+  display: block;
+  width: 14px;
+  top: 5px;
+  height: 14px;
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 100px;
+  position: absolute;
+  left: 0;
+}
+
+.left-menu li a.active:after {
+  content: "";
+  display: block;
+  width: 12px;
+  top: 6px;
+  height: 12px;
+  background: #222;
+  border: 2px solid #fff;
+  border-radius: 100px;
+  position: absolute;
+  left: 1px;
 }
 
 .left-menu ul {

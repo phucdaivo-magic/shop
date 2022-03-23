@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td colspan="4" class="text-right">
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between flex-column">
               <a href="/gio-hang" class="btn rounded-0 btn-light font-weight-bold">Cập nhật giỏ hàng</a>
               <div class="d-flex align-items-center justify-content-between">
                 <span class="mr-2"> Tổng cộng: </span>
@@ -71,7 +71,7 @@ export default {
         }, 0);
     },
   },
-  mounted() {
+  created() {
     this.loadData();
   },
   methods: {

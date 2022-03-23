@@ -97,7 +97,7 @@ export default {
         }, 0);
     },
   },
-  mounted() {
+  created() {
     this.loadData();
   },
   methods: {

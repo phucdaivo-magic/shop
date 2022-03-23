@@ -2478,7 +2478,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, 0);
     }
   },
-  mounted: function mounted() {
+  created: function created() {
     this.loadData();
   },
   methods: {
@@ -2551,8 +2551,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -2793,7 +2791,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       submitting: false
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     this.address = this.value;
   },
   watch: {
@@ -3043,7 +3041,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, 0);
     }
   },
-  mounted: function mounted() {
+  created: function created() {
     this.loadData();
   },
   methods: {
@@ -3356,6 +3354,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3374,7 +3375,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   props: ["product"],
-  mounted: function mounted() {
+  created: function created() {
     console.log(this.product);
     this.initProperty();
   },
@@ -3382,24 +3383,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getPrice: function getPrice() {
       var _this = this;
 
-      var priceDetail = this.getPriceDetail();
+      var priceDetail = this.getPriceDetail;
       return Object.keys(this.property).reduce(function (acc, cur) {
         return Number(acc) + Number(priceDetail[_this.property[cur]].price || 0);
       }, this.product.price);
-    }
-  },
-  methods: {
+    },
     getPriceDetail: function getPriceDetail() {
       return this.product.product_property_types.reduce(function (acc, cur) {
         return _objectSpread(_objectSpread({}, acc), cur.product_property_details.reduce(function (acc, cur) {
           acc[cur.id] = {
             price: Number(cur.price),
-            name: cur.name || ''
+            name: cur.name || ""
           };
           return acc;
         }, {}));
       }, {});
-    },
+    }
+  },
+  methods: {
     initProperty: function initProperty() {
       this.property = this.product.product_property_types.reduce(function (acc, cur) {
         acc[cur.id] = cur.product_property_details[0].id;
@@ -3422,26 +3423,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     onChangeDetail: function onChangeDetail(detail) {
       // console.log(detail);
-      this.chageImage(detail); // this.changePrice(detail);
+      this.chageImage(detail);
     },
     onChangeDetailSelecbox: function onChangeDetailSelecbox(type, detailId) {
       var detail = type.product_property_details.find(function (item) {
         return detailId == item.id;
       }); // console.log(detail);
 
-      this.chageImage(detail); // this.changePrice(detail);
+      this.chageImage(detail);
     },
     chageImage: function chageImage(detail) {
       var productImageIndex = this.product.images.findIndex(function (p) {
         return detail.product_image && p.id == detail.product_image.id;
       });
       if (productImageIndex > -1) this.navigateTo = productImageIndex;
-    },
-    changePrice: function changePrice(detail) {// if (detail.price) {
-      //   this.price = detail.price;
-      // } else {
-      //   this.price = this.product.price;
-      // }
     }
   }
 });
@@ -3574,7 +3569,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, ".prop-radio .radio-color {\n  opacity: 0.6;\n  border: 1px solid rgba(0, 0, 0, 0.1);\n  width: 30px;\n  height: 30px;\n  transition: 0.3s;\n  cursor: pointer;\n}\n.prop-radio .radio-color:hover {\n  opacity: 0.9;\n}\n.prop-radio .radio:checked + .radio-color {\n  opacity: 1 !important;\n  border: 2px solid #000 !important;\n}\n.prop-image-box .radio:checked + .prop-image {\n  border-color: #000 !important;\n}\n.prop-image-box .prop-image {\n  padding: 10px;\n  height: 70px;\n  width: 100%;\n  cursor: pointer;\n  border: 2px solid #eee;\n  background-size: cover;\n  background-position: center;\n  text-shadow: 0 0 3px black;\n  font-weight: bold;\n  color: #fff;\n}\n.slide-image {\n  padding-top: 120%;\n  background-position: top;\n  background-size: cover;\n  position: relative;\n}\n.VueCarousel-navigation-button.VueCarousel-navigation-next {\n  background: #eee;\n}\n.cs-carousel {\n  display: flex;\n}\n.cs-carousel .cs-carousel-main {\n  width: calc(100% - 60px);\n}\n.cs-carousel .cs-carousel-images {\n  width: 60px;\n}\n.cs-carousel .cs-carousel-images .image-item {\n  height: 50px;\n  width: 50px;\n  margin: 0 5px 5px;\n  cursor: pointer;\n  background-position: top;\n  background-size: cover;\n  position: relative;\n  transition: 0.1s;\n  border: 2px solid #fff;\n}\n.cs-carousel .cs-carousel-images .image-item:hover, .cs-carousel .cs-carousel-images .image-item.active {\n  border: 2px solid #03a9f4;\n}\n@media (max-width: 576px) {\nthead {\n    display: none !important;\n}\ntd {\n    display: block;\n    border: none !important;\n    width: 100%;\n}\ntr {\n    margin-top: 10px;\n    border: 1px solid #eee;\n}\ntr:nth-of-type(odd) {\n    background: #fafafa;\n}\n.btn-remove {\n    display: block !important;\n}\n.btn-group-bot {\n    display: flex;\n}\n.btn-group-bot .btn {\n    flex: 1;\n    margin: 0;\n    font-size: 12px;\n}\n.text-center .btn-remove {\n    display: none !important;\n}\n}", ""]);
+exports.push([module.i, ".prop-radio .radio-color {\n  opacity: 0.6;\n  width: 30px;\n  height: 30px;\n  transition: 0.3s;\n  cursor: pointer;\n  border-radius: 100px;\n  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.4);\n}\n.prop-radio .radio-color:hover {\n  opacity: 0.9;\n}\n.prop-radio .radio:checked + .radio-color {\n  opacity: 1 !important;\n  border: 1px solid #000 !important;\n}\n.prop-image-box .radio:checked + .prop-image {\n  border-color: #000 !important;\n}\n.prop-image-box .prop-image {\n  padding: 10px;\n  height: 70px;\n  width: 100%;\n  cursor: pointer;\n  border: 2px solid #eee;\n  background-size: cover;\n  background-position: center;\n  text-shadow: 0 0 3px black;\n  font-weight: bold;\n  color: #fff;\n}\n.slide-image {\n  padding-top: 120%;\n  background-position: top;\n  background-size: cover;\n  position: relative;\n}\n.VueCarousel-navigation-button.VueCarousel-navigation-next {\n  background: #eee;\n}\n.cs-carousel {\n  display: flex;\n}\n.cs-carousel .cs-carousel-main {\n  width: calc(100% - 60px);\n}\n.cs-carousel .cs-carousel-images {\n  width: 60px;\n}\n.cs-carousel .cs-carousel-images .image-item {\n  height: 50px;\n  width: 50px;\n  margin: 0 5px 5px;\n  cursor: pointer;\n  background-position: top;\n  background-size: cover;\n  position: relative;\n  transition: 0.1s;\n  border: 2px solid #fff;\n}\n.cs-carousel .cs-carousel-images .image-item:hover, .cs-carousel .cs-carousel-images .image-item.active {\n  border: 2px solid #03a9f4;\n}\n@media (max-width: 576px) {\nthead {\n    display: none !important;\n}\ntd {\n    display: block;\n    border: none !important;\n    width: 100%;\n}\ntr {\n    margin-top: 10px;\n    border: 1px solid #eee;\n}\ntr:nth-of-type(odd) {\n    background: #fafafa;\n}\n.btn-remove {\n    display: block !important;\n}\n.btn-group-bot {\n    display: flex;\n}\n.btn-group-bot .btn {\n    flex: 1;\n    margin: 0;\n    font-size: 12px;\n}\n.text-center .btn-remove {\n    display: none !important;\n}\n}", ""]);
 
 // exports
 
@@ -17068,7 +17063,7 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"container"},[(_vm.complete)?_c('div',[_c('BillAbout',{attrs:{"about":_vm.about}})],1):_c('div',{staticClass:"row flex-wrap-reverse"},[_c('div',{staticClass:"col-md-6 mb-4"},[_c('h4',[_vm._v("Thông tin giao hàng")]),_vm._v(" "),_c('Address',{on:{"onSubmit":_vm.onSubmit},model:{value:(_vm.address),callback:function ($$v) {_vm.address=$$v},expression:"address"}})],1),_vm._v(" "),_c('div',{staticClass:"col-md-6"},[_c('h4',[_vm._v("Đơn đặt hàng của bạn")]),_vm._v(" "),_c('ListProduct',{on:{"onPayment":_vm.onPayment}})],1)])])])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.complete)?_c('div',[_c('BillAbout',{attrs:{"about":_vm.about}})],1):_c('div',{staticClass:"row flex-wrap-reverse"},[_c('div',{staticClass:"col-md-6 mb-4"},[_c('h4',[_vm._v("Thông tin giao hàng")]),_vm._v(" "),_c('Address',{on:{"onSubmit":_vm.onSubmit},model:{value:(_vm.address),callback:function ($$v) {_vm.address=$$v},expression:"address"}})],1),_vm._v(" "),_c('div',{staticClass:"col-md-6"},[_c('h4',[_vm._v("Đơn đặt hàng của bạn")]),_vm._v(" "),_c('ListProduct',{on:{"onPayment":_vm.onPayment}})],1)])])}
 var staticRenderFns = []
 render._withStripped = true
 
@@ -17124,7 +17119,7 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('table',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"table table-bordered"},[_vm._m(0),_vm._v(" "),_c('tbody',[_vm._l((_vm.products),function(product,index){return _c('tr',{directives:[{name:"show",rawName:"v-show",value:(product.show),expression:"product.show"}],key:index},[_c('td',{attrs:{"width":"100"}},[_c('img',{attrs:{"src":product.image,"alt":"","width":"100"}})]),_vm._v(" "),_c('td',[_vm._v("\n          "+_vm._s(product.name)+" "),_c('strong',[_vm._v("x"+_vm._s(product.mount))]),_vm._v(" "),_c('Property',{attrs:{"property":product.propertyDetail}})],1),_vm._v(" "),_c('td',{staticClass:"text-right text-muted"},[_vm._v("\n          "+_vm._s(_vm._f("currency")((product.price * product.mount),"", 0))+" VND\n        ")])])}),_vm._v(" "),_c('tr',[_c('td',{staticClass:"text-right",attrs:{"colspan":"4"}},[_c('div',{staticClass:"d-flex align-items-center justify-content-between"},[_c('a',{staticClass:"btn rounded-0 btn-light font-weight-bold",attrs:{"href":"/gio-hang"}},[_vm._v("Cập nhật giỏ hàng")]),_vm._v(" "),_c('div',{staticClass:"d-flex align-items-center justify-content-between"},[_c('span',{staticClass:"mr-2"},[_vm._v(" Tổng cộng: ")]),_vm._v(" "),_c('h4',{staticClass:"m-0"},[_vm._v(_vm._s(_vm._f("currency")(_vm.price,"", 0))+" VND")])])])])])],2)])])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('table',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"}],staticClass:"table table-bordered"},[_vm._m(0),_vm._v(" "),_c('tbody',[_vm._l((_vm.products),function(product,index){return _c('tr',{directives:[{name:"show",rawName:"v-show",value:(product.show),expression:"product.show"}],key:index},[_c('td',{attrs:{"width":"100"}},[_c('img',{attrs:{"src":product.image,"alt":"","width":"100"}})]),_vm._v(" "),_c('td',[_vm._v("\n          "+_vm._s(product.name)+" "),_c('strong',[_vm._v("x"+_vm._s(product.mount))]),_vm._v(" "),_c('Property',{attrs:{"property":product.propertyDetail}})],1),_vm._v(" "),_c('td',{staticClass:"text-right text-muted"},[_vm._v("\n          "+_vm._s(_vm._f("currency")((product.price * product.mount),"", 0))+" VND\n        ")])])}),_vm._v(" "),_c('tr',[_c('td',{staticClass:"text-right",attrs:{"colspan":"4"}},[_c('div',{staticClass:"d-flex align-items-center justify-content-between flex-column"},[_c('a',{staticClass:"btn rounded-0 btn-light font-weight-bold",attrs:{"href":"/gio-hang"}},[_vm._v("Cập nhật giỏ hàng")]),_vm._v(" "),_c('div',{staticClass:"d-flex align-items-center justify-content-between"},[_c('span',{staticClass:"mr-2"},[_vm._v(" Tổng cộng: ")]),_vm._v(" "),_c('h4',{staticClass:"m-0"},[_vm._v(_vm._s(_vm._f("currency")(_vm.price,"", 0))+" VND")])])])])])],2)])])}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Sản phẩm")]),_vm._v(" "),_c('th'),_vm._v(" "),_c('th',{staticClass:"text-right"},[_vm._v("Tổng cộng")])])])}]
 render._withStripped = true
 
@@ -17142,7 +17137,7 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col-md-5"},[_c('div',{staticClass:"cs-carousel"},[_c('div',{staticClass:"cs-carousel-images"},[_c('div',_vm._l((_vm.product.images),function(image,key){return _c('label',{key:key,staticClass:"image-item",class:{ active: key == _vm.navigateTo },style:({ backgroundImage: ("url('" + (image.avatar) + "')") }),attrs:{"name":"navigateTo"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.navigateTo),expression:"navigateTo"}],attrs:{"hidden":"","type":"radio"},domProps:{"value":key,"checked":_vm._q(_vm.navigateTo,key)},on:{"change":function($event){_vm.navigateTo=key}}})])}),0)]),_vm._v(" "),_c('carousel',{staticClass:"cs-carousel-main",attrs:{"navigateTo":_vm.navigateTo,"paginationEnabled":false,"perPage":1,"loop":true,"navigationEnabled":false},on:{"page-change":_vm.pageChange}},_vm._l((_vm.product.images),function(image){return _c('slide',{key:image.id},[_c('div',{staticClass:"slide-image",style:({ backgroundImage: ("url('" + (image.avatar) + "')") })})])}),1)],1)]),_vm._v(" "),_c('div',{staticClass:"col-md-6"},[_vm._t("about"),_vm._v(" "),_c('h3',{staticClass:"text-danger"},[_vm._v(_vm._s(_vm._f("currency")(_vm.getPrice,"", 0))+" VND")]),_vm._v(" "),_vm._l((_vm.product.product_property_types),function(product_property_type){return [_c('div',{key:product_property_type.id,staticClass:"form-group"},[_c('label',{staticClass:"d-block"},[_vm._v("\n            "+_vm._s(product_property_type.name)+" ("),_c('span',{staticClass:"font-weight-bold"},[_vm._v(_vm._s(_vm.getPriceDetail()[_vm.property[product_property_type.id]].name || ''))]),_vm._v(")"),(_vm.getPriceDetail()[_vm.property[product_property_type.id]].price)?_c('span',[_vm._v(", giá chênh lệch\n              "),_c('span',{staticClass:"text-danger font-weight-bold"},[_vm._v(_vm._s(_vm._f("currency")(_vm.getPriceDetail()[_vm.property[product_property_type.id]].price,"", 0))+"\n                VND")])]):_vm._e()]),_vm._v(" "),(product_property_type.type == 'color_property')?_vm._l((product_property_type.product_property_details),function(product_property_detail,key){return _c('label',{key:key,staticClass:"prop-radio",attrs:{"title":product_property_detail.name},on:{"click":function($event){return _vm.onChangeDetail(product_property_detail)}}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.property[product_property_type.id]),expression:"property[product_property_type.id]"}],staticClass:"radio",attrs:{"name":product_property_detail.id + 'd',"type":"radio","hidden":""},domProps:{"value":product_property_detail.id,"checked":_vm._q(_vm.property[product_property_type.id],product_property_detail.id)},on:{"change":function($event){return _vm.$set(_vm.property, product_property_type.id, product_property_detail.id)}}}),_vm._v(" "),_c('div',{staticClass:"radio-color mr-1",style:({ background: product_property_detail.value })})])}):(
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col-md-5"},[_c('div',{staticClass:"cs-carousel"},[_c('div',{staticClass:"cs-carousel-images"},[_c('div',_vm._l((_vm.product.images),function(image,key){return _c('label',{key:key,staticClass:"image-item",class:{ active: key == _vm.navigateTo },style:({ backgroundImage: ("url('" + (image.avatar) + "')") }),attrs:{"name":"navigateTo"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.navigateTo),expression:"navigateTo"}],attrs:{"hidden":"","type":"radio"},domProps:{"value":key,"checked":_vm._q(_vm.navigateTo,key)},on:{"change":function($event){_vm.navigateTo=key}}})])}),0)]),_vm._v(" "),_c('carousel',{staticClass:"cs-carousel-main",attrs:{"navigateTo":_vm.navigateTo,"paginationEnabled":false,"perPage":1,"loop":true,"navigationEnabled":false},on:{"page-change":_vm.pageChange}},_vm._l((_vm.product.images),function(image){return _c('slide',{key:image.id},[_c('div',{staticClass:"slide-image",style:({ backgroundImage: ("url('" + (image.avatar) + "')") })})])}),1)],1)]),_vm._v(" "),_c('div',{staticClass:"col-md-6"},[_vm._t("about"),_vm._v(" "),_c('h3',{staticClass:"text-danger"},[_vm._v(_vm._s(_vm._f("currency")(_vm.getPrice,"", 0))+" VND")]),_vm._v(" "),_vm._l((_vm.product.product_property_types),function(product_property_type){return [_c('div',{key:product_property_type.id,staticClass:"form-group"},[_c('label',{staticClass:"d-block"},[_vm._v("\n            "+_vm._s(product_property_type.name)+":\n            "),[_c('span',{staticClass:"font-weight-bold"},[_vm._v(_vm._s(_vm.getPriceDetail[_vm.property[product_property_type.id]].name))]),_vm._v(" "),(_vm.getPriceDetail[_vm.property[product_property_type.id]].price)?_c('span',[_vm._v(", giá chênh lệch\n                "),_c('span',{staticClass:"text-danger font-weight-bold"},[_vm._v(_vm._s(_vm._f("currency")(_vm.getPriceDetail[_vm.property[product_property_type.id]].price,"", 0))+"\n                  VND")])]):_vm._e()]],2),_vm._v(" "),(product_property_type.type == 'color_property')?_vm._l((product_property_type.product_property_details),function(product_property_detail,key){return _c('label',{key:key,staticClass:"prop-radio",attrs:{"title":product_property_detail.name},on:{"click":function($event){return _vm.onChangeDetail(product_property_detail)}}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.property[product_property_type.id]),expression:"property[product_property_type.id]"}],staticClass:"radio",attrs:{"name":product_property_detail.id + 'd',"type":"radio","hidden":""},domProps:{"value":product_property_detail.id,"checked":_vm._q(_vm.property[product_property_type.id],product_property_detail.id)},on:{"change":function($event){return _vm.$set(_vm.property, product_property_type.id, product_property_detail.id)}}}),_vm._v(" "),_c('div',{staticClass:"radio-color mr-1",style:({ background: product_property_detail.value })})])}):(
               product_property_type.type_element == 'selecbox' &&
               product_property_type.type == 'text_property'
             )?[_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.property[product_property_type.id]),expression:"property[product_property_type.id]"}],staticClass:"form-control rounded-0",on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.property, product_property_type.id, $event.target.multiple ? $$selectedVal : $$selectedVal[0])},function($event){return _vm.onChangeDetailSelecbox(

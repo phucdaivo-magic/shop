@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="container">
       <div v-if="complete">
         <BillAbout :about="about" />
       </div>
@@ -23,7 +22,6 @@
     <!-- <div>
     Vui lòng thêm sản phẩm vào giỏ hàng
   </div> -->
-  </div>
 </template>
 
 <script>
