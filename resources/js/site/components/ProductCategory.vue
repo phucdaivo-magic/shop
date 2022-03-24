@@ -67,6 +67,7 @@ export default {
         "price-desc": "Giá từ cao xuống thấp",
         new: "Mới nhất",
       },
+      loading: true
     };
   },
 
@@ -76,7 +77,7 @@ export default {
 
   methods: {
     async loadCategoryProduct({ loaded, complete }, page) {
-      if (this.next_page_url) {
+      if (this.next_page_url && loading) {
         const { data } = await axios.get(this.next_page_url, {
           params: {
             sort: this.sort,
@@ -89,10 +90,12 @@ export default {
         this.page++;
         if (page == 1) this.products = [];
         this.products = [...this.products, ...data.data];
+        this.loading = false;
         loaded();
       } else {
         // TODO errors
         complete();
+        this.loading = false;
       }
     },
 

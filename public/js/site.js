@@ -2157,7 +2157,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         price: "Giá từ thấp tới cao",
         "price-desc": "Giá từ cao xuống thấp",
         "new": "Mới nhất"
-      }
+      },
+      loading: true
     };
   },
   created: function created() {
@@ -2179,8 +2180,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 loaded = _ref.loaded, complete = _ref.complete;
 
-                if (!_this.next_page_url) {
-                  _context.next = 13;
+                if (!(_this.next_page_url && loading)) {
+                  _context.next = 14;
                   break;
                 }
 
@@ -2200,15 +2201,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.page++;
                 if (page == 1) _this.products = [];
                 _this.products = [].concat(_toConsumableArray(_this.products), _toConsumableArray(data.data));
+                _this.loading = false;
                 loaded();
-                _context.next = 14;
+                _context.next = 16;
                 break;
 
-              case 13:
+              case 14:
                 // TODO errors
                 complete();
+                _this.loading = false;
 
-              case 14:
+              case 16:
               case "end":
                 return _context.stop();
             }
