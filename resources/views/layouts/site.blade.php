@@ -27,14 +27,14 @@ $categoryList = App\Models\Category::where('home', true)
             <div class="header position-relative">
                 <div class="logo-box d-flex justify-content-center align-items-center">
                     <div class="text-danger">
-                    <div class="pe-7s-home text-danger"></div>LOGO
+                        <div class="pe-7s-home text-danger"></div>LOGO
                     </div>
                 </div>
                 <div class="container d-flex justify-content-end align-items-center">
                     <button class="navbar-toggler mr-auto ml-0 position-relative d-lg-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                         <span class="pe-7s-menu"></span>
+                        <span class="pe-7s-menu"></span>
                     </button>
-                    <header-icon icon="pe-7s-like" :count="favorite" :link="'{{ route('site.cart') }}'"></header-icon>
+                    <header-icon icon="pe-7s-like" :count="favorite" :link="'{{ route('site.favorite') }}'"></header-icon>
                     <header-icon icon="pe-7s-shopbag" :count="cart" :link="'{{ route('site.cart') }}'"></header-icon>
                 </div>
             </div>
@@ -57,7 +57,7 @@ $categoryList = App\Models\Category::where('home', true)
                                 </a>
                                 <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdown">
                                     @foreach ($item->categories as $itemChild)
-                                    <a class="dropdown-item"  href="{{ ($itemChild->url) ? $itemChild->url : route('site.category.parent',  [$item->slug, $itemChild->slug]) }}">
+                                    <a class="dropdown-item" href="{{ ($itemChild->url) ? $itemChild->url : route('site.category.parent',  [$item->slug, $itemChild->slug]) }}">
                                         {{ $itemChild->name }}
                                     </a>
                                     @endforeach
@@ -97,7 +97,8 @@ $categoryList = App\Models\Category::where('home', true)
         </div>
     </div>
     <script>
-        window.BASE_URL = '{{ url('') }}';
+        window.BASE_URL = '{{ url('
+        ') }}';
     </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

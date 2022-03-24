@@ -1,6 +1,14 @@
 <template>
   <a :href="link" class="card-product">
     <div class="image" :style="{ backgroundImage: `url('${avatar}')` }">
+      <div
+        class="cart-favorite mx-2 fa"
+        :class="{
+          'fa-heart-o': !isFavorite,
+          'fa-heart': isFavorite,
+        }"
+        @click.stop.prevent="updateFavorite"
+      ></div>
       <div class="image-list">
         <template v-if="product.images.length > 1">
           <div
@@ -23,11 +31,14 @@
 </template>
 
 <script>
+import favorite from "./../utils/favorite";
+
 export default {
   props: ["product"],
   data() {
     return {
       avatar: this.product.avatar,
+      isFavorite: favorite.getListFavorite().includes(String(this.product.id)),
     };
   },
   computed: {
@@ -42,6 +53,18 @@ export default {
     updateAvatar(image) {
       this.avatar = image.avatar;
     },
+
+    updateFavorite() {
+      if (this.isFavorite) {
+        favorite.removeFavorite(this.product.id);
+        this.isFavorite = false;
+      } else {
+        favorite.pushFavorite(this.product.id);
+        this.isFavorite = true;
+      }
+
+      this.$root.updateFavorite();
+    },
   },
 };
 </script>
@@ -54,6 +77,14 @@ export default {
   text-decoration: none;
   display: block;
 
+  &:hover {
+    .image {
+      .image-list {
+        background: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
   .image {
     padding-top: 120%;
     background-position: top;
@@ -61,7 +92,7 @@ export default {
     position: relative;
 
     .image-list {
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.05));
       height: 100%;
       width: 100%;
       position: absolute;
@@ -70,10 +101,15 @@ export default {
       display: flex;
       justify-content: center;
       align-items: flex-end;
+      transition: all 0.5s;
 
       .image-list-item {
         width: 60px;
         height: 60px;
+        @media (max-width: 993px) {
+          width: 40px;
+          height: 40px;
+        }
         margin: 15px 5px;
         background-position: center;
         background-size: cover;
@@ -84,6 +120,23 @@ export default {
         &.active {
           border: 1px solid #ddd;
         }
+      }
+    }
+    .cart-favorite {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 10px;
+      font-size: 20px;
+      color: #fff;
+      z-index: 100;
+      transition: all 0.5s;
+
+      &:hover {
+        color: #c70909;
+      }
+      &.fa-heart {
+        color: #c70909;
       }
     }
   }

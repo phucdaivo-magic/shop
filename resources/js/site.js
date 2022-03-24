@@ -7,10 +7,12 @@ import Product from "./site/page/product/component/Product"
 import CardProduct from "./site/components/CardProduct"
 import ProductCategory from "./site/components/ProductCategory"
 import ProductHome from "./site/components/ProductHome"
+import ProductFavorite from "./site/components/ProductFavorite"
 import HeaderIcon from "./site/components/HeaderIcon"
 import InfiniteLoading from "vue-infinite-loading";
 import VueCarousel from 'vue-carousel';
 import cart from "./site/utils/cart";
+import favorite from "./site/utils/favorite";
 
 
 // require('../sass/site.scss')
@@ -26,6 +28,7 @@ Vue.component('payment', Payment)
 Vue.component('product-category', ProductCategory)
 Vue.component('product-home', ProductHome)
 Vue.component('header-icon', HeaderIcon)
+Vue.component('product-favorite', ProductFavorite)
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   if (document.getElementById('app')) {
@@ -52,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       data() {
         return {
           cart: cart.getCartNum(),
-          favorite: 0
+          favorite: favorite.getFavoriteNum(),
         }
       },
       created() {
@@ -61,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
       methods: {
         updateCart() {
           this.cart = cart.getCartNum();
+        },
+
+        updateFavorite() {
+          this.favorite = favorite.getFavoriteNum();
         }
       }
       // render: h => h(Payment),

@@ -32,6 +32,7 @@ Auth::routes();
 
 Route::get('/', 'Site\HomeController@index')->name('site.index');
 
+Route::get('/san-pham-yeu-thich', 'Site\FavoriteController@index')->name('site.favorite');
 Route::get('/san-pham', 'Site\ProductController@index')->name('site.product');
 Route::get('/lien-he.html', 'Site\ContactController@index')->name('site.contact');
 Route::get('/san-pham/{product}-{slug}.html', 'Site\ProductController@detail')->name('site.product.detail');
@@ -46,11 +47,11 @@ Route::get('{category}', 'Site\CategoryController@category')->name('site.categor
 Route::get('/{categoryParent}/{category}', 'Site\CategoryController@categoryParent')->name('site.category.parent');
 
 
-
 // API
 Route::post('/payment', 'Site\ProductController@storePayment')->name('site.payment.post');
 Route::post('/list-cart', 'Site\ProductController@listCart')->name('site.cart.add');
 Route::get('/product/all/list', 'Site\ProductController@productList')->name('site.product.all');
 Route::get('/category/{category}/products', 'Site\CategoryController@categoryList')->name('site.category.product');
 Route::get('/trademark/{trademark}/products', 'Site\TrademarkController@trademarkList')->name('site.trademark.product');
+Route::get('/favorite/list/products', 'Site\FavoriteController@favoriteList')->name('site.favorite.product');
 
