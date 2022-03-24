@@ -70,8 +70,8 @@ export default {
     };
   },
 
-  mounted() {
-  //  this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
+  created() {
+   this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
   },
 
   methods: {

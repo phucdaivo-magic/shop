@@ -2160,7 +2160,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  mounted: function mounted() {//  this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
+  created: function created() {
+    this.loadCategoryProduct({
+      loaded: function loaded() {},
+      complete: function complete() {}
+    }, 1);
   },
   methods: {
     loadCategoryProduct: function loadCategoryProduct(_ref, page) {
