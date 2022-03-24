@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="row pt-5">
+            <div class="row pt-5 pb-4">
                 <div class="col-md-6">
                     <h3>Shop.vn – Care for your Mac</h3>
                     <p>Shop được thành lập vào năm 2006. Chuyên sản xuất các thiết bị ngoại vi áp dụng khoa học công nghệ và công thái học giúp di trì khả năng làm việc lâu dài hiệu quả.
