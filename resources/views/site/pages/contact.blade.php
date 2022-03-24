@@ -18,8 +18,8 @@
                         Tải trọng hỗ trợ từ 4,4 đến 19,8 lbs (2-9 kg)
                         Tuân thủ VESA 75x75, 100x100 mm
                         Khoảng cách nâng lên hạ xuống 10 ”(260mm)</p>
-                    <div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.212841519796!2d106.71968101458012!3d10.795004161802892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a1602a74c1%3A0x42fd34e413987eae!2sLandmark%205%20Vinhomes%20Central%20Park!5e0!3m2!1svi!2s!4v1648094341897!5m2!1svi!2s" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div style="border: 1px solid #eee" class="rounded d-block p-1">
+                        <iframe class="d-block" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.212841519796!2d106.71968101458012!3d10.795004161802892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a1602a74c1%3A0x42fd34e413987eae!2sLandmark%205%20Vinhomes%20Central%20Park!5e0!3m2!1svi!2s!4v1648094341897!5m2!1svi!2s" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
                 <div class="col-md-6">
