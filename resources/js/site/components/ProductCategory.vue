@@ -67,7 +67,7 @@ export default {
         "price-desc": "Giá từ cao xuống thấp",
         new: "Mới nhất",
       },
-      loading: true
+      loading: false
     };
   },
 
@@ -77,7 +77,8 @@ export default {
 
   methods: {
     async loadCategoryProduct({ loaded, complete }, page) {
-      if (this.next_page_url && this.loading) {
+      if (this.next_page_url && !this.loading) {
+        this.loading = true;
         const { data } = await axios.get(this.next_page_url, {
           params: {
             sort: this.sort,

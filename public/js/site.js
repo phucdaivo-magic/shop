@@ -2158,7 +2158,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         "price-desc": "Giá từ cao xuống thấp",
         "new": "Mới nhất"
       },
-      loading: true
+      loading: false
     };
   },
   created: function created() {
@@ -2180,12 +2180,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 loaded = _ref.loaded, complete = _ref.complete;
 
-                if (!(_this.next_page_url && _this.loading)) {
-                  _context.next = 14;
+                if (!(_this.next_page_url && !_this.loading)) {
+                  _context.next = 15;
                   break;
                 }
 
-                _context.next = 4;
+                _this.loading = true;
+                _context.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_this.next_page_url, {
                   params: _objectSpread({
                     sort: _this.sort
@@ -2194,7 +2195,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } : {})
                 });
 
-              case 4:
+              case 5:
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
                 _this.next_page_url = data.next_page_url;
@@ -2203,15 +2204,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.products = [].concat(_toConsumableArray(_this.products), _toConsumableArray(data.data));
                 _this.loading = false;
                 loaded();
-                _context.next = 16;
+                _context.next = 17;
                 break;
 
-              case 14:
+              case 15:
                 // TODO errors
                 complete();
                 _this.loading = false;
 
-              case 16:
+              case 17:
               case "end":
                 return _context.stop();
             }
