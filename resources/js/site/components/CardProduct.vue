@@ -136,7 +136,10 @@ export default {
         color: #c70909;
       }
       &.fa-heart {
-        color: #c70909;
+        color: #000;
+        &:hover {
+          color: #c70909;
+        }
       }
     }
   }
