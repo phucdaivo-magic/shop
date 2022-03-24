@@ -67,17 +67,16 @@ export default {
         "price-desc": "Giá từ cao xuống thấp",
         new: "Mới nhất",
       },
-      loading: false
     };
   },
 
   created() {
-    this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
+    // this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
   },
 
   methods: {
     async loadCategoryProduct({ loaded, complete }, page) {
-      if (this.next_page_url && !this.loading) {
+      if (this.next_page_url) {
         this.loading = true;
         const { data } = await axios.get(this.next_page_url, {
           params: {
@@ -91,12 +90,10 @@ export default {
         this.page++;
         if (page == 1) this.products = [];
         this.products = [...this.products, ...data.data];
-        this.loading = false;
         loaded();
       } else {
         // TODO errors
         complete();
-        this.loading = false;
       }
     },
 

@@ -2157,15 +2157,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         price: "Giá từ thấp tới cao",
         "price-desc": "Giá từ cao xuống thấp",
         "new": "Mới nhất"
-      },
-      loading: false
+      }
     };
   },
-  created: function created() {
-    this.loadCategoryProduct({
-      loaded: function loaded() {},
-      complete: function complete() {}
-    }, 1);
+  created: function created() {// this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
   },
   methods: {
     loadCategoryProduct: function loadCategoryProduct(_ref, page) {
@@ -2180,8 +2175,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 loaded = _ref.loaded, complete = _ref.complete;
 
-                if (!(_this.next_page_url && !_this.loading)) {
-                  _context.next = 15;
+                if (!_this.next_page_url) {
+                  _context.next = 14;
                   break;
                 }
 
@@ -2202,17 +2197,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.page++;
                 if (page == 1) _this.products = [];
                 _this.products = [].concat(_toConsumableArray(_this.products), _toConsumableArray(data.data));
-                _this.loading = false;
                 loaded();
-                _context.next = 17;
+                _context.next = 15;
                 break;
 
-              case 15:
+              case 14:
                 // TODO errors
                 complete();
-                _this.loading = false;
 
-              case 17:
+              case 15:
               case "end":
                 return _context.stop();
             }
