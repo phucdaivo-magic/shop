@@ -92,56 +92,38 @@ $categoryList = App\Models\Category::where('home', true)
 
         @yield('content')
 
-        <div class="over-shop">
-            <div class="div"></div>
-            <div class="container mt-4">
+        <!-- <div class="footer">
+            <img class="w-100" src="http://diaoc.phucdaivo.com/uploads/images/project/image/1647669327_Screen%20Shot%202022-03-19%20at%2012.54.17.png" alt="">
+        </div> -->
+        <div style="background: #f6f6f8;">
+            <div class="container pt-5 pb-3 text-muted">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="d-flex">
-                            <div class="icon mr-2 text-muted" style="font-size: 40px"><i class="pe-7s-car"></i></div>
-                            <div class="pl-2">
-                                <div class="display-5 font-weight-bold mb-2">MIỄN PHÍ GIAO HÀNG</div>
-                                <p class="text-muted">Miễn phí vận chuyển đơn đặt hàng trên 1000.000vnđ nội thành TP.HCM.</p>
-                            </div>
-                        </div>
+                    <div class="col-md-4">
+                        <h4 class="text-dark">SẢN PHẨM</h4>
+                        <a class="d-block">Tua vít</a>
+                        <a class="d-block">Dán Macbook</a>
+                        <a class="d-block">Túi chóng sốc</a>
+                        <a class="d-block">Vệ sinh macbook</a>
+                        <a class="d-block">Phủ phím</a>
                     </div>
 
-                    <div class="col-md-3 col-sm-6">
-                        <div class="d-flex">
-                            <div class="icon mr-2 text-muted" style="font-size: 40px"><i class="pe-7s-help2"></i></div>
-                            <div class="pl-2">
-                                <div class="display-5 font-weight-bold mb-2">HỔ TRỢ 24/7</div>
-                                <p class="text-muted">Hổ trợ, tư vấn khách hàng 24 giờ trong ngày, 7 ngày trong tuần.</p>
-                            </div>
-                        </div>
+                    <div class="col-md-4">
+                        <h4 class="text-dark">THÔNG TIN</h4>
+                        <a class="d-block">Giới Thiệu Shop</a>
+                        <a class="d-block">Chính sách và qui định</a>
+                        <a class="d-block">Túi chóng sốc</a>
+                        <a class="d-block">Giao nhận</a>
+                        <a class="d-block">Chính sách và thông tin</a>
+                        <a class="d-block">Liên hệ</a>
                     </div>
 
-                    <div class="col-md-3 col-sm-6">
-                        <div class="d-flex">
-                            <div class="icon mr-2 text-muted" style="font-size: 40px"><i class="pe-7s-gift"></i></div>
-                            <div class="pl-2">
-                                <div class="display-5 font-weight-bold mb-2">SẢN PHẨM MỚI 100%</div>
-                                <p class="text-muted">Sản phẩm hoàn toàn mới 100% chưa qua sử dụng, nguyên seal từ nhà sản xuất.</p>
-                            </div>
-                        </div>
+                    <div class="col-md-4">
+                        <h4 class="text-dark">LIÊN KẾT NHANH</h4>
+                        <a class="d-block">Theo dõi đơn hàng</a>
+                        <a class="d-block">FAQs</a>
                     </div>
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="d-flex">
-                            <div class="icon mr-2 text-muted" style="font-size: 40px"><i class="pe-7s-plane"></i></div>
-                            <div class="pl-2">
-                                <div class="display-5 font-weight-bold mb-2">SHIP COD TOÀN QUỐC</div>
-                                <p class="text-muted">Giao hàng và thu tiền tận nơi trên toàn quốc.</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </div>
-
-        <div class="footer">
-            <img class="w-100" src="http://diaoc.phucdaivo.com/uploads/images/project/image/1647669327_Screen%20Shot%202022-03-19%20at%2012.54.17.png" alt="">
         </div>
     </div>
     <script>
