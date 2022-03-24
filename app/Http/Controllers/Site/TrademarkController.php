@@ -55,7 +55,7 @@ class TrademarkController extends Controller
                 'images' => function ($q) {
                     return $q->where('active', true);
                 }
-            ]);
+            ->where('active', true);
 
             if ($request->sort == 'price') {
                 $productList = $productList->orderBy('price', 'ASC');
