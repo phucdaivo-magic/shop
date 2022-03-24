@@ -52,7 +52,7 @@ $categoryList = App\Models\Category::where('home', true)
     <div class="div my-4"></div>
     <div class="container">
         <product-home :next="'{{ route('site.product.all') }}'">
-            <h2 class="text-center py-4">Sản phẩm mới</h2>
+            <h2 class="text-center py-1">Sản phẩm mới</h2>
         </product-home>
     </div>
     @foreach ($categoryList as $category)
@@ -60,7 +60,7 @@ $categoryList = App\Models\Category::where('home', true)
         <div class="div my-4"></div>
             <div class="container">
                 <product-home :next="'{{ route('site.category.product', $category->id) }}'">
-                    <h2 class="text-center py-5">{{ $category->name }}</h2>
+                    <h2 class="text-center py-1">{{ $category->name }}</h2>
                 </product-home>
             </div>
         @endif
