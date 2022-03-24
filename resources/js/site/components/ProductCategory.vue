@@ -72,12 +72,12 @@ export default {
   },
 
   created() {
-   this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
+    this.loadCategoryProduct({ loaded: () => {}, complete: () => {} }, 1);
   },
 
   methods: {
     async loadCategoryProduct({ loaded, complete }, page) {
-      if (this.next_page_url && loading) {
+      if (this.next_page_url && this.loading) {
         const { data } = await axios.get(this.next_page_url, {
           params: {
             sort: this.sort,

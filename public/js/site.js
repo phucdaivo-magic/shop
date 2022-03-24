@@ -2180,7 +2180,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 loaded = _ref.loaded, complete = _ref.complete;
 
-                if (!(_this.next_page_url && loading)) {
+                if (!(_this.next_page_url && _this.loading)) {
                   _context.next = 14;
                   break;
                 }
