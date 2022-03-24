@@ -34,12 +34,8 @@ $categoryList = App\Models\Category::where('home', true)
                     <button class="navbar-toggler mr-auto ml-0 position-relative d-lg-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                          <span class="pe-7s-menu"></span>
                     </button>
-                    <div class="pe-7s-like position-relative cart-icon mx-2 text-dark">
-                        <!-- <span class="cs-badge">1</span> -->
-                    </div>
-                    <a class="pe-7s-shopbag position-relative cart-icon mx-2 text-dark" href="{{ route('site.cart') }}">
-                        <!-- <span class="cs-badge">1</span> -->
-                    </a>
+                    <header-icon icon="pe-7s-like" :count="favorite" :link="'{{ route('site.cart') }}'"></header-icon>
+                    <header-icon icon="pe-7s-shopbag" :count="cart" :link="'{{ route('site.cart') }}'"></header-icon>
                 </div>
             </div>
             <div class="div"></div>

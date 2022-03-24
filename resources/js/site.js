@@ -7,8 +7,10 @@ import Product from "./site/page/product/component/Product"
 import CardProduct from "./site/components/CardProduct"
 import ProductCategory from "./site/components/ProductCategory"
 import ProductHome from "./site/components/ProductHome"
+import HeaderIcon from "./site/components/HeaderIcon"
 import InfiniteLoading from "vue-infinite-loading";
 import VueCarousel from 'vue-carousel';
+import cart from "./site/utils/cart";
 
 
 // require('../sass/site.scss')
@@ -23,6 +25,7 @@ Vue.component('cart', Cart)
 Vue.component('payment', Payment)
 Vue.component('product-category', ProductCategory)
 Vue.component('product-home', ProductHome)
+Vue.component('header-icon', HeaderIcon)
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   if (document.getElementById('app')) {
@@ -46,6 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('app')) {
     new Vue({
       el: '#app',
+      data() {
+        return {
+          cart: cart.getCartNum(),
+          favorite: 0
+        }
+      },
+      created() {
+        console.log(cart.getCartNum());
+      },
+      methods: {
+        updateCart() {
+          this.cart = cart.getCartNum();
+        }
+      }
       // render: h => h(Payment),
     });
   }

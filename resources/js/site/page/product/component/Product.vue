@@ -304,6 +304,8 @@ export default {
       // console.log(this.property);
 
       // this.$refs.cart.loadData()
+
+      this.$root.updateCart();
     },
 
     pageChange(navigateTo) {

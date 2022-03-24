@@ -115,6 +115,7 @@ export default {
       let cartLocal = cart.getCart();
       delete cartLocal[index];
       cart.setCart(cartLocal);
+      this.$root.updateCart();
     },
 
     onMount(index) {
@@ -130,11 +131,13 @@ export default {
 .table-bordered {
   font-size: 14px;
 }
+
 .table-bordered td,
 .table-bordered th {
   border-right: 0;
   border-left: 0;
 }
+
 .table-bordered thead th {
   border-bottom-width: 1px;
 }

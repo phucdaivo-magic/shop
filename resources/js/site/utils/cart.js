@@ -14,5 +14,9 @@ export default {
 
   setCart(cartLocal) {
     localStorage.setItem("cart", JSON.stringify(cartLocal));
+  },
+
+  getCartNum() {
+    return Object.keys(this.getCart()).length;
   }
 }
