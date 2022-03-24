@@ -10,7 +10,20 @@
             <div class="row pt-5">
                 <div class="col-md-6">
                     <h3>Shop.vn – Care for your Mac</h3>
-                    <p>Giới thiệu</p>
+                    <p>Shop được thành lập vào năm 2006. Chuyên sản xuất các thiết bị ngoại vi áp dụng khoa học công nghệ và công thái học giúp di trì khả năng làm việc lâu dài hiệu quả.
+
+                        Giá treo màn hình máy tính F80 mẫu 2021 được cấu tạo bằng hợp kim nhôm, bền đẹp, an toàn cho người sử dụng, thân thiện với môi trường. Là sản phẩm được đánh giá tốt nhất trong năm.
+
+                        Sản phẩm Phù hợp với hầu hết các màn hình 17 "- 30"
+                        Tải trọng hỗ trợ từ 4,4 đến 19,8 lbs (2-9 kg)
+                        Tuân thủ VESA 75x75, 100x100 mm
+                        Khoảng cách nâng lên hạ xuống 10 ”(260mm)
+
+                        Với tính năng xoay đa năng, điều chỉnh được góc nhìn, tầm nhìn một cách tiện lợi bảo đảm giúp cho người dùng luôn có được tư thế ngồi thoải mái nhất, nâng cao hiệu suất làm việc cũng như giải trí.
+
+                        Sản phẩm được nhập khẩu từ Trung Quốc và đang được bán rộng rãi tại Việt Nam
+
+                        Giá sản phẩm trên Tiki đã bao gồm thuế theo luật hiện hành. Bên cạnh đó, tuỳ vào loại sản phẩm, hình thức và địa chỉ giao hàng mà có thể phát sinh thêm chi phí khác như phí vận chuyển, phụ phí hàng cồng kềnh, thuế nhập khẩu (đối với đơn hàng giao từ nước ngoài có giá trị trên 1 triệu đồng)</p>
                     <div>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.212841519796!2d106.71968101458012!3d10.795004161802892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a1602a74c1%3A0x42fd34e413987eae!2sLandmark%205%20Vinhomes%20Central%20Park!5e0!3m2!1svi!2s!4v1648094341897!5m2!1svi!2s" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
