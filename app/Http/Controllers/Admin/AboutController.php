@@ -123,7 +123,7 @@ class AboutController extends AdminController
 
     public function onBeforeIndex(Request $request)
     {
-        $model = Obj::orderBy('created_at', 'DESC')->orderBy('sort', 'ASC');
+        $model = Obj::orderBy('sort', 'ASC');
 
         $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate($this->getPerPage());
     }
