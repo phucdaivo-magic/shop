@@ -70,13 +70,15 @@ class Product extends SlugSortModel
             $clone = $this->replicate();
             $clone->push();
 
+            $images= [];
             foreach ($this->images as $image) {
                 // CLONE IMAGE
                 $image->image = cloneFile(
                     $image->image,
                     'uploads/images/product/' . $clone->id . '/image'
                 );
-                $clone->images()->create($image->toArray());
+                $cloneImage = $clone->images()->create($image->toArray());
+                $images[$image->id] = $cloneImage->id;
             }
 
             // Create Type
@@ -95,6 +97,8 @@ class Product extends SlugSortModel
                             'uploads/images/product/' . $clone->id . '/property-type/' . $cloneProductPropertyType->id . '/property-detail/' . $cloneProductPropertyDetail->id
                         );
                     }
+
+                    $cloneProductPropertyDetail->product_image_id = $cloneProductPropertyDetail->product_image_id ? ($images[$cloneProductPropertyDetail->product_image_id ] ?? '') : '';
 
                     $cloneProductPropertyDetail->save();
                 }

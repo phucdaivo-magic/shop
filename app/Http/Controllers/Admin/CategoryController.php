@@ -139,7 +139,7 @@ class CategoryController extends AdminController
 
         $this->data['breadcrumbs'] = [
             [
-                'name' => 'DS Seo',
+                'name' => 'DS Danh mục',
             ],
         ];
     }
@@ -173,7 +173,7 @@ class CategoryController extends AdminController
     {
         $this->data['breadcrumbs'] = [
             [
-                'name' => 'DS Seo',
+                'name' => 'DS Danh mục',
                 'url' => route('admin.category')
             ],
             [
