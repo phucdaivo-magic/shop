@@ -33,6 +33,7 @@ Auth::routes();
 Route::get('/', 'Site\HomeController@index')->name('site.index');
 
 Route::get('/san-pham-yeu-thich', 'Site\FavoriteController@index')->name('site.favorite');
+Route::get('/about/{about}.html', 'Site\AboutController@detail')->name('site.about');
 Route::get('/san-pham', 'Site\ProductController@index')->name('site.product');
 Route::get('/lien-he.html', 'Site\ContactController@index')->name('site.contact');
 Route::get('/san-pham/{product}-{slug}.html', 'Site\ProductController@detail')->name('site.product.detail');

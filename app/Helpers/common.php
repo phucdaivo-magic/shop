@@ -75,6 +75,21 @@ function slidebar()
                 ]
             ]
         ],
+        [
+            'name' => 'Trang thông tin',
+            'icon' => 'icon-drop',
+            'childrens' => [
+                [
+                    'icon' => 'icon-list',
+                    'name' => 'Danh sách',
+                    'url' => 'App\Http\Controllers\Admin\AboutController@index'
+                ], [
+                    'icon' => 'icon-note',
+                    'name' => 'Thêm mới',
+                    'url' => 'App\Http\Controllers\Admin\AboutController@initForm'
+                ]
+            ]
+        ],
     ];
 
     return $menu;

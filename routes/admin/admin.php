@@ -170,6 +170,21 @@ Route::get('/category/sort/{type}/{object}', 'Admin\CategoryController@actionSor
 
 Route::get('/category/put/{key}/{object}', 'Admin\CategoryController@put');
 
+// About
+Route::get('about', 'Admin\AboutController@index')->name('admin.about');
+
+Route::get('/about/form/{object?}', 'Admin\AboutController@initForm')->name('admin.about.form');
+
+Route::post('/about/form/{object?}', 'Admin\AboutController@actionForm');
+
+Route::get('/about/delete/{object}', 'Admin\AboutController@delete');
+
+Route::get('/about/active/{object}', 'Admin\AboutController@active');
+
+Route::get('/about/sort/{type}/{object}', 'Admin\AboutController@actionSort');
+
+Route::get('/about/put/{key}/{object}', 'Admin\AboutController@put');
+
 // TradeMarkController setting
 Route::get('trademark', 'Admin\TradeMarkController@index')->name('admin.trademark');
 

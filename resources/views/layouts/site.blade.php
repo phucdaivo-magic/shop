@@ -96,9 +96,9 @@ $categoryList = App\Models\Category::where('home', true)
             <img class="w-100" src="http://diaoc.phucdaivo.com/uploads/images/project/image/1647669327_Screen%20Shot%202022-03-19%20at%2012.54.17.png" alt="">
         </div> -->
         <div style="background: #f6f6f8;">
-            <div class="container pt-5 pb-3 text-muted">
+            <div class="container pt-4 pb-3 text-muted">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-3">
                         <h4 class="text-dark">SẢN PHẨM</h4>
                         <a class="d-block">Tua vít</a>
                         <a class="d-block">Dán Macbook</a>
@@ -106,18 +106,20 @@ $categoryList = App\Models\Category::where('home', true)
                         <a class="d-block">Vệ sinh macbook</a>
                         <a class="d-block">Phủ phím</a>
                     </div>
-
-                    <div class="col-md-4">
+                    @php
+                        $aboutList = App\Models\About::where('active', true)
+                            ->orderBy('sort', 'ASC')
+                            ->get();
+                    @endphp
+                    <div class="col-md-4 mt-3">
                         <h4 class="text-dark">THÔNG TIN</h4>
-                        <a class="d-block">Giới Thiệu Shop</a>
-                        <a class="d-block">Chính sách và qui định</a>
-                        <a class="d-block">Túi chóng sốc</a>
-                        <a class="d-block">Giao nhận</a>
-                        <a class="d-block">Chính sách và thông tin</a>
-                        <a class="d-block">Liên hệ</a>
+                        @foreach ($aboutList as $about)
+                        <a class="d-block text-muted" href="{{ route('site.about', $about->slug) }}">{{ $about->name }}</a>
+                        @endforeach
+                        <a class="d-block text-muted" href="{{ route('site.contact') }}">Liên hệ</a>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-3">
                         <h4 class="text-dark">LIÊN KẾT NHANH</h4>
                         <a class="d-block">Theo dõi đơn hàng</a>
                         <a class="d-block">FAQs</a>
