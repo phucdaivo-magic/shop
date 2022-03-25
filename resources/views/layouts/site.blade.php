@@ -94,7 +94,7 @@ $categoryList = App\Models\Category::where('home', true)
         <!-- <div class="footer">
             <img class="w-100" src="http://diaoc.phucdaivo.com/uploads/images/project/image/1647669327_Screen%20Shot%202022-03-19%20at%2012.54.17.png" alt="">
         </div> -->
-        <div style="background: #f6f6f8;" class="pt-4">
+        <div style="background: #f6f6f8;" class="pt-4 mt-3">
             <div class="container pt-4 pb-5 text-muted">
                 <div class="row">
                     <div class="col-md-3">
