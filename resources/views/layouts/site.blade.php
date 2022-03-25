@@ -2,7 +2,6 @@
 $categoryList = App\Models\Category::where('home', true)
 ->orderBy('sort', 'ASC')
 ->get();
-
 @endphp
 
 <!DOCTYPE html>
@@ -99,12 +98,19 @@ $categoryList = App\Models\Category::where('home', true)
             <div class="container pt-4 pb-3 text-muted">
                 <div class="row">
                     <div class="col-md-4 mt-3">
-                        <h4 class="text-dark">SẢN PHẨM</h4>
-                        <a class="d-block">Tua vít</a>
-                        <a class="d-block">Dán Macbook</a>
-                        <a class="d-block">Túi chóng sốc</a>
-                        <a class="d-block">Vệ sinh macbook</a>
-                        <a class="d-block">Phủ phím</a>
+                        @php
+                            $footerList = App\Models\Category::where('footer', true)
+                                ->orderBy('sort', 'ASC')
+                                ->get();
+                        @endphp
+                        <h4 class="text-dark font-weight-bold">SẢN PHẨM</h4>
+                        @foreach ($footerList as $menu)
+                            @if($menu->category)
+                                <a class="d-block mt-2 text-muted" href="{{ route('site.category.parent', [$menu->category->slug, $menu->slug]) }}">{{  $menu->name }}</a>
+                            @else
+                                <a class="d-block mt-2 text-muted" href="{{ route('site.category', [$menu->slug]) }}">{{  $menu->name }}</a>
+                            @endif
+                        @endforeach
                     </div>
                     @php
                         $aboutList = App\Models\About::where('active', true)
@@ -112,17 +118,17 @@ $categoryList = App\Models\Category::where('home', true)
                             ->get();
                     @endphp
                     <div class="col-md-4 mt-3">
-                        <h4 class="text-dark">THÔNG TIN</h4>
+                        <h4 class="text-dark font-weight-bold">THÔNG TIN</h4>
                         @foreach ($aboutList as $about)
-                        <a class="d-block text-muted" href="{{ route('site.about', $about->slug) }}">{{ $about->name }}</a>
+                        <a class="d-block text-muted mt-2" href="{{ route('site.about', $about->slug) }}">{{ $about->name }}</a>
                         @endforeach
-                        <a class="d-block text-muted" href="{{ route('site.contact') }}">Liên hệ</a>
+                        <a class="d-block text-muted mt-2" href="{{ route('site.contact') }}">Liên hệ</a>
                     </div>
 
                     <div class="col-md-4 mt-3">
-                        <h4 class="text-dark">LIÊN KẾT NHANH</h4>
-                        <a class="d-block">Theo dõi đơn hàng</a>
-                        <a class="d-block">FAQs</a>
+                        <h4 class="text-dark font-weight-bold">LIÊN KẾT NHANH</h4>
+                        <a class="d-block mt-2">Theo dõi đơn hàng</a>
+                        <a class="d-block mt-2">FAQs</a>
                     </div>
                 </div>
             </div>

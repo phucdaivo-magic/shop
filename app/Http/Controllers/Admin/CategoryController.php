@@ -85,6 +85,17 @@ class CategoryController extends AdminController
                             'type' => 'checkbox',
                         ],
                     ],
+                    [
+                        'view' => [
+                            'type' => 'checkbox',
+                            'attrs' => ['style' => 'width: 1px; font-weight: bold'],
+                        ],
+                        'key' => 'footer',
+                        'title' => 'Hiển thị chân trang',
+                        'edit' => [
+                            'type' => 'checkbox',
+                        ],
+                    ],
                     $this->getSortTemplate(__CLASS__),
                     [
                         'view' => [
