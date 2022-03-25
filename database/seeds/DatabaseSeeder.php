@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\ProductController;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -21,19 +20,11 @@ class DatabaseSeeder extends Seeder
         //     ]
         // ]);
 
-        $controller = new ProductController();
+        $products = Product::where('sort', '>', 46)->get();
 
-        $products = Product::get();
         foreach ($products  as $key => $product) {
-            $controller->clone($product);
+            $product->delete();
         }
-
-
-
-        // $products = Product::where('sort', '>', 45)->get();
-        // foreach ($products  as $key => $product) {
-        //     $product->delete();
-        // }
 
     }
 }

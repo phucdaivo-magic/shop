@@ -225,12 +225,17 @@ class ProductController extends AdminController
     }
 
     public function clone(Obj $object) {
+
+        $clone = $object->replicateRow();
+        return redirect(route('admin.product', ['id_eq' => $clone->id]));
+    }
+
+    public function cloneAll() {
         $products = Obj::where('sort','<', 46)->get();
         foreach ($products  as $key => $product) {
-            $clone=  $product->replicateRow();
+            $product->replicateRow();
         }
 
-        // return redirect(route('admin.product', ['id_eq' => $clone->id]));
     }
 
     /**
