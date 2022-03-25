@@ -104,7 +104,7 @@
                             @endif
                         @endforeach
                     </div>
-                    <div class="d-flex ">
+                    <div class="d-flex">
                         <button type="button" class="btn btn-danger btn-sm ml-auto d-block"
                             @if (request()->has('per_page'))
                             onClick="window.location.href='{{ url()->current() }}?per_page={{ request('per_page') }}'">
@@ -124,10 +124,21 @@
                 <div class="card-header">
                     <i class="icon-list"></i> Danh sách
                     <span class="badge badge-pill badge-danger float-right">{{ $data['tableData']->total() }}</span>
-                    {{-- @include('admin.components.pagination') --}}
                 </div>
             @endif
+
             <div class="card-body">
+                <div class="d-flex mx-1 my-2">
+                    @include('admin.components.pagination')
+                    <select value="5" class="form-control" style="width: 75px" data-init-plugin="select2"
+                        onChange="window.location.href='{{ url()->current() }}?per_page='+this.value">
+                        <option value="1" @if (request('per_page') == 1) selected @endif>1</option>
+                        <option value="5" @if (request('per_page') == 5) selected @endif>5</option>
+                        <option value="10" @if (request('per_page', 10) == 10) selected @endif>10</option>
+                        <option value="50" @if (request('per_page') == 50) selected @endif>50</option>
+                        <option value="100" @if (request('per_page') == 100) selected @endif>100</option>
+                    </select>
+                </div>
                 <div style="overflow: auto">
                     <table class="table table-responsive-sm table-striped">
                         <thead>
