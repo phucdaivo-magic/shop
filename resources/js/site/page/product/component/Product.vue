@@ -11,7 +11,7 @@
                 v-for="(image, key) in product.images"
                 :class="{ active: key == navigateTo }"
                 :key="key"
-                :style="{ backgroundImage: `url('${image.avatar}')` }"
+                v-lazy:background-image="image.avatar"
                 class="image-item"
                 name="navigateTo"
               >
@@ -31,7 +31,7 @@
             <slide v-for="image in product.images" :key="image.id">
               <div
                 class="slide-image"
-                :style="{ backgroundImage: `url('${image.avatar}')` }"
+                v-lazy:background-image="image.avatar"
               ></div>
             </slide>
           </carousel>
@@ -191,9 +191,7 @@
                   />
                   <div
                     class="prop-image"
-                    :style="{
-                      backgroundImage: `url('${product_property_detail.image}')`,
-                    }"
+                    v-lazy:background-image="product_property_detail.image"
                   >
                     {{ product_property_detail.name }}
                   </div>
