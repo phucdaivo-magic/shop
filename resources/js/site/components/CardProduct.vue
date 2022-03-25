@@ -107,6 +107,7 @@ export default {
       .image-list-item {
         width: 60px;
         height: 60px;
+        background-color: #fff;
         @media (max-width: 993px) {
           width: 40px;
           height: 40px;
