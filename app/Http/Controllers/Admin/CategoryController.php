@@ -148,7 +148,7 @@ class CategoryController extends AdminController
     {
         $this->data['tableData'] = Obj::orderBy('category_id', 'ASC')
             ->orderBy('sort', 'ASC')
-            ->paginate(50);
+            ->paginate($this->getPerPage(100,1,10));
     }
 
     private function renderTreeCategory($category, $tree = '')
