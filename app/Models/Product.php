@@ -98,7 +98,7 @@ class Product extends SlugSortModel
                         );
                     }
 
-                    $cloneProductPropertyDetail->product_image_id = $cloneProductPropertyDetail->product_image_id ? ($images[$cloneProductPropertyDetail->product_image_id ] ?? '') : '';
+                    $cloneProductPropertyDetail->product_image_id = $cloneProductPropertyDetail->product_image_id ? ($images[$cloneProductPropertyDetail->product_image_id] ?? null) : null;
 
                     $cloneProductPropertyDetail->save();
                 }
@@ -108,6 +108,7 @@ class Product extends SlugSortModel
             DB::commit();
             return $clone;
         } catch (\Throwable $th) {
+            dd($th);
             DB::rollback();
             throw false;
         }
