@@ -94,10 +94,43 @@ $categoryList = App\Models\Category::where('home', true)
         <!-- <div class="footer">
             <img class="w-100" src="http://diaoc.phucdaivo.com/uploads/images/project/image/1647669327_Screen%20Shot%202022-03-19%20at%2012.54.17.png" alt="">
         </div> -->
-        <div style="background: #f6f6f8;">
-            <div class="container pt-4 pb-3 text-muted">
+        <div style="background: #f6f6f8;" class="pt-4">
+            <div class="container pt-4 pb-5 text-muted">
                 <div class="row">
-                    <div class="col-md-4 mt-3">
+                    <div class="col-md-3">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="text-muted">
+                                <div class="pe-7s-home text-muted display-3"></div>LOGO
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="mr-2 mt-1">
+                                <div class="pe-7s-map-marker text-muted display-5"></div>
+                            </div>
+                            <div>
+                                Trường Chinh, Tây Thạnh, Quận Tân Phú, TP.Hồ Chí Minh
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="mr-2 mt-1">
+                                <div class="pe-7s-mail text-muted display-5"></div>
+                            </div>
+                            <div>daihandaiphuc@gmail.com</div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="mr-2 mt-1">
+                                <div class="pe-7s-call text-muted display-5"></div>
+                            </div>
+                            <div>0367102462</div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="mr-2 mt-1">
+                                <div class="pe-7s-clock text-muted display-5"></div>
+                            </div>
+                            <div>Giờ làm việc: 8h-19h (T2 – T7), 9h-16h (Chủ Nhật)</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-3">
                         @php
                             $footerList = App\Models\Category::where('footer', true)
                                 ->orderBy('sort', 'ASC')
@@ -117,7 +150,7 @@ $categoryList = App\Models\Category::where('home', true)
                             ->orderBy('sort', 'ASC')
                             ->get();
                     @endphp
-                    <div class="col-md-4 mt-3">
+                    <div class="col-md-3 mt-3">
                         <h4 class="text-dark font-weight-bold">THÔNG TIN</h4>
                         @foreach ($aboutList as $about)
                         <a class="d-block text-muted mt-2" href="{{ route('site.about', $about->slug) }}">{{ $about->name }}</a>
@@ -125,7 +158,7 @@ $categoryList = App\Models\Category::where('home', true)
                         <a class="d-block text-muted mt-2" href="{{ route('site.contact') }}">Liên hệ</a>
                     </div>
 
-                    <div class="col-md-4 mt-3">
+                    <div class="col-md-3 mt-3">
                         <h4 class="text-dark font-weight-bold">LIÊN KẾT NHANH</h4>
                         <a class="d-block mt-2">Theo dõi đơn hàng</a>
                         <a class="d-block mt-2">FAQs</a>
