@@ -13,6 +13,7 @@ import InfiniteLoading from "vue-infinite-loading";
 import VueCarousel from 'vue-carousel';
 import cart from "./site/utils/cart";
 import favorite from "./site/utils/favorite";
+import VueLazyload from 'vue-lazyload'
 
 
 // require('../sass/site.scss')
@@ -20,6 +21,8 @@ import favorite from "./site/utils/favorite";
 Vue.use(VueCarousel);
 Vue.use(Vue2Filters);
 Vue.use(VeeValidate);
+Vue.use(VueLazyload)
+
 Vue.component('vue-infinite-loading', InfiniteLoading);
 Vue.component('card-product', CardProduct)
 Vue.component('product', Product)

@@ -1,6 +1,7 @@
 <template>
   <a :href="link" class="card-product">
-    <div class="image" :style="{ backgroundImage: `url('${avatar}')` }">
+    <div class="image"
+     v-lazy:background-image="avatar">
       <div
         class="cart-favorite mx-2 fa"
         :class="{
@@ -14,7 +15,7 @@
           <div
             v-for="image in product.images.slice(0, 3)"
             :key="image.id"
-            :style="{ backgroundImage: `url('${image.avatar}')` }"
+            v-lazy:background-image="image.avatar"
             :class="{ active: avatar == image.avatar }"
             class="image-list-item"
             @click.stop.prevent="updateAvatar(image)"
