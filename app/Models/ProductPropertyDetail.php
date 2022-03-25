@@ -9,7 +9,16 @@ class ProductPropertyDetail extends SlugSortModel
 
     public static $messages = [];
 
-    // protected $fillable = [];
+    protected $fillable = [
+        'product_id',
+        'product_property_type_id',
+        'name',
+        'slug',
+        'active',
+        'value',
+        'product_image_id',
+        'price'
+    ];
 
     protected $appends = [
         'image',

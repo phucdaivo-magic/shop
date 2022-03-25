@@ -359,7 +359,7 @@ class ProductPropertyDetailController extends AdminController
                 ],
                 'edit' => [
                     'type' => 'image',
-                    'src' => 'product/' . $productPropertyType['product_id'] . '/property-type/' . $productPropertyType['id'] . '/property-detal/' . $object['product_property_detail_id'],
+                    'src' => 'product/' . $productPropertyType['product_id'] . '/property-type/' . $productPropertyType['id'] . '/property-detail/' . $object['product_property_detail_id'],
                 ],
             ];
         }

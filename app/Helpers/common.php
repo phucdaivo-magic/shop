@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+
 function generateAtribute($attributes)
 {
     $htmlAttributes = '';
@@ -110,4 +112,19 @@ function getQuery()
 function getMoney($num)
 {
     return number_format($num) . ' VND';
+}
+
+function cloneFile($from, $to)
+{
+    $basename = basename(public_path($from));
+    if (File::exists($from)) {
+        File::makeDirectory($to, $mode = 0777, true, true);
+        $to =  $to . '/' . $basename;
+        $res = File::copy(public_path($from), public_path($to));
+        if ($res) {
+            return $to;
+        }
+    }
+
+    return '';
 }

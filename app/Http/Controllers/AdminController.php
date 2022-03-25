@@ -114,14 +114,24 @@ class AdminController extends Controller
             DB::rollback();
         }
 
-        return  isset($this->data['redirect']) ? call_user_func($this->data['redirect'], $data) : redirect(url()->action($this->data['controller'] . '@index'));
+        return isset($this->data['redirect']) ? call_user_func($this->data['redirect'], $data) : redirect(url()->action($this->data['controller'] . '@index'));
     }
 
     protected function deleteItem(Request $request, $data)
     {
         DB::beginTransaction();
         try {
+            // REMOVE IMAGE
+            foreach ($this->data['header'] as $key => $item) {
+                if (isset($item['edit']['type']) && $item['edit']['type'] == 'image') {
+                    if (File::exists($data[$item['key']])) {
+                        File::delete($data[$item['key']]);
+                    }
+                }
+            }
+            // REMOVE DB
             $data->delete();
+
             $request->session()->flash('status', "Swal.fire(
                 'Thành công!',
                 'Click để tiếp tục',
@@ -136,7 +146,8 @@ class AdminController extends Controller
             )");
             DB::rollback();
         }
-        return isset($this->data['redirect']) ? call_user_func($this->data['redirect'], $data) : redirect(url()->action($this->data['controller'] . '@index'));
+        return \Redirect::back();
+        // return isset($this->data['redirect']) ? call_user_func($this->data['redirect'], $data) : redirect(url()->action($this->data['controller'] . '@index'));
     }
 
     protected function activeItem(Request $request, $data)
@@ -147,11 +158,12 @@ class AdminController extends Controller
             $data->save();
             DB::commit();
 
-            return  $data->active;
+            return $data->active;
         } catch (\Exception $e) {
             DB::rollback();
         }
     }
+
 
     public function sortItem(Request $request, String $type, $data, $cb = null)
     {

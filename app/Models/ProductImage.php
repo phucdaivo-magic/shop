@@ -14,6 +14,13 @@ class ProductImage extends SortModel
         'avatar',
     ];
 
+
+    protected $fillable = [
+        'image',
+        'product_id',
+        'active',
+    ];
+
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');

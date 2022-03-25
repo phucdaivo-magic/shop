@@ -215,6 +215,8 @@ Route::get('/product/sort/{type}/{object}', 'Admin\ProductController@actionSort'
 
 Route::get('/product/put/{key}/{object}', 'Admin\ProductController@put');
 
+Route::get('/product/clone/{object}', 'Admin\ProductController@clone');
+
 
 // ProductPropertyType
 Route::get('product/{product}/property-type', 'Admin\ProductPropertyTypeController@main')->name('admin.product.property-type');

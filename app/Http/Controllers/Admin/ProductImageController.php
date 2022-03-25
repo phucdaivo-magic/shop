@@ -81,7 +81,7 @@ class ProductImageController extends AdminController
         };
     }
 
-    function main(Request $request, Product $product)
+    public function main(Request $request, Product $product)
     {
         $this->data['breadcrumbs'] = [
             [
@@ -98,12 +98,9 @@ class ProductImageController extends AdminController
             ],
         ];
 
-
         $model = Obj::orderBy('sort', 'ASC')
             ->where('product_id', $product->id);
         $this->data['tableData'] = $this->search($model, $request, $this->getListSearch())->paginate($this->getPerPage());
-
-
 
         $this->data['header'][count($this->data['header']) - 1] =  [
             'view' => [
@@ -133,6 +130,22 @@ class ProductImageController extends AdminController
         ];
 
         return parent::index($request);
+    }
+
+    private function initImage($id)
+    {
+        $this->data['header'][2] = [
+            'view' => [
+                'type' => 'image',
+                'attrs' => ['style' => 'width: 160px'],
+            ],
+            'key' => 'image',
+            'title' => 'Hình ảnh',
+            'edit' => [
+                'type' => 'image',
+                'src' => 'product/' . $id . '/image',
+            ],
+        ];
     }
 
     /**
@@ -192,6 +205,8 @@ class ProductImageController extends AdminController
         }
 
         if (isset($object->id)) {
+            $this->initImage($request['product_id']);
+
             return parent::saveForm($request, $object);
         } else {
             DB::beginTransaction();
@@ -203,7 +218,7 @@ class ProductImageController extends AdminController
                         $path = time() . '_' . $file->getClientOriginalName();
                         $data['product_id'] = $request['product_id'];
                         $data['active'] = $request['active'] ? 1 : 0;
-                        $data['image'] = $file->move('uploads/images/product/image/', $path);
+                        $data['image'] = $file->move('uploads/images/product/' . $data['product_id'] . '/image/', $path);
 
                         $data->save();
                     }

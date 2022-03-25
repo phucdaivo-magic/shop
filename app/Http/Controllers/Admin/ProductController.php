@@ -154,6 +154,12 @@ class ProductController extends AdminController
                                     },
                                 ],
                                 [
+                                    'html' => '<i class="fa fa-clone"></i>',
+                                    'action' => function ($data) {
+                                        return url()->action(__CLASS__ . '@clone', $data['id']);
+                                    },
+                                ],
+                                [
                                     'html' => '<i class="icon-pencil"></i>',
                                     'action' => function ($data) {
                                         return url()->action(__CLASS__ . '@initForm', $data['id']);
@@ -216,6 +222,12 @@ class ProductController extends AdminController
         ];
 
         return parent::generateForm($request, $object);
+    }
+
+    public function clone(Obj $object) {
+        $clone = $object->replicateRow();
+
+        return redirect(route('admin.product', ['id_eq' => $clone->id]));
     }
 
     /**
