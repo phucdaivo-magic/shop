@@ -210,6 +210,16 @@
           <button class="ml-3 btn btn-danger d-block rounded-0" @click="addToCart">
             <i class="pe-7s-cart mr-2" aria-hidden="true"></i>Thêm vào giỏ hàng
           </button>
+          <button class="btn btn-light ml-1 rounded-0"
+              @click.stop.prevent="updateFavorite">
+            <div
+              class="cart-favorite mx-2 fa"
+              :class="{
+                'fa-heart-o': !isFavorite,
+                'fa-heart': isFavorite,
+              }"
+            ></div>
+          </button>
         </div>
         <div>
           <slot name="bottom"></slot>
@@ -244,6 +254,7 @@
 import InputNumber from "../../../components/InputNumber";
 import cart from "../../../utils/cart";
 import Modal from "../../../components/Modal";
+import favorite from "../../../utils/favorite";
 
 export default {
   components: {
@@ -257,6 +268,7 @@ export default {
       showCart: false,
       navigateTo: 0,
       price: 0,
+      isFavorite: favorite.getListFavorite().includes(String(this.product.id)),
     };
   },
   props: ["product"],
@@ -306,6 +318,18 @@ export default {
       // this.$refs.cart.loadData()
 
       this.$root.updateCart();
+    },
+
+    updateFavorite() {
+      if (this.isFavorite) {
+        favorite.removeFavorite(this.product.id);
+        this.isFavorite = false;
+      } else {
+        favorite.pushFavorite(this.product.id);
+        this.isFavorite = true;
+      }
+
+      this.$root.updateFavorite();
     },
 
     pageChange(navigateTo) {
