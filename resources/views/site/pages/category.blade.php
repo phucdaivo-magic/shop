@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-    <div class="pane-header" @if($category->products()->first()) :style="{backgroundImage: `url(${'{{ $category->products()->orderBy('sort', 'ASC')->first()->avatar }}'})`}" @endif>
+    <div class="pane-header" @if($category->products()->first()) style="background-image: url('{{ $category->products()->orderBy('sort', 'ASC')->first()->avatar }}')" @endif>
         <h1>{{ $category->name }}</h1>
     </div>
     <div class="container">
