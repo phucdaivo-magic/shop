@@ -4,7 +4,7 @@ $menuList = App\Models\Category::where('active', true)
     ->orderBy('sort', 'ASC')
     ->get();
 
-$tradeMarkList = App\Models\Trademark::where('active', true)->get();
+// $tradeMarkList = App\Models\Trademark::where('active', true)->get();
 @endphp
 <div class="text-left font-weight-bold py-2">DANH MỤC SẢN PHẨM</div>
 <ul class="left-menu">
@@ -26,14 +26,5 @@ $tradeMarkList = App\Models\Trademark::where('active', true)->get();
                 </li>
             @endforeach
         </ul>
-    @endforeach
-</ul>
-<div class="text-left font-weight-bold pt-4 -p-2">THƯƠNG HIỆU SẢN PHẨM</div>
-<ul class="list-trademark">
-    @foreach ($tradeMarkList as $tradeMark)
-        <li> <a class="text-muted" href="{{ route('site.trademark', $tradeMark->slug) }}">
-                {{ $tradeMark->name }}
-            </a>
-        </li>
     @endforeach
 </ul>
