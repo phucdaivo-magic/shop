@@ -4,11 +4,11 @@ $imageList = collect($product->images->where('active', true))->values();
 @extends('layouts.site')
 
 @section('content')
-    <div class="container mt-4">
-        <product :product="{{ $product }}">
-            <template v-slot:image>
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators" style="
+<div class="container mt-4">
+    <product :product="{{ $product }}">
+        <template v-slot:image>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators" style="
                                                                             position: relative;
                                                                             top: 0;
                                                                             left: 0;
@@ -16,132 +16,93 @@ $imageList = collect($product->images->where('active', true))->values();
                                                                             flex-direction: column;
                                                                             margin: 0;
                                                                         ">
-                        @foreach ($imageList as $key => $image)
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}"
-                                style="cursor: pointer; width: 50px; height: 30px; min-width: 50px; min-height: 30px; background-image: url('{{ asset($image->image) }}');
-                                                                                            background-size: cover; background-position: center; margin-bottom: 5px;"
-                                class="@if ($key == 0) active @endif">
-                            </li>
-                        @endforeach
-                    </ol>
-                    <div class="carousel-inner" style="
+                    @foreach ($imageList as $key => $image)
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" style="cursor: pointer; width: 50px; height: 30px; min-width: 50px; min-height: 30px; background-image: url('{{ asset($image->image) }}');
+                                                                                            background-size: cover; background-position: center; margin-bottom: 5px;" class="@if ($key == 0) active @endif">
+                    </li>
+                    @endforeach
+                </ol>
+                <div class="carousel-inner" style="
                                                                                 position: absolute;
                                                                                 top: 0;
                                                                                 margin-left: 55px;
                                                                                 width: calc(100% - 55px);">
-                        @foreach ($imageList as $key => $image)
-                            <div class="carousel-item @if ($key == 0) active @endif">
-                                <img class="d-block w-100" src="{{ asset($image->image) }}" alt="First slide">
-                            </div>
-                        @endforeach
+                    @foreach ($imageList as $key => $image)
+                    <div class="carousel-item @if ($key == 0) active @endif">
+                        <img class="d-block w-100" src="{{ asset($image->image) }}" alt="First slide">
                     </div>
+                    @endforeach
                 </div>
-    </div>
-    </template>
-    <template v-slot:about>
-        <h1 style="font-size: 20px">{{ $product->name }}</h1>
+            </div>
+</div>
+</template>
+<template v-slot:about>
+    <h1 style="font-size: 20px">{{ $product->name }}</h1>
 
-    </template>
-    <template v-slot:bottom>
-        @if ($product->category)
-            <p class="mt-4 mb-2">Danh mục: <a
-                    href="{{ isset($product->category->category)? route('site.category.parent', [$product->category->category->slug, $product->category->slug]): route('site.category', $product->category->slug) }}">{{ $product->category->name ?? '' }}</a>
-            </p>
-        @endif
+</template>
+<template v-slot:bottom>
+    @if ($product->category)
+    <p class="mt-4 mb-2">Danh mục: <a href="{{ isset($product->category->category)? route('site.category.parent', [$product->category->category->slug, $product->category->slug]): route('site.category', $product->category->slug) }}">{{ $product->category->name ?? '' }}</a>
+    </p>
+    @endif
 
-        @isset($product->trademark->name)
-            <p class="mt-0 mb-2">Thương hiệu: <a
-                    href="{{ route('site.trademark', $product->trademark->slug) }}">{{ $product->trademark->name ?? '' }}</a>
-            </p>
-            @endif
-        </template>
-        </product>
-        <div class="div mt-3"></div>
-        <div class="p-3 tmp">
-            {{-- {!!$product->description!!} --}}
-            <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
-                id="tab-description" role="tabpanel" aria-labelledby="tab-title-description" style="">
-
-                <h2>Mô tả</h2>
-
-                <p style="text-align: justify;">Miếng dán màn hình Macbook 14inch, 16inch cao cấp, từ tính, với độ trong suốt
-                    cao, không làm giảm độ phân giải màn hình khi dán vào. Sau một thời gian dài sử dụng, miếng dán không bị ố
-                    vàng, dễ dàng gỡ ra thay thế.</p>
-                <p><img loading="lazy" class="size-full wp-image-17363 aligncenter"
-                        src="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2021-chip-m1-mocol-maccare-02.jpg"
-                        alt="dán màn hình macbok 14inch, 16inch chính hãng mocoll" width="1024" height="683"
-                        srcset="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2021-chip-m1-mocol-maccare-02.jpg 1024w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2021-chip-m1-mocol-maccare-02-768x512.jpg 768w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2021-chip-m1-mocol-maccare-02-850x567.jpg 850w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2021-chip-m1-mocol-maccare-02-120x80.jpg 120w"
-                        sizes="(max-width: 1024px) 100vw, 1024px"></p>
-                <p style="text-align: justify;">Macbook pro 14inch, 16inch được Apple trang bị màn hình Liquid Retina XDR, màn
-                    hình hiển thị tốt nhất từ trước đến nay trên máy tính xách tay. Việc người dùng cần làm ngay sau khi mua máy
-                    tính chắc chắn sẽ là việc bảo vệ màn hình tránh khỏi trầy xước, bụi bẩn, chất ăn mòn trong suốt quá trình sử
-                    dụng.</p>
-                <p><img loading="lazy" class="size-full wp-image-17364 aligncenter"
-                        src="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2020-mocoll-maccare-vn.jpg"
-                        alt="miếng dán màn hình macbok 14inch, 16inch chính hãng mocoll" width="1024" height="683"
-                        srcset="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2020-mocoll-maccare-vn.jpg 1024w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2020-mocoll-maccare-vn-768x512.jpg 768w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2020-mocoll-maccare-vn-850x567.jpg 850w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-16inch-2020-mocoll-maccare-vn-120x80.jpg 120w"
-                        sizes="(max-width: 1024px) 100vw, 1024px"></p>
-                <p style="text-align: justify;">Dán bảo vệ màn hình macbook 14inch, 16inch cũng cần miếng dán màn hình “xịn sò”
-                    đến từ những thương hiệu nổi tiếng, không chỉ bảo vệ màn hình mà còn giúp việc dán vào, gỡ ra dễ dàng hơn,
-                    không làm ảnh hưởng tới màn hình.</p>
-                <h2><span style="font-size: 12pt;"><strong>Dán màn hình Macbook 14inch, 16inch M1 2021 chính hãng
-                            Mocoll&nbsp;</strong></span></h2>
-                <p style="text-align: justify;">Miếng <a href="https://maccare.vn/phu-kien/dan-macbook/">dán màn hình macbook
-                        pro 14inch, 16inch</a> thương hiệu Mocoll đang được nhiều người tìm kiếm và sử dụng trong vài năm trở
-                    lại đây bởi chất lượng cao, đường cắt chính xác cùng công nghệ từ tính không để lại keo khi gỡ ra.</p>
-                <p><img loading="lazy" class="size-full wp-image-17369 aligncenter"
-                        src="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0001.jpg"
-                        alt="dán màn hình macbook 14inch mocoll" width="1024" height="683"
-                        srcset="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0001.jpg 1024w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0001-768x512.jpg 768w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0001-850x567.jpg 850w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0001-120x80.jpg 120w"
-                        sizes="(max-width: 1024px) 100vw, 1024px"></p>
-                <p style="text-align: justify;">Trong suốt thời gian sử dụng, nếu không dán màn hình và không vệ sinh thường
-                    xuyên, màn hình của Macbook sẽ có dấu bàn phím in hằn lên màn hình, gây mất thẩm mỹ và trầy xước, không thể
-                    lau chùi được.</p>
-                <p style="text-align: justify;">Dán màn hình Macbook pro 14inch, 16inch Mocoll có độ trong suốt cao, không làm
-                    giảm đi độ phân giải, trải nghiệm sử dụng khi dán vào. Miếng dán được cắt chính xác, có độ thẩm mỹ cao. Với
-                    miếng dán này, nếu không để ý kỹ sẽ không phát hiện ra màn hình đã dán hay chưa, tạo cảm giác dán như không
-                    dán vậy.</p>
-                <p><img loading="lazy" class="size-full wp-image-17370 aligncenter"
-                        src="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0003.jpg"
-                        alt="dán màn hình macbook 14inch mocoll" width="1024" height="683"
-                        srcset="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0003.jpg 1024w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0003-768x512.jpg 768w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0003-850x567.jpg 850w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-0003-120x80.jpg 120w"
-                        sizes="(max-width: 1024px) 100vw, 1024px"></p>
-                <p style="text-align: justify;">Công nghệ từ tính trên miếng dán màn hình Macbook 14inch, 16inch giúp bám dính
-                    vào màn hình khi dán nhưng không làm ảnh hưởng tới màn hình khi tháo gỡ ra. Miếng dán màn hình không sử dụng
-                    keo để dính nên không để lại vết keo khi gỡ ra. Khách hàng có thể hoàn toàn yên tâm thay thế miếng dán màn
-                    hình bất cứ lúc nào.</p>
-                <p><img loading="lazy" class="size-full wp-image-17372 aligncenter"
-                        src="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-005.jpg"
-                        alt="dán màn hình macbook 14inch mocoll" width="1024" height="683"
-                        srcset="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-005.jpg 1024w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-005-768x512.jpg 768w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-005-850x567.jpg 850w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-005-120x80.jpg 120w"
-                        sizes="(max-width: 1024px) 100vw, 1024px"></p>
-                <p style="text-align: justify;">Bộ vệ sinh đi kèm với miếng dán màn hình Macbook, các miếng sticker Mocoll được
-                    làm chăm chút và phù hợp để lấy bụi, làm sạch trước lúc dán. Kích thước sticker lớn hơn các hãng khác, giúp
-                    chúng ta lấy bụi, vệ sinh nhanh và sạch hơn bao giờ hết.</p>
-                <p><img loading="lazy" class="size-full wp-image-17371 aligncenter"
-                        src="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-004.jpg"
-                        alt="dán màn hình macbook 14inch mocoll" width="1024" height="683"
-                        srcset="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-004.jpg 1024w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-004-768x512.jpg 768w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-004-850x567.jpg 850w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-004-120x80.jpg 120w"
-                        sizes="(max-width: 1024px) 100vw, 1024px"></p>
-                <p style="text-align: justify;">Để dán miếng dán lên màn hình Macbook, chúng ta bóc miếng số 1 trước, mặt này có
-                    từ tính sẽ bám dính vào màn hình.</p>
-                <p><img loading="lazy" class="size-full wp-image-17373 aligncenter"
-                        src="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-003.jpg"
-                        alt="dán màn hình macbook 14inch, 16inch m1 mocoll" width="1024" height="683"
-                        srcset="https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-003.jpg 1024w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-003-768x512.jpg 768w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-003-850x567.jpg 850w, https://maccare.vn/wp-content/uploads/2022/03/dan-man-hinh-macbook-14inch-2021-mocoll-maccare-vn-003-120x80.jpg 120w"
-                        sizes="(max-width: 1024px) 100vw, 1024px"></p>
-                <p style="text-align: center;">Sau khi dán xong chúng ta bóc miếng số 2 này ra</p>
-                <h3><span style="font-size: 12pt;"><strong>Miếng dán màn hình Macbook Pro 14inch, 16inch 2021 chip M1 tại
-                            MacCare.vn</strong></span></h3>
-                <p style="text-align: justify;">Miếng dán màn hình cho Macbook pro 14inch, 16inch được <a
-                        href="https://maccare.vn/">maccare.vn</a> nhập khẩu trực tiếp từ hãng Mocoll, miếng dán còn nguyên seal
-                    từ khi hàng về tới tay khách hàng.</p>
+    @isset($product->trademark->name)
+    <p class="mt-0 mb-2">Thương hiệu: <a href="{{ route('site.trademark', $product->trademark->slug) }}">{{ $product->trademark->name ?? '' }}</a>
+    </p>
+    @endif
+</template>
+</product>
+<div class="div mt-3"></div>
+<div class="p-3 tmp">
+    {{-- {!!$product->description!!} --}}
+    <div class="blog-content__box-content">
+        <div class="box-outstanding-features">
+            <div class="box-title">
+                <h2>ĐẶC ĐIỂM NỔI BẬT</h2>
+            </div>
+            <div class="box-content">
+                <ul>
+                    <li>Đèn Led RGB sống động,thoải mái tuỳ chỉnh qua ứng dụng Xboom</li>
+                    <li>Âm thanh được tuỳ chỉnh bởi Meridian cùng công nghệ Sound Boost khuếch đại dải âm thanh </li>
+                    <li>Công suất 20W,hỗ trợ kết nối nhiều loa cùng lúc </li>
+                    <li>Kháng nước IPX5 không lo nước,bụi xâm nhập</li>
+                    <li>Pin khủng 3900mAh cho thời gian 24 giờ sử dụng liên tục,sạc đầy trong 5 giờ</li>
+                    <ul> </ul>
+                </ul>
             </div>
         </div>
+        <div class="blog-content">
+            <h2>LG XBoom Go PL7 - Loa Diện mạo mới đưa âm nhạc ra cuộc sống</h2>
+            <p>Âm nhạc là yếu tố giúp bạn giảm stress sau những ngày làm việc và học tập mệt mỏi. Để tận hưởng trọn vẹn giai điệu của bản nhạc bạn cần có một chiếc <a href="https://cellphones.com.vn/thiet-bi-am-thanh/loa/lg.html" target="_blank">loa LG</a> có những tính năng hiện đại vừa phù hợp khi sử dụng ở nhà vừa phù hợp lúc đi dã ngoại cùng với gia đình và bạn bè.&nbsp;<strong>Loa bluetooth LG XBoom Go PL7&nbsp;</strong>là một chiếc loa có diện mạo mới rất bắt mắt, giúp bạn tận hưởng một bản nhạc một cách tuyệt vời nhất có thể.</p>
+            <h3>Thiết kế nhỏ gọn chất liệu cao cấp,&nbsp;trang bị đèn led sống động</h3>
+            <p>LG XBoom Go PL7 được hãng thiết kế dáng tròn dài rất nhỏ gọn, tổng trọng lượng loa siêu nhẹ lên đến 1,86kg. Giúp người dùng có thể mang loa đi bất cứ nơi đâu một cách dễ dàng. Hơn thế, LG PL7 được phủ bên ngoài là lớp cao su cao cấp, người dùng dễ dàng cầm nắm mà không sợ bị trượt tay làm rơi rớt loa. Với chất liệu được phủ bên ngoài sẽ giúp cho loa hạn chế bám bẩn mồ hôi và vân tay và luôn làm sạch sẽ và bóng loáng cho chiếc loa.</p>
+            <p><img class="cpslazy loaded" alt="Thiết kế nhỏ gọn chất liệu cao cấp" data-src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7.jpg" data-ll-status="loaded" src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7.jpg"></p>
+            <p>Hãng LG đã trang&nbsp;bị đèn led nhiều màu cho chiếc&nbsp;loa LG XBoom PL7 tạo nên sự sống động. Hơn thế đèn led có thể thay đổi theo giai điệu bài hát, tạo nên vẻ ngoài bắt mắt và sôi động. Bạn có thể điều chỉnh màu sắc, tốc độ của đèn led thông qua ứng dụng XBoom.&nbsp;Chiếc&nbsp;loa bluetooth XBoom Go PL7 giúp người dùng tận hưởng giai điệu cả về thị giác và thính giác.</p>
+            <p><img class="cpslazy loaded" alt="trang bị đèn led sống động" data-src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-1.jpg" data-ll-status="loaded" src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-1.jpg"></p>
+            <h3>Tích hợp công nghệ&nbsp;Meridian&nbsp;và Sound Boost, công suất phát 30W</h3>
+            <p><strong>Loa LG XBoom Go PL7</strong> được&nbsp;tích hợp công nghệ Meridian tạo ra chất lượng âm thanh rất tuyệt vời. Khi bạn sở hữu chiếc loa&nbsp;LG&nbsp;này mỗi khi nghe nhạc là mỗi lần thưởng thức những âm sắc phong phú và những âm bass trầm bổng và chính xác đến từng nốt nhạc. Hơn thế, chiếc&nbsp;<a href="https://cellphones.com.vn/thiet-bi-am-thanh/loa/loa-bluetooth.html" target="_blank">loa bluetooth</a> LG XBoom Go PL7 tích hợp&nbsp;Sound Boost giúp loa khuếch đại và mở rộng các dải âm thanh. Bạn chỉ cần nhấn nút Sound Boost là có thể mở tính năng này và khuấy động được không gian thư giãn.</p>
+            <p><img class="cpslazy loaded" alt="Tích hợp công nghệ Meridian và Sound Boost" data-src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-2.jpg" data-ll-status="loaded" src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-2.jpg"></p>
+            <p>Ngoài ra với công suất phát 30W màng loa có thể rung theo giai điệu của bài hát mà bạn đang mở trên loa tạo sự sôi động và lôi cuốn mọi người hòa mình vào âm nhạc như cách mà loa rung chuyển động theo nhịp điệu. Kết hợp với độ rung màn loa là đèn led được sáng nhấp nháy và chạy theo dạng vòng tròn chuyển động rực rỡ tạo nên không gian sống động với nhiều màu sắc nổi bật.</p>
+            <p><img class="cpslazy loaded" alt="công suất phát 30W" data-src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-3.jpg" data-ll-status="loaded" src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-3.jpg"></p>
+            <h3>Dung lượng pin cao 3900 mAh sử dụng xuyên suốt đến 24 tiếng, khả năng chống nước IPX5</h3>
+            <p>Bạn là người yêu thích âm nhạc mà thường xuyên có những chuyến dã ngoại để giảm stress cùng với gia đình hay bạn bè. Những khoảnh khắc nghỉ ngơi này, yếu tố không thể thiếu với bạn là một chiếc loa để bạn cùng mọi người tận hưởng những giai điệu của bản nhạc. Nhưng điều bạn lo lắng rằng pin của chiếc loa sẽ không đủ để bạn sử dụng. Đừng lo, chiếc <strong>LG PL7</strong> được hãng thiết kế dung lượng pin lên đến 3900 mAh, giúp bạn có thể sử dụng loa liên tục trong vòng 24h mà không sợ bị hết pin, không bị ngắt quãng cuộc vui của bạn.</p>
+            <p><img class="cpslazy loaded" alt="Dung lượng pin cao 3900 mAh" data-src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-4.jpg" data-ll-status="loaded" src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-4.jpg"></p>
+            <p>Bạn có những buổi tiệc dã ngoại ngoài trời, nơi có độ ẩm cao đặc biệt là nước. <strong>LG XBoom PL7</strong> được trang bị IPX5 khả năng chống bụi, chống nước và bụi bẩn len lỏi vào bên trong khi sử dụng. Giúp người dùng thoải mái sử dụng loa trong bất kỳ môi trường như thế nào cũng không bị ảnh hưởng xấu đến chiếc loa.</p>
+            <p><img class="cpslazy loaded" alt="khả năng chống nước IPX5" data-src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-5.jpg" data-ll-status="loaded" src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-5.jpg"></p>
+            <h3>Bluetooth 5.0 tương thích với nhiều thiết bị, điều khiển dễ dàng</h3>
+            <p>Với công nghệ bluetooth 5.0,&nbsp;loa LG PL7 sẽ tương thích hầu hết tất cả các thiết bị di động phổ biến hiện nay như điện thoại, máy tính bảng, tivi, laptop,... Bạn có thể kết nối loa với các thiết bị di động cá nhân của mình ở bất kỳ nơi đâu hay bất cứ lúc nào mà không bị giới hạn khả năng kết nối.</p>
+            <p><img class="cpslazy loaded" alt="Bluetooth 5.0 tương thích với nhiều thiết bị" data-src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-6.jpg" data-ll-status="loaded" src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-6.jpg"></p>
+            <p><strong>Loa LG XBoom Go PL7</strong> được hãng thiết kế các nút bấm rất nhạy, giúp người dùng có thể dễ dàng thực hiện các thao tác điều chỉnh phù hợp với không gian thư giãn của bạn. Hơn thế, ngoài tính năng điều khiển bằng nút bấm loa bluetooth LG PL7 cùng có tính năng điều khiển bằng giọng nói. Để kích hoạt tính năng này bạn chỉ cần bấm giữ nút phát nhạc trong vòng 2 giây, màn hình điện thoại sẽ hiện lên tính năng Google Assistant trên điện thoại có hệ điều hành Android hoặc Siri trên có hệ điều hành iOS. Bạn có thể điều khiển bật hay tắt nhạc và các chức năng khác mà chỉ cần dùng lệnh bằng giọng nói.</p>
+            <p><img class="cpslazy loaded" alt="điều khiển dễ dàng" data-src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-7.jpg" data-ll-status="loaded" src="https://cdn.cellphones.com.vn/media/wysiwyg/accessories/loa/Loa-Bluetooth-LG-XBoom-PL7-7.jpg"></p>
+            <h2>Mua&nbsp;loa bluetooth LG XBoom PL7 giá rẻ, chất lượng tại CellphoneS</h2>
+            <p>Với những tính năng hiện đại mà loa LG XBoom PL7 sở hữu như khả năng chống nước IPX5, nhiều công nghệ âm thanh hiện đại phổ biến nhất hiện nay. Bạn còn chần chừ nữa mà không sở hữu ngay cho mình một chiếc loa LG. Đến ngay Cellphones để mua cho mình <strong>LG XBoom PL7&nbsp; Go chính hãng</strong>, giá rẻ cùng với chính sách bảo hành 12 tháng của hãng. Bên cạnh đó, bạn cũng có thể tham khảo thêm <a href="https://cellphones.com.vn/loa-bluetooth-lg-xboom-go-pl2.html" target="_blank">loa LG XBoom Go PL2</a> đang có giá tốt tại Cellphones.</p>
         </div>
+    </div>
+</div>
+</div>
 
 
-        {{-- <script>
+{{-- <script>
         var form = document.querySelector('#form-detail');
 
         form.addEventListener('submit', function(e) {
@@ -176,4 +137,4 @@ $imageList = collect($product->images->where('active', true))->values();
             location.href = "/gio-hang"
         })
     </script> --}}
-    @endsection
+@endsection
