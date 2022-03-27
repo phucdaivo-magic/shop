@@ -21,6 +21,8 @@
         :adjustableHeight="false"
         :autoplay="false"
         :mouseDrag="false"
+        :navigationNextLabel="''"
+        :navigationPrevLabel="''"
         :perPageCustom="[
           [320, 2],
           [576, 3],
@@ -75,12 +77,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.btn-sort {
-  border-radius: 100px;
-  outline: 0;
-  &:focus {
-    box-shadow: none !important;
-  }
-}
+<style lang="scss">
+
 </style>

@@ -198,3 +198,51 @@ a:hover {
   background-position: center !important;
 }
 
+.VueCarousel-navigation-next {
+  background: #fafafa !important;
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0 !important;
+  transform: none !important;
+  border-radius: 100px;
+  top: calc(50% - 50px) !important;
+  border: 1px solid #eee;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 3px 0px;
+  font-family: "Pe-icon-7-stroke";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.VueCarousel-navigation-next::before {
+  content: "\E684";
+  font-size: 30px;
+  font-family: "Pe-icon-7-stroke";
+}
+
+.VueCarousel-navigation-prev {
+  background: #fafafa !important;
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0 !important;
+  transform: none !important;
+  border-radius: 100px;
+  top: calc(50% - 50px) !important;
+  border: 1px solid #eee;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 3px 0px;
+  font-family: "Pe-icon-7-stroke";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.VueCarousel-navigation-prev::before {
+  content: "\E686";
+  font-size: 30px;
+  font-family: "Pe-icon-7-stroke";
+}
+
