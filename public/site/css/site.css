@@ -214,6 +214,7 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 10px;
 }
 
 .VueCarousel-navigation-next::before {
@@ -238,6 +239,7 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 10px;
 }
 
 .VueCarousel-navigation-prev::before {
