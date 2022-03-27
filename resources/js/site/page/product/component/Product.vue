@@ -203,12 +203,12 @@
             >
           </div>
         </template>
-        <div class="d-flex">
+        <div class="d-flex flex-column flex-md-row">
           <InputNumber v-model="mount" />
-          <button class="ml-3 btn btn-danger d-block rounded-0" @click="addToCart">
+          <button class="ml-md-3 mt-2 mt-md-0 w-auto w-md-100 btn btn-danger d-block rounded-0" @click="addToCart">
             <i class="pe-7s-cart mr-2" aria-hidden="true"></i>Thêm vào giỏ hàng
           </button>
-          <button class="btn btn-light ml-1 rounded-0"
+          <button class="btn btn-light ml-md-1 rounded-0 w-auto w-md-100 mt-2 mt-md-0"
               @click.stop.prevent="updateFavorite">
             <div
               class="cart-favorite mx-2 fa"
