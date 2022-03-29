@@ -296,4 +296,16 @@ class AdminController extends Controller
         ];
     }
 
+    protected function upload(Request $request) {
+        if (isset($request['upload'])) {
+
+            $file = $request['upload'];
+            $path = time() . '_' . $file->getClientOriginalName();
+            $file->move('uploads/editer/images/', $path);
+            $data['url'] = asset('uploads/editer/images/'.$path);
+
+            return response()->json($data);
+        }
+    }
+
 }

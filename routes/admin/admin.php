@@ -219,6 +219,9 @@ Route::get('/product/clone/{object}', 'Admin\ProductController@clone');
 
 Route::get('/product/run-create-product', 'Admin\ProductController@cloneAll');
 
+// TODO upload image
+Route::post('/product/upload', 'Admin\ProductController@upload');
+
 
 // ProductPropertyType
 Route::get('product/{product}/property-type', 'Admin\ProductPropertyTypeController@main')->name('admin.product.property-type');
