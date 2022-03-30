@@ -219,6 +219,10 @@ Route::get('/product/clone/{object}', 'Admin\ProductController@clone');
 
 Route::get('/product/run-create-product', 'Admin\ProductController@cloneAll');
 
+Route::get('api/product/{object}/imageList', 'Admin\ProductController@imageList');
+
+Route::post('api/product/{object}/image/store', 'Admin\ProductController@storeImage')->name('admin.api.product.image.store');
+
 // TODO upload image
 Route::post('/product/upload', 'Admin\ProductController@upload');
 
@@ -258,7 +262,7 @@ Route::get('product/{product}/image', 'Admin\ProductImageController@main')->name
 
 Route::get('/product/{product}/image/form/{object?}', 'Admin\ProductImageController@initForm')->name('admin.product.image.form');
 
-Route::post('/product-image/form/{object?}', 'Admin\ProductImageController@actionForm');
+Route::post('/product-image/form/{object?}', 'Admin\ProductImageController@actionForm')->name('admin.product.image.store');
 
 Route::get('/product-image/delete/{object}', 'Admin\ProductImageController@delete');
 

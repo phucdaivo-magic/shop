@@ -15,6 +15,7 @@
    transition: 0.3s;
    box-sizing: border-box;
    display: block;
+   background-color: #fff;
 }
 
 .cs-button-toggle input {
@@ -105,7 +106,7 @@
 }
 
 
- 
+
 .cs-button-radio input:checked + span.cs-box-radio + span.cs-toggle-radio  {
    width: calc(100% - 10px);
    height: calc(100% - 10px);

@@ -6,6 +6,11 @@ import '../../node_modules/select2';
 import Swal from '../../node_modules/sweetalert2/src/sweetalert2.js';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import MyUploadAdapter from "./plugins/MyUploadAdapter"
+import ProductForm from "./admin/components/ProductForm.vue"
+import Vue from 'vue';
+
+Vue.component('product-form', ProductForm);
+
 window.Swal = Swal;
 $(document).ready(function () {
 
@@ -144,11 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 });
 
-
-function SimpleUploadAdapterPlugin(editor) {
-  editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-    // Configure the URL to the upload script in your back-end here!
-    return new MyUploadAdapter(loader);
-  };
-}
-
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('form-product')) {
+    new Vue({
+      el: '#form-product',
+    }).$mount();
+  }
+});

@@ -181,7 +181,8 @@ class ProductController extends AdminController
                         'title' => '',
                     ],
                 ],
-                'tableData' => []
+                'tableData' => [],
+                'formLeft' => 'admin.custom.form-product'
             ]
         );
 
@@ -276,5 +277,24 @@ class ProductController extends AdminController
     public function put(Request $request, String $key, Obj $object)
     {
         return parent::putItem($request, $key, $object);
+    }
+
+
+    public function imageList(Obj $object) {
+        $imageList = $object->images;
+
+        return response()->json($imageList);
+    }
+
+    public function storeImage(Request $request, Obj $object) {
+        $imageList = [];
+        foreach ($request['files'] as $file) {
+            $name = time() . '_' . $file->getClientOriginalName();
+            $data['product_id'] = $object->id;
+            $data['image'] = $file->move('uploads/images/product/' . $object->id . '/image/', $name);
+            $imageList[] = $object->images()->create($data);
+        }
+
+        return response()->json($imageList);
     }
 }
