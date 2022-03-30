@@ -46,6 +46,7 @@
         //   // Bootstrap ID
         //   gtag('config', 'UA-118965717-5');
         //
+        const BASE_URL = '{{ url('') }}';
     </script>
 </head>
 

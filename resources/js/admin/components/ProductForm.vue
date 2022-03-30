@@ -19,6 +19,12 @@
                 <i class="icons d-block cui-trash"></i>
               </button>
             </div>
+            <div class="text-center pt-2">
+              <toogle
+                :checked="image.active"
+                :request="BASE_URL + '/admin/product-image/put/active/' + image.id"
+              />
+            </div>
           </div>
           <div
             v-if="
@@ -56,7 +62,7 @@
             </div>
           </div>
         </div>
-        <a class="btn btn-success mt-2" :href="getPropertyPage" >Tuỷ chỉnh thuộc tính</a>
+        <a class="btn btn-success mt-2" :href="getPropertyPage">Tuỷ chỉnh thuộc tính</a>
       </div>
     </div>
   </div>
@@ -71,10 +77,10 @@ export default {
     return {
       file: null,
       innerImages: [],
+      BASE_URL
     };
   },
-  mounted() {
-    console.log("images", this.properties);
+  created() {
     this.innerImages = this.images.map((item) => ({ show: true, ...item }));
   },
   methods: {
@@ -87,7 +93,7 @@ export default {
       }
 
       const { data } = await Axios.post(this.postImageStore, form);
-      this.innerImages = [...this.innerImages, ...data];
+      this.innerImages = [...this.innerImages, ...data.map((item) => ({ show: true, ...item }))];
     },
 
     onRemoveImage(image) {

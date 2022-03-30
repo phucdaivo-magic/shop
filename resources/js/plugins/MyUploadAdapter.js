@@ -26,7 +26,7 @@ export default class MyUploadAdapter {
     // integration to choose the right communication channel. This example uses
     // a POST request with JSON as a data structure but your configuration
     // could be different.
-    xhr.open('POST', 'http://127.0.0.1:8000/admin/product/upload', true);
+    xhr.open('POST', BASE_URL+'/admin/product/upload', true);
     xhr.setRequestHeader('x-csrf-token', $('[name="_token"]').val());
     xhr.responseType = 'json';
   }

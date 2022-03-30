@@ -7,9 +7,11 @@ import Swal from '../../node_modules/sweetalert2/src/sweetalert2.js';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import MyUploadAdapter from "./plugins/MyUploadAdapter"
 import ProductForm from "./admin/components/ProductForm.vue"
+import Toogle from "./admin/components/Toogle.vue"
 import Vue from 'vue';
 
 Vue.component('product-form', ProductForm);
+Vue.component('toogle', Toogle);
 
 window.Swal = Swal;
 $(document).ready(function () {

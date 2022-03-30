@@ -19,76 +19,44 @@ function slidebar()
     $menu = [
         [
             'name' => 'Sản phẩm',
-            'icon' => 'icon-puzzle',
+            'icon' => 'cui-file',
             'childrens' => [
                 [
-                    'name' => 'Danh sách',
-                    'icon' => 'icon-list',
+                    'name' => 'Sản phẩm',
+                    'icon' => 'cui-file',
                     'url' => 'App\Http\Controllers\Admin\ProductController@index'
-                ], [
-                    'name' => 'Thêm mới',
-                    'icon' => 'icon-note',
-                    'url' => 'App\Http\Controllers\Admin\ProductController@initForm'
-                ]
-            ]
-        ],
-        [
-            'name' => 'Danh mục',
-            'icon' => 'icon-drop',
-            'childrens' => [
+                ],
                 [
-                    'icon' => 'icon-list',
-                    'name' => 'Danh sách',
+                    'name' => 'Danh mục',
+                    'icon' => 'cui-inbox',
                     'url' => 'App\Http\Controllers\Admin\CategoryController@index'
-                ], [
-                    'icon' => 'icon-note',
-                    'name' => 'Thêm mới',
-                    'url' => 'App\Http\Controllers\Admin\CategoryController@initForm'
-                ]
-            ]
-        ],
-        [
-            'name' => 'Thương hiệu/Chất liệu',
-            'icon' => 'icon-drop',
-            'childrens' => [
+                ],
                 [
+                    'name' => 'Nhà sản xuất',
                     'icon' => 'icon-list',
-                    'name' => 'Danh sách',
                     'url' => 'App\Http\Controllers\Admin\TradeMarkController@index'
-                ], [
-                    'icon' => 'icon-note',
-                    'name' => 'Thêm mới',
-                    'url' => 'App\Http\Controllers\Admin\TradeMarkController@initForm'
-                ]
+                ],
             ]
         ],
         [
             'name' => 'Đơn hàng',
-            'icon' => 'icon-drop',
+            'icon' => 'cui-cart',
             'childrens' => [
                 [
-                    'icon' => 'icon-list',
+                    'icon' => 'cui-cart',
                     'name' => 'Danh sách',
                     'url' => 'App\Http\Controllers\Admin\BillController@index'
-                ], [
-                    'icon' => 'icon-note',
-                    'name' => 'Thêm mới',
-                    'url' => 'App\Http\Controllers\Admin\BillController@initForm'
                 ]
             ]
         ],
         [
-            'name' => 'Trang thông tin',
-            'icon' => 'icon-drop',
+            'name' => 'Website',
+            'icon' => 'cui-layers',
             'childrens' => [
                 [
-                    'icon' => 'icon-list',
-                    'name' => 'Danh sách',
+                    'icon' => 'cui-layers',
+                    'name' => 'Trang thông tin',
                     'url' => 'App\Http\Controllers\Admin\AboutController@index'
-                ], [
-                    'icon' => 'icon-note',
-                    'name' => 'Thêm mới',
-                    'url' => 'App\Http\Controllers\Admin\AboutController@initForm'
                 ]
             ]
         ],
