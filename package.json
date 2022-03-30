@@ -37,6 +37,7 @@
         "vue-infinite-loading": "^2.4.5",
         "vue-lazyload": "^1.3.3",
         "vue-product-carousel": "^1.2.1",
-        "vue2-filters": "^0.14.0"
+        "vue2-filters": "^0.14.0",
+        "vuedraggable": "^2.24.3"
     }
 }

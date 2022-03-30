@@ -15,7 +15,7 @@
       <button class="btn btn-sms pl-0" onclick="history.back()" type="button">
           <i class="fa fa-long-arrow-left"></i> Trở về</button>
       <div class="row">
-          {{ Form::model($data['form'], ['class' => (isset($data['formLeft']) && $data['form']['id']) ? 'col-md-8' : 'col-md-12','url' => url()->action($data['controller'] . '@actionForm', $data['form']['id']),'method' => 'POST','enctype' => 'multipart/form-data']) }}
+          {{ Form::model($data['form'], ['class' => (isset($data['formLeft']) && $data['form']['id']) ? 'col-md-7' : 'col-md-12','url' => url()->action($data['controller'] . '@actionForm', $data['form']['id']),'method' => 'POST','enctype' => 'multipart/form-data']) }}
           <div class="card card card-accent-success">
               <div class="card-header">
                   <i class="fa fa-align-justify"></i> {!! $data['breadcrumbs'][count($data['breadcrumbs']) - 1]['name'] ?? 'Biểu mẫu' !!}

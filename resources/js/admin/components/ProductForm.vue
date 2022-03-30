@@ -1,50 +1,65 @@
 <template>
   <div>
     <div class="card card-accent-success">
-      <div class="card-header"><i class="fa fa-file-image-o"></i>Hình ảnh</div>
+      <div class="card-header d-flex align-items-center">
+        <i class="fa fa-file-image-o"></i>
+        <span style="flex: 1"> Hình ảnh </span>
+        <div
+          v-if="loading"
+          class="spinner-border text-success"
+          style="width: 1rem; height: 1rem; border-width: 2px"
+          role="status"
+        ></div>
+      </div>
       <div class="card-body">
-        <div class="product-image">
-          <div
-            v-for="image in innerImages"
-            :key="image.id"
-            class="product-image-item"
-            v-show="image.show"
+        <div>
+          <draggable
+            class="product-image"
+            v-model="innerImages"
+            @change="onEnd"
+            ghost-class="ghost-class"
+            draggable=".product-image-item"
           >
-            <!-- <img class="product-image-thumb" :src="image.avatar" alt="" /> -->
             <div
-              class="product-image-thumb"
-              :style="{ backgroundImage: `url('${image.avatar}')` }"
+              v-for="image in innerImages"
+              :key="image.id"
+              class="product-image-item"
+              v-show="image.show"
             >
-              <button class="product-image-remove btn" @click="onRemoveImage(image)">
-                <i class="icons d-block cui-trash"></i>
-              </button>
+              <!-- <img class="product-image-thumb" :src="image.avatar" alt="" /> -->
+              <div
+                class="product-image-thumb"
+                :style="{ backgroundImage: `url('${image.avatar}')` }"
+              >
+                <button class="product-image-remove btn" @click="onRemoveImage(image)">
+                  <i class="icons d-block cui-trash"></i>
+                </button>
+              </div>
+              <div class="text-center pt-2">
+                <toogle
+                  :checked="image.active"
+                  :request="BASE_URL + '/admin/product-image/put/active/' + image.id"
+                />
+              </div>
             </div>
-            <div class="text-center pt-2">
-              <toogle
-                :checked="image.active"
-                :request="BASE_URL + '/admin/product-image/put/active/' + image.id"
-              />
+            <div
+              v-if="innerImages.filter((image) => image.show).length < 9"
+              class="product-image-upload"
+            >
+              <label class="product-upload-thumb">
+                <i class="fa fa-plus"></i>
+                <input type="file" hidden @change="onChange" multiple />
+              </label>
             </div>
-          </div>
-          <div
-            v-if="
-              innerImages.reduce(function (acc, curr) {
-                if (curr.show) acc++;
-                return acc;
-              }, 0) < 9
-            "
-            class="product-image-upload"
-          >
-            <label class="product-upload-thumb">
-              <i class="fa fa-plus"></i>
-              <input type="file" hidden @change="onChange" multiple />
-            </label>
-          </div>
+          </draggable>
         </div>
+      </div>
+      <div v-if="update" class="card-footer">
+        <button class="btn btn-success">Cập nhật thứ tự hiển thị</button>
       </div>
     </div>
     <div class="card card-accent-success">
-      <div class="card-header"><i class="fa fa-file-image-o"></i>Thuộc tính</div>
+      <div class="card-header"><i class="nav-icon cui-layers"></i>Thuộc tính</div>
       <div class="card-body">
         <div class="property">
           <div
@@ -70,30 +85,66 @@
 
 <script>
 import Axios from "axios";
+import draggable from "vuedraggable";
 
 export default {
-  props: ["images", "postImageStore", "properties", "getPropertyPage"],
+  props: [
+    "product",
+    "images",
+    "postImageStore",
+    "properties",
+    "getPropertyPage",
+    "postImageSort",
+  ],
+  components: {
+    draggable,
+  },
   data() {
     return {
       file: null,
       innerImages: [],
-      BASE_URL
+      BASE_URL,
+      update: false,
+      loading: false,
     };
   },
   created() {
-    this.innerImages = this.images.map((item) => ({ show: true, ...item }));
+    this.innerImages = this.convertData(this.images);
   },
+
   methods: {
+    convertData(images) {
+      return images.map((item) => ({ show: true, ...item }));
+    },
+
+    async onEnd() {
+      this.loading = true;
+      const ids = this.innerImages.filter((image) => image.show).map((item) => item.id);
+
+      await Axios.post(this.postImageSort, {
+        ids,
+      });
+
+      setTimeout(() => {
+        this.loading = false;
+      }, 300);
+    },
+
     async onChange(event) {
       const form = new FormData();
-      console.log(event);
+      this.loading = true;
       const files = event.target.files;
       for (let index = 0; index < files.length; index++) {
         form.append(`files[${index}]`, files[index]);
       }
 
       const { data } = await Axios.post(this.postImageStore, form);
-      this.innerImages = [...this.innerImages, ...data.map((item) => ({ show: true, ...item }))];
+
+      this.innerImages = [...this.innerImages, ...this.convertData(data)];
+
+      setTimeout(() => {
+        this.loading = false;
+      }, 300);
     },
 
     onRemoveImage(image) {
@@ -104,9 +155,16 @@ export default {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Xóa",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.value) {
           image.show = false;
+          this.loading = true;
+          const { data } = await Axios.delete(
+            `${this.BASE_URL}/admin/api/product-image/${image.id}`
+          );
+          setTimeout(() => {
+            this.loading = false;
+          }, 300);
         }
       });
     },
@@ -119,6 +177,8 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: -10px;
+
   .product-image-item {
     width: calc(100% / 3 - 8px);
     position: relative;
@@ -126,15 +186,39 @@ export default {
     margin: 4px;
     border: 1px dashed #ddd;
     padding: 5px;
+    background: #fff;
+
+    &.ghost-class {
+      border: 1px solid #dedede;
+      background: #eee;
+      & > * {
+        display: none;
+      }
+    }
+
+    &:first-child {
+      //width: calc(100% / 3 * 2 - 8px);
+    }
 
     .product-image-thumb {
-      padding-top: 130%;
+      padding-top: 120%;
       background-size: cover;
-      background-position: center;
+      background-position: top;
     }
     &:hover {
       .product-image-remove {
         opacity: 1;
+      }
+      &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.04);
+        top: 0;
+        left: 0;
+        cursor: pointer;
       }
     }
     .product-image-remove {

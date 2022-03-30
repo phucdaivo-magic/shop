@@ -223,6 +223,10 @@ Route::get('api/product/{object}/imageList', 'Admin\ProductController@imageList'
 
 Route::post('api/product/{object}/image/store', 'Admin\ProductController@storeImage')->name('admin.api.product.image.store');
 
+Route::post('api/product/{object}/image/sort', 'Admin\ProductController@sortImage')->name('admin.api.product.image.sort');
+
+Route::delete('api/product-image/{image}', 'Admin\ProductController@deleteImage')->name('admin.api.product.image.delete');
+
 // TODO upload image
 Route::post('/product/upload', 'Admin\ProductController@upload');
 

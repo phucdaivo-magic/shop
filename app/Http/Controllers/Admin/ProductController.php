@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\AdminController;
 use App\Models\Category;
 use App\Models\Product as Obj;
+use App\Models\ProductImage;
 use App\Models\Trademark;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends AdminController
 {
@@ -31,7 +33,7 @@ class ProductController extends AdminController
                     [
                         'key' => 'avatar',
                         'view' => [
-                            'type'=>'image'
+                            'type' => 'image'
                         ],
                         'title' => 'Hình ảnh',
                     ],
@@ -99,12 +101,13 @@ class ProductController extends AdminController
                         'title' => 'Tên sản phẩm',
                         'edit' => [
                             'placeholder' => 'Tên sản phẩm',
+                            'type' => 'textarea'
                         ],
                     ],
                     [
                         'key' => 'price',
                         'view' => function ($product) {
-                            return '<div style="min-width: 110px; text-align: right;">'.getMoney($product->price).'<div>';
+                            return '<div style="min-width: 110px; text-align: right;">' . getMoney($product->price) . '<div>';
                         },
                         'title' => 'Giá',
                         'edit' => [
@@ -225,18 +228,19 @@ class ProductController extends AdminController
         return parent::generateForm($request, $object);
     }
 
-    public function clone(Obj $object) {
+    public function clone(Obj $object)
+    {
 
         $clone = $object->replicateRow();
         return redirect(route('admin.product', ['id_eq' => $clone->id]));
     }
 
-    public function cloneAll() {
-        $products = Obj::where('sort','<', 46)->get();
+    public function cloneAll()
+    {
+        $products = Obj::where('sort', '<', 46)->get();
         foreach ($products  as $key => $product) {
             $product->replicateRow();
         }
-
     }
 
     /**
@@ -280,15 +284,20 @@ class ProductController extends AdminController
     }
 
 
-    public function imageList(Obj $object) {
+    public function imageList(Obj $object)
+    {
         $imageList = $object->images;
 
         return response()->json($imageList);
     }
 
-    public function storeImage(Request $request, Obj $object) {
+    public function storeImage(Request $request, Obj $object)
+    {
         $imageList = [];
         foreach ($request['files'] as $file) {
+            if ($object->images()->count() >= 9) {
+                break;
+            }
             $name = time() . '_' . $file->getClientOriginalName();
             $data['product_id'] = $object->id;
             $data['image'] = $file->move('uploads/images/product/' . $object->id . '/image/', $name);
@@ -296,5 +305,31 @@ class ProductController extends AdminController
         }
 
         return response()->json($imageList);
+    }
+
+    public function sortImage(Request $request, Obj $object)
+    {
+        foreach ($request['ids'] as $key => $id) {
+            $image = $object->images()->find($id);
+            $image->sort = $key + 1;
+            $image->save();
+            $ids[] = $image;
+        }
+
+        return response()->json([
+            'sort'=> true
+        ]);
+    }
+
+
+    public function deleteImage(ProductImage $image)
+    {
+        $image->delete();
+        if (File::exists($image->image)) {
+            File::delete($image->image);
+        }
+        return response()->json([
+            'delete'=> true
+        ]);
     }
 }
