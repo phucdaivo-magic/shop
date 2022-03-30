@@ -77,7 +77,8 @@
             </div>
           </div>
         </div>
-        <a class="btn btn-success mt-2" :href="getPropertyPage">Tuỷ chỉnh thuộc tính</a>
+        <a class="btn btn-secondary btn-sm mt-3 d-flex align-items-center" :href="getPropertyPage">
+        <i class="icons mr-1 cui-cog"></i> Tuỳ chỉnh thuộc tính</a>
       </div>
     </div>
   </div>
@@ -155,6 +156,7 @@ export default {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Xóa",
+        cancelButtonText: "Đóng",
       }).then(async (result) => {
         if (result.value) {
           image.show = false;
