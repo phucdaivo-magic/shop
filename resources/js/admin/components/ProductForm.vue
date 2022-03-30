@@ -187,6 +187,7 @@ export default {
     border: 1px dashed #ddd;
     padding: 5px;
     background: #fff;
+    cursor: move;
 
     &.ghost-class {
       border: 1px solid #dedede;
@@ -201,6 +202,7 @@ export default {
     }
 
     .product-image-thumb {
+      cursor: move;
       padding-top: 120%;
       background-size: cover;
       background-position: top;
@@ -218,7 +220,6 @@ export default {
         background: rgba(0, 0, 0, 0.04);
         top: 0;
         left: 0;
-        cursor: pointer;
       }
     }
     .product-image-remove {
