@@ -19,21 +19,21 @@ function slidebar()
     $menu = [
         [
             'name' => 'Sản phẩm',
-            'icon' => 'cui-file',
+            'icon' => 'fa fa-shopping-bag',
             'childrens' => [
                 [
                     'name' => 'Sản phẩm',
-                    'icon' => 'cui-file',
+                    'icon' => 'fa fa-shopping-bag',
                     'url' => 'App\Http\Controllers\Admin\ProductController@index'
                 ],
                 [
                     'name' => 'Danh mục',
-                    'icon' => 'cui-inbox',
+                    'icon' => 'fa fa-sitemap',
                     'url' => 'App\Http\Controllers\Admin\CategoryController@index'
                 ],
                 [
                     'name' => 'Nhà sản xuất',
-                    'icon' => 'icon-list',
+                    'icon' => 'fa fa-trademark',
                     'url' => 'App\Http\Controllers\Admin\TradeMarkController@index'
                 ],
             ]
@@ -51,10 +51,10 @@ function slidebar()
         ],
         [
             'name' => 'Website',
-            'icon' => 'cui-layers',
+            'icon' => 'fa fa-align-left',
             'childrens' => [
                 [
-                    'icon' => 'cui-layers',
+                    'icon' => 'fa fa-file-text-o',
                     'name' => 'Trang thông tin',
                     'url' => 'App\Http\Controllers\Admin\AboutController@index'
                 ]
