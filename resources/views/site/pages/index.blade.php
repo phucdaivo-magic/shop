@@ -78,7 +78,7 @@ $categoryList = App\Models\Category::where('home', true)
 
 <div class="div my-4"></div>
 <div class="container">
-<img src="http://shop.phucdaivo.com/public/uploads/editer/images/1649004276_Screen Shot 2022-04-03 at 23.43.29.png">
+<img class="w-100 d-block"  src="http://shop.phucdaivo.com/public/uploads/editer/images/1649004276_Screen Shot 2022-04-03 at 23.43.29.png">
 </div>
 
 <div class="over-shop">
