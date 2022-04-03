@@ -43,6 +43,10 @@ $categoryList = App\Models\Category::where('home', true)
 </div>
 <div class="div my-4"></div>
 <div class="container">
+  <img src="http://shop.phucdaivo.com/public/uploads/editer/images/1649003885_Screen Shot 2022-04-03 at 23.35.48.png" class="w-100 d-block" alt="">
+</div>
+<div class="div my-4"></div>
+<div class="container">
   <div class="row">
     <div class="col-md-4">
       <img src="https://mcdn.nhanh.vn/store/7136/bn/Banner_doi__Nam_.jpg" class="w-100" alt="">
