@@ -13,10 +13,10 @@ $categoryList = App\Models\Category::where('home', true)
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md-3 d-none d-md-block">
+    <div class="col-md d-none d-md-block">
       @include('site.components.category')
     </div>
-    <div class="col-md-9">
+    <div class="col-md-7">
       <div id="carouselExampleControls" class="carousel slide card p-2 mt-2" style="border-color: #eee" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -38,6 +38,12 @@ $categoryList = App\Models\Category::where('home', true)
           <span class="sr-only">Next</span>
         </a>
       </div>
+    </div>
+    <div class="col-md d-none d-md-block">
+      <div class="card p-2 mt-2" ">
+          <img src="http://shop.phucdaivo.com/public/uploads/editer/images/1649004979_Screen%20Shot%202022-04-03%20at%2023.46.36.png" alt=""  class="w-100 d-block" >
+      </div>
+
     </div>
   </div>
 </div>
