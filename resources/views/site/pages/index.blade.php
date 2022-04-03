@@ -13,10 +13,10 @@ $categoryList = App\Models\Category::where('home', true)
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md d-none d-md-block">
+    <div class="col-md d-none d-md-block" style="max-width: 215px">
       @include('site.components.category')
     </div>
-    <div class="col-md-7">
+    <div class="col-md-6">
       <div id="carouselExampleControls" class="carousel slide card p-2 mt-2" style="border-color: #eee" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
