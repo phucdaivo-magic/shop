@@ -40,7 +40,7 @@ $categoryList = App\Models\Category::where('home', true)
       </div>
     </div>
     <div class="col-md d-none d-md-block">
-      <div class="card p-2 mt-2" ">
+      <div class="card p-2 mt-2">
           <img src="http://shop.phucdaivo.com/public/uploads/editer/images/1649004979_Screen%20Shot%202022-04-03%20at%2023.46.36.png" alt=""  class="w-100 d-block" >
       </div>
 
