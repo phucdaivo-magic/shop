@@ -24,11 +24,19 @@ $categoryList = App\Models\Category::where('home', true)
 
 <body>
     <div id="app">
-        <div class="sticky-top bg-white" :style="{ boxShadow: '0 0 3px 0 rgb(0 0 0 / 12%)'}">
+        <div class="bg-light">
+            <div class="container">
+                <div class="d-flex align-items-center" style="font-size: 13px; height: 30px;">
+                    <a href="" class="mr-4 text-dark"><div class="pe-7s-mail text-muted display-5 mr-1"></div>daihandaiphuc@gmail.com</a>
+                    <a href="" class="mr-4 text-dark"><div class="pe-7s-call text-muted display-5 mr-1"></div>0367102462</a>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-top bg-header" :style="{ boxShadow: '0 0 3px 0 rgb(0 0 0 / 12%)'}">
             <div class="header position-relative">
                 <div class="logo-box d-flex justify-content-center align-items-center">
-                    <div class="text-danger">
-                        <div class="pe-7s-home text-danger"></div>LOGO
+                    <div class="text-white">
+                        <div class="pe-7s-home text-white"></div>LOGO
                     </div>
                 </div>
                 <div class="container d-flex justify-content-end align-items-center">
@@ -42,7 +50,7 @@ $categoryList = App\Models\Category::where('home', true)
                     <header-icon icon="pe-7s-shopbag" :count="cart" :link="'{{ route('site.cart') }}'"></header-icon>
                 </div>
             </div>
-            <div class="div"></div>
+            {{-- <div class="div"></div> --}}
             <div class="container">
                 <nav class="navbar navbar-expand-lg">
                     {{-- <a class="navbar-brand" href="{{ route('site.index') }}">Navbar</a> --}}
@@ -51,12 +59,12 @@ $categoryList = App\Models\Category::where('home', true)
                             @foreach ($categoryList as $item)
                                 @if ($item->url)
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-bold"
+                                        <a class="nav-link font-weight-bold text-white"
                                             href="{{ $item->url }}">{{ $item->name }}</a>
                                     </li>
                                 @elseif($item->categories->count())
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link font-weight-bold" href="#" id="navbarDropdown" role="button"
+                                        <a class="nav-link font-weight-bold text-white" href="#" id="navbarDropdown" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ $item->name }}
                                             <div class="pe-7s-angle-down icon-angle"></div>

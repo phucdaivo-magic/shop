@@ -122,7 +122,6 @@ body {
 }
 
 .header {
-    background: #fff;
     height: fit-content;
 
     .container {
@@ -253,4 +252,8 @@ a {
         font-size: 30px;
         font-family: 'Pe-icon-7-stroke';
     }
+}
+
+.bg-header {
+    background: #E25400;
 }
